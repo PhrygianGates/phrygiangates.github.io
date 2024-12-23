@@ -1,4 +1,8 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://phrygiangates.github.io'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Pour La Liberté'
 theme = 'ananke'
+
+# Taxonomies
+[taxonomies]
+  tag = 'tags'
