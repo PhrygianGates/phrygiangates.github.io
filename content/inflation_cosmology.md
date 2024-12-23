@@ -112,6 +112,8 @@ In summary:
 - **Gravity is not just about mass.** Energy density \\(\rho\\) and pressure \\(p\\) both appear in the stress-energy tensor.
 - **Repulsive gravity arises** when \\(\rho + 3p < 0\\). This condition makes the cosmic scale factor’s acceleration positive (\\(\ddot{a} > 0\\)), indicating accelerated expansion.
 
+## Additional Thoughts
+Where does the negative pressure come from? There's not a determined theory yet. Some suggests there should be some particles called inflatons. From a classical point of view, it's a senario that when a particle flies into a wall, it doesn't bounce back, but it goes through the wall and comes out from the other side. This is a quantum effect. The inflaton field is a quantum field that has a negative pressure.
 
-In next post, I will review the key concepts of Einstein's field equations and the meaning of those tensors.
+In next post, I will review the key concepts of Einstein's field equations and the meaning of those tensors. 
 
