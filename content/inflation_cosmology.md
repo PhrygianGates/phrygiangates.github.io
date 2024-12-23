@@ -1,6 +1,6 @@
 +++
 date = '2024-12-23T17:01:09+08:00'
-draft = false
+katex = true
 title = 'Inflation Cosmology: Is our universe part of a multiuniverse?'
 tags = ['The Early Universe']
 +++
