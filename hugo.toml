@@ -1,6 +1,6 @@
 baseURL = 'https://phrygiangates.github.io'
 languageCode = 'en-us'
-title = 'Pour La Liberté'
+title = 'Phrygiangates'
 theme = 'ananke'
 
 # Taxonomies
