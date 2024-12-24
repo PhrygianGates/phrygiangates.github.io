@@ -39,12 +39,12 @@ Let’s assume a company (Company X) sells products and reports the following in
 - **Taxes**: $5,000
 
 The **net income** would be calculated as:
-\[
+\\[
 \text{Net Income} = \text{Revenue} - \text{COGS} - \text{Operating Expenses} - \text{Interest} - \text{Taxes}
-\]
-\[
+\\]
+\\[
 \text{Net Income} = 100,000 - 40,000 - 30,000 - 5,000 - 5,000 = 20,000
-\]
+\\]
 So, the company made a profit of **$20,000** for the year, according to its income statement. This profit is earned, but may or may not have been paid out in cash.
 
 ### **2. Cash Flow Statement**
@@ -75,24 +75,24 @@ Let’s take the same company, Company X, and assume the following for its cash 
 
 Here’s how the **cash flow** would be calculated:
 1. **Cash Flow from Operating Activities**:  
-   \[
+   \\[
    \text{Net Income} + \text{Depreciation} - \text{Increase in Accounts Receivable} = 20,000 + 5,000 - 3,000 = 22,000
-   \]
+   \\]
 
 2. **Cash Flow from Investing Activities**:  
-   \[
+   \\[
    \text{Capital Expenditures} = -10,000 \text{ (outflow of cash for buying assets)}
-   \]
+   \\]
 
 3. **Cash Flow from Financing Activities**:  
-   \[
+   \\[
    \text{Issuing New Debt} = 8,000 \text{ (inflow of cash from borrowing)}
-   \]
+   \\]
 
 Now, the **Net Cash Flow** for the period would be:
-\[
+\\[
 \text{Net Cash Flow} = 22,000 + (-10,000) + 8,000 = 20,000
-\]
+\\]
 
 So, the company’s cash increased by **$20,000** during the period, even though its net income was also **$20,000**.
 
@@ -241,18 +241,18 @@ This section shows cash inflows and outflows related to funding the company, inc
 
 #### **4. Change in Cash and Cash Equivalents**
 - **Formula**:  
-  \[
+  \\[
   \text{Net Change in Cash} = \text{Net Cash from Operating Activities} + \text{Net Cash from Investing Activities} + \text{Net Cash from Financing Activities}
-  \]
+  \\]
 - This shows how the company's cash position has changed during the period.
 
 #### **5. Cash and Cash Equivalents at Beginning and End of Period**
 - **Beginning of Period**: The company’s cash position at the start of the fiscal year.
 - **End of Period**: The company’s cash position at the end of the fiscal year.  
 - **Formula**:  
-  \[
+  \\[
   \text{Ending Cash} = \text{Beginning Cash} + \text{Net Change in Cash}
-  \]
+  \\]
 
 #### **6. Supplemental Disclosures**
 - **Cash Paid for Income Taxes and Interest**:
