@@ -116,17 +116,17 @@ This shows that the spatial number density \\( n_x \\) is proportional to the ti
 #### Conservation of Particle Number
 
 The **continuity equation** expresses the conservation of particle number in 4-dimensional spacetime:
-\[
+\\[
 \partial_\mu N^\mu = 0
-\]
+\\]
 
 Breaking it into time and spatial components:
-\[
+\\[
 \frac{\partial n}{\partial t} + \nabla \cdot (n \vec{v}) = 0
-\]
+\\]
 Here:
-- The **time component**: \(\frac{\partial n}{\partial t}\) represents the rate of change of particle density.
-- The **spatial component**: \(\nabla \cdot (n \vec{v})\) represents the divergence of the particle flux.
+- The **time component**: \\(\frac{\partial n}{\partial t}\\) represents the rate of change of particle density.
+- The **spatial component**: \\(\nabla \cdot (n \vec{v})\\) represents the divergence of the particle flux.
 
 This equation ensures that the total number of particles remains constant over time.
 
