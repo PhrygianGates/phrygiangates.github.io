@@ -143,8 +143,8 @@ The **Levi-Civita symbol** (ε) is a fundamental tensor used in vector calculus 
 \\[
 \epsilon_{ijk} =
 \begin{cases}
-+1 & \text{if } (i,j,k) \text{ is an even permutation of } (1,2,3), \\
--1 & \text{if } (i,j,k) \text{ is an odd permutation of } (1,2,3), \\
++1 & \text{if } (i,j,k) \text{ is an even permutation of } (1,2,3), \\\\
+-1 & \text{if } (i,j,k) \text{ is an odd permutation of } (1,2,3), \\\\
 0 & \text{otherwise}.
 \end{cases}
 \\]
