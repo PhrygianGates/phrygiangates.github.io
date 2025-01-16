@@ -1,7 +1,7 @@
 +++
 date = '2025-01-04T00:36:09+08:00'
 katex = true
-title = 'Einstein Field Equations'
+title = 'Stress-Energy Tensor'
 tags = ['The Early Universe']
 +++
 
@@ -11,7 +11,6 @@ In this post, I would like to build some fundational knowledge about the Einstei
 3. In the context of cosmology, what is the perfect fluid approximation?
 4. How can we derive the Friedmann Equation and Acceleration Equation from the Einstein Field Equations?
 
-## Stress-Energy Tensor
 We refer to [this course](https://ocw.mit.edu/courses/8-962-general-relativity-spring-2020/resources/lecture-4-volumes-and-volume-elements-conservation-laws/).
 
 ### 1. **4-Velocity and Proper Time**
