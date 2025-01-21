@@ -7,15 +7,14 @@ tags = ['The Early Universe']
 
 In this post, I would like to explore how the Einstein Field Equations can be derived.
 
-
 ## 1. Riemann Tensor and Its Properties
 
 ### Definition of the Riemann Tensor:
 The Riemann curvature tensor \( R^i_{jkl} \) is a fundamental object in differential geometry, representing the intrinsic curvature of a manifold. It is defined as:
 \[
-R^i_{jkl} = \partial_k T^i_{jl} - \partial_l T^i_{jk} + T^i_{km} T^m_{jl} - T^i_{lm} T^m_{jk}
+R^i_{jkl} = \partial_k \Gamma^i_{jl} - \partial_l \Gamma^i_{jk} + \Gamma^i_{km} \Gamma^m_{jl} - \Gamma^i_{lm} \Gamma^m_{jk}
 \]
-where \( T^i_{jk} \) are the Christoffel symbols.
+where \( \Gamma^i_{jk} \) are the Christoffel symbols.
 
 ### Properties of the Riemann Tensor:
 1. **Bianchi Identity**:
@@ -48,9 +47,9 @@ where \( g_{\mu \nu} \) is the metric tensor, and \( \tau \) is the affine param
 
 The variation of this action leads to the geodesic equation:
 \[
-\frac{d^2 x^k}{d\tau^2} + T^k_{ij} \frac{dx^i}{d\tau} \frac{dx^j}{d\tau} = 0
+\frac{d^2 x^k}{d\tau^2} + \Gamma^k_{ij} \frac{dx^i}{d\tau} \frac{dx^j}{d\tau} = 0
 \]
-where \( T^k_{ij} = \Gamma^k_{ij} \) are the Christoffel symbols.
+where \( \Gamma^k_{ij} \) are the Christoffel symbols.
 
 ### Key Insights:
 - **Physical Meaning**: Geodesics generalize the concept of a straight line in curved spaces.
@@ -62,14 +61,14 @@ where \( T^k_{ij} = \Gamma^k_{ij} \) are the Christoffel symbols.
 ### Definition:
 The covariant derivative generalizes the concept of a derivative to curved spaces, accounting for the change in the coordinate basis. For a vector field \( v^i \), the covariant derivative is:
 \[
-\nabla_j v^i = \partial_j v^i + T^i_{jk} v^k
+\nabla_j v^i = \partial_j v^i + \Gamma^i_{jk} v^k
 \]
-where \( T^i_{jk} = \Gamma^i_{jk} \) are the Christoffel symbols.
+where \( \Gamma^i_{jk} \) are the Christoffel symbols.
 
 ### Intuitive Meaning of Christoffel Symbols:
 The Christoffel symbols \( \Gamma^k_{ij} \) describe how the basis vectors change along a coordinate direction. For example:
 \[
-\partial_j \vec{e}_i = \Gamma^k_{ij} \vec{e}_k
+\partial_j \vec{e}_i = \Gamma^k_{ij} \vec{e}_k 
 \]
 This means that the derivative of the basis vector \( \vec{e}_i \) with respect to the \( j \)-th coordinate is a linear combination of the basis vectors. Intuitively, it measures how the coordinate basis "twists" or "stretches" in the manifold.
 
@@ -104,6 +103,7 @@ The Christoffel symbol \( \Gamma^\phi_{\;r\phi} \) encodes how the vector \( \fr
 #### Physical Insight:
 As \( r \) increases, the radius of the \( \phi \)-circle grows linearly with \( r \), causing \( \frac{\partial}{\partial \phi} \) (tangential to the circle) to stretch proportionally. This linear scaling is why \( \Gamma^\phi_{\;r\phi} = \frac{1}{r} \).
 
+---
 
 ### 2. Christoffel Symbol \( \Gamma^\phi_{\;\theta\phi} = \cot\theta \)
 
