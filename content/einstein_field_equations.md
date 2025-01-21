@@ -3,9 +3,9 @@ date = '2025-01-021T07:21:09-05:00'
 katex = true
 title = 'Einstein Field Equations'
 tags = ['The Early Universe']
++++
 
-+++In this post, I would like to explore how the Einstein Field Equations can be derived.
-
+In this post, I would like to explore how the Einstein Field Equations can be derived.
 
 ## 1. Riemann Tensor and Its Properties
 
