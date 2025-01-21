@@ -1,5 +1,5 @@
 +++
-date = '2025-01-021T07:21:09-05:00'
+date = '2025-01-21T07:21:09-05:00'
 katex = true
 title = 'Einstein Field Equations'
 tags = ['The Early Universe']
