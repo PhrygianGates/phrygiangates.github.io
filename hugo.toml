@@ -6,3 +6,8 @@ theme = 'diary'
 # Taxonomies
 [taxonomies]
   tag = 'tags'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
