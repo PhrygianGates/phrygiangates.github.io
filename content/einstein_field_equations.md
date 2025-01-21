@@ -7,6 +7,7 @@ tags = ['The Early Universe']
 
 In this post, I would like to explore how the Einstein Field Equations can be derived.
 
+
 ## 1. Riemann Tensor and Its Properties
 
 ### Definition of the Riemann Tensor:
@@ -68,7 +69,7 @@ where \( T^i_{jk} = \Gamma^i_{jk} \) are the Christoffel symbols.
 ### Intuitive Meaning of Christoffel Symbols:
 The Christoffel symbols \( \Gamma^k_{ij} \) describe how the basis vectors change along a coordinate direction. For example:
 \[
-\partial_j \vec{e}_i = \Gamma^k_{ij} \vec{e}_k 
+\partial_j \vec{e}_i = \Gamma^k_{ij} \vec{e}_k
 \]
 This means that the derivative of the basis vector \( \vec{e}_i \) with respect to the \( j \)-th coordinate is a linear combination of the basis vectors. Intuitively, it measures how the coordinate basis "twists" or "stretches" in the manifold.
 
@@ -103,7 +104,6 @@ The Christoffel symbol \( \Gamma^\phi_{\;r\phi} \) encodes how the vector \( \fr
 #### Physical Insight:
 As \( r \) increases, the radius of the \( \phi \)-circle grows linearly with \( r \), causing \( \frac{\partial}{\partial \phi} \) (tangential to the circle) to stretch proportionally. This linear scaling is why \( \Gamma^\phi_{\;r\phi} = \frac{1}{r} \).
 
----
 
 ### 2. Christoffel Symbol \( \Gamma^\phi_{\;\theta\phi} = \cot\theta \)
 
