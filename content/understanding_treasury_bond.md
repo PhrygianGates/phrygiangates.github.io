@@ -57,20 +57,20 @@ Treasury Bonds are traded in the secondary market, and their **price** and **yie
 ### **4. Calculating Bond Price and Yield to Maturity**
 The **price of a bond** is calculated as the present value of all future cash flows (coupon payments and face value) discounted by the yield to maturity (YTM).  
 ### Formula:
-\\[
+\[
 P = \sum \frac{C}{(1 + YTM)^t} + \frac{F}{(1 + YTM)^T}
-\\]
+\]
 Where:  
-- \\(P\\): Price of the bond  
-- \\(C\\): Coupon payment  
-- \\(F\\): Face value  
-- \\(t\\): Each payment period  
-- \\(T\\): Total number of periods  
+- \(P\): Price of the bond  
+- \(C\): Coupon payment  
+- \(F\): Face value  
+- \(t\): Each payment period  
+- \(T\): Total number of periods  
 
 #### **Illustration: Bond Pricing**
 Consider a bond with:  
-- Face Value (\\(F\\)) = $1,000  
-- Coupon Payment (\\(C\\)) = $50 (5% annual coupon rate, paid semi-annually)  
+- Face Value (\(F\)) = $1,000  
+- Coupon Payment (\(C\)) = $50 (5% annual coupon rate, paid semi-annually)  
 - Yield to Maturity (YTM) = 4% (annualized)  
 - Maturity = 10 years (20 semi-annual periods)
 

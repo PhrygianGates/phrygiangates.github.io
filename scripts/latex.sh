@@ -12,9 +12,8 @@ if [ ! -f "$1" ]; then
     exit 1
 fi
 
-# Use Perl for better regex handling
-# Only match single backslash delimiters, not already escaped ones
-perl -i -pe 's/(?<!\\)\\(\(|\)|\[|\])/\\\\$1/g' "$1"
+# Use Perl to convert double backslashes back to single ones
+perl -i -pe 's/\\\\(\(|\)|\[|\])/\\$1/g' "$1"
 
 # Check if perl command succeeded
 if [ $? -ne 0 ]; then
