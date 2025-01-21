@@ -68,7 +68,7 @@ where \\( T^i_{jk} = \Gamma^i_{jk} \\) are the Christoffel symbols.
 ### Intuitive Meaning of Christoffel Symbols:
 The Christoffel symbols \\( \Gamma^k_{ij} \\) describe how the basis vectors change along a coordinate direction. For example:
 \\[
-\vec{e}_i
+\Gamma^k_{ij} \vec{e}_k
 \\]
 This means that the derivative of the basis vector \\( \vec{e}_i \\) with respect to the \\( j \\)-th coordinate is a linear combination of the basis vectors. Intuitively, it measures how the coordinate basis "twists" or "stretches" in the manifold.
 
