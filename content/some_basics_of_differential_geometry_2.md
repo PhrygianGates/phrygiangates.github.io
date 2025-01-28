@@ -194,20 +194,6 @@ The antisymmetric area element \(\oint dx^\mu \wedge dx^\nu\) corresponds to \(\
    - \(\Gamma^\phi_{\theta\phi} = \Gamma^\phi_{\phi\theta} \approx -\Delta\theta = -\theta + \pi/2\).
 
 
-   Building on the Christoffel symbols calculated, we now explore the phenomenon of parallel transport on a sphere, focusing on a small loop near the equator (\( \theta \approx \pi/2 \)). Parallel transport describes how a vector changes direction as it is moved along a path while remaining "parallel" to itself according to the geometry of the surface. To quantify this change, we employ the Riemann tensor, which encodes the curvature of the sphere and is derived from the Christoffel symbols.
-
-   The Riemann tensor \( R^\mu_{\ \nu\alpha\beta} \) measures the intrinsic curvature of the manifold. For a sphere, it can be calculated using the Christoffel symbols \( \Gamma^\lambda_{\mu\nu} \) via the formula:
-
-   \[
-   R^\mu_{\ \nu\alpha\beta} = \partial_\alpha \Gamma^\mu_{\nu\beta} - \partial_\beta \Gamma^\mu_{\nu\alpha} + \Gamma^\mu_{\alpha\lambda} \Gamma^\lambda_{\nu\beta} - \Gamma^\mu_{\beta\lambda} \Gamma^\lambda_{\nu\alpha}.
-   \]
-
-   Near the equator (\( \theta \approx \pi/2 \)), the non-zero Christoffel symbols simplify significantly. From above, we have:
-
-   \[
-   \Gamma^\theta_{\phi\phi} = -\sin\theta \cos\theta \approx -1, \quad \Gamma^\phi_{\theta\phi} = \Gamma^\phi_{\phi\theta} = \cot\theta \approx 0.
-   \]
-
    Using these, we compute the relevant components of the Riemann tensor.
 
    1. **Component \( R^\theta_{\ \phi\theta\phi} \):**
@@ -323,7 +309,7 @@ The antisymmetric area element \(\oint dx^\mu \wedge dx^\nu\) corresponds to \(\
    \Delta\alpha = \frac{\Sigma}{R^2}.
    \]
 
-   #### A Geometric Approach Using the Gauss-Bonnet Theorem
+   #### Another Approach Using the Gauss-Bonnet Theorem
 
    To understand the rotation of a tangent vector under parallel transport on a sphere, we turn to the Gauss-Bonnet theorem, a powerful tool in differential geometry that connects the intrinsic curvature of a surface to the topology of its regions. In this context, the Gauss-Bonnet theorem provides a geometric framework for determining the total rotation of a tangent vector transported parallel along a small loop.
 
@@ -350,18 +336,6 @@ The antisymmetric area element \(\oint dx^\mu \wedge dx^\nu\) corresponds to \(\
    \[
    \Delta\alpha = \frac{\Sigma}{R^2}.
    \]
-
-   This result indicates that the vector rotates by an angle proportional to the physical area \( \Sigma \) of the loop and inversely proportional to the square of the sphere's radius \( R \).
-
-   Above, we used the Riemannian approach to calculate the rotation angle of a vector under parallel transport around a small loop near the equator. By analyzing the Riemann tensor and its components, we derived the change in the vector components \( \Delta V^\theta \) and \( \Delta V^\phi \), which implied a rotation angle:
-
-   \[
-   \Delta\alpha = \frac{\Sigma}{R^2}.
-   \]
-
-   This result is identical to the one obtained using the Gauss-Bonnet theorem. Both methods—geometric and Riemannian—agree that the rotation angle is proportional to the loop's area and inversely proportional to \( R^2 \). This consistency highlights the deep connection between the intrinsic curvature of the sphere, as described by the Gaussian curvature, and the geometric effects of parallel transport, as encoded in the Riemann tensor.
-
-   The agreement between the two approaches underscores the elegance of differential geometry, where different mathematical frameworks converge to describe the same physical phenomenon. Whether through the lens of curvature integrals or tensor calculus, the rotation of a vector under parallel transport on a sphere is fundamentally tied to the sphere's geometry and curvature.
 
 ## II. The Ricci Tensor and Ricci Scalar
 
