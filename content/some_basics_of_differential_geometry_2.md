@@ -437,20 +437,6 @@ where \(X^\mu\) represents the characteristic dimensions of the region, such as 
 
 **2. Integrating the Distortion & the Ricci Scalar**
 
-To derive the volume expansion of a small geodesic ball in \(d\)-dimensions in terms of the Ricci scalar \(R\), we start with the metric in normal coordinates centered at a point \(p\):
-
-\[
-g_{ij} = \delta_{ij} - \frac{1}{3}R_{ikjl}x^k x^l + \cdots
-\]
-
-The volume element \(\sqrt{\det g}\) can be expanded as:
-
-\[
-\sqrt{\det g} \approx 1 - \frac{1}{6}R_{kl}x^k x^l + \cdots
-\]
-
-where \(R_{kl}\) is the Ricci tensor.
-
 The volume \(V\) of a geodesic ball of radius \(\epsilon\) (where \(\|\mathbf{X}\| = \epsilon\)) is given by:
 
 \[
