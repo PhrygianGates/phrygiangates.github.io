@@ -449,7 +449,7 @@ Recognizing \(\epsilon^2 = \|\mathbf{X}\|^2\), we obtain:
 This shows that the leading-order correction to the volume of a small geodesic ball in \(d\)-dimensions is proportional to the Ricci scalar \(R\), demonstrating how \(R\) quantifies volume distortion due to curvature.
 
 \[
-\boxed{\Delta V = \Delta V_\mathrm{flat} \Bigl(1 - \frac{R}{6(d+2)} \|\mathbf{X}\|^2 + \ldots \Bigr)}
+\Delta V = \Delta V_\mathrm{flat} \Bigl(1 - \frac{R}{6(d+2)} \|\mathbf{X}\|^2 + \ldots \Bigr)
 \]
 
 When integrating these local changes in volume over a region, the scalar curvature \(R\) appears naturally. This is reminiscent of how the Gauss-Bonnet theorem in 2D ties the integral of curvature to the Euler characteristic, but now in higher dimensions we see the Ricci contributions and scalar curvature appear in expansions for volumes and hypersurface areas.
@@ -504,7 +504,7 @@ This result matches the earlier expression derived from the volume expansion for
 The correction term \(-\frac{\pi \epsilon^4}{12a^2}\) arises from the Ricci scalar \(R = 2/a^2\), which quantifies how the curvature of the sphere reduces the area compared to flat space.
 
 \[
-\boxed{\Delta A = \pi \epsilon^2 \left(1 - \frac{\epsilon^2}{12a^2} + \ldots \right)}
+\Delta A = \pi \epsilon^2 \left(1 - \frac{\epsilon^2}{12a^2} + \ldots \right)
 \]
 
 ---
