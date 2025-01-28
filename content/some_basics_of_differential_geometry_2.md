@@ -117,6 +117,7 @@ The antisymmetric area element \(\oint dx^\mu \wedge dx^\nu\) corresponds to \(\
    The Riemann tensor fully captures the local curvature by describing how vectors change under parallel transport. If \(R^\rho_{\ \sigma\mu\nu} \equiv 0\) in some region, that region is flat; there exists a (local) change of coordinates that brings the metric into the standard Euclidean or Minkowski form (depending on signature) in that neighborhood.
 
 2. **Example: Parallel Transport on the Sphere**
+
    To explore the geometry of a sphere, we begin with its metric in spherical coordinates \((\theta, \phi)\), where \( \theta \) is the polar angle and \( \phi \) the azimuthal angle. The metric is given as:
 
    \[
