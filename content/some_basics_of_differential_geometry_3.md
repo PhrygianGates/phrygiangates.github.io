@@ -5,7 +5,7 @@ title = 'Some Basics of Differential Geometry 3'
 tags = ['The Early Universe']
 +++
 
-In this post, I would like to study some basic knowledge of the \( \nabla \) symbol, as well as a important formula related with riemann tensor.
+In this post, I would like to study some basic knowledge of the \( \nabla \) symbol, as well as an important formula related with riemann tensor.
 
 ## I. Connection
 
