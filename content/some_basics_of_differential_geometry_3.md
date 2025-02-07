@@ -5,6 +5,8 @@ title = 'Some Basics of Differential Geometry 3'
 tags = ['The Early Universe']
 +++
 
+In this post, I would like to study some basic knowledge of the \( \nabla \) symbol, as well as a important formula related with riemann tensor.
+
 ## I. Connection
 
 **Definition:** A connection \( \nabla \) on a smooth manifold \( (M, \mathcal{O}) \) is a map that takes a pair consisting of a vector field \( X \) and a \( (p, q) \)-tensor field \( T \) and sends them to a \( (p, q) \)-tensor field \( \nabla_X T \), satisfying:
