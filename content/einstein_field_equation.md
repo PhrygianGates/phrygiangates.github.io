@@ -239,12 +239,12 @@ Expanding explicitly, this becomes:
 
 \[
 \nabla_U U 
-& =\nabla_{\frac{d x^p}{d \tau} \frac{\partial}{\partial x^p}} \frac{d x^\mu}{d \tau} \frac{\partial}{\partial x^\mu} \\ 
-& =\frac{d x^p}{d \tau} \nabla_{\frac{\partial}{\partial x^p}} \frac{d x^\mu}{d \tau} \frac{\partial}{\partial x^\mu} \\ 
-& =\frac{d x^p}{d \tau}\left[\frac{\partial}{\partial x^p} \frac{d x^\mu}{d \tau} \frac{\partial}{\partial x^\mu}+\frac{\partial}{\partial x^p} \frac{\partial}{\partial x^\mu} \frac{d x^\mu}{d \tau}\right] \\ 
-& =\frac{d x^p}{d \tau}\left[\frac{\partial \frac{d x^\mu}{d \tau}}{\partial x^p} \frac{\partial}{\partial x^\mu}+\Gamma_{\rho \mu}^k \frac{\partial}{\partial x^p} \frac{d x^\mu}{d \tau}\right] \\ 
-& =\frac{d x^p}{d \tau}\left[\frac{\partial \frac{d x^\mu}{d \tau}}{\partial x^p} \frac{\partial}{\partial x^\mu}+\Gamma_{\rho \sigma}^\mu \frac{d x^\rho}{d \tau} \frac{\partial}{\partial x^\mu}\right] \\ 
-& =\frac{d x^p}{d \tau}\left[\frac{\partial \frac{d x^\mu}{d \tau}}{\partial x^p}+\Gamma_{p^\sigma}^\mu \frac{d x^\mu}{d \tau}\right] \frac{\partial}{\partial x^\mu}
+=\nabla_{\frac{d x^p}{d \tau} \frac{\partial}{\partial x^p}} \frac{d x^\mu}{d \tau} \frac{\partial}{\partial x^\mu} \\ 
+=\frac{d x^p}{d \tau} \nabla_{\frac{\partial}{\partial x^p}} \frac{d x^\mu}{d \tau} \frac{\partial}{\partial x^\mu} \\ 
+=\frac{d x^p}{d \tau}\left[\frac{\partial}{\partial x^p} \frac{d x^\mu}{d \tau} \frac{\partial}{\partial x^\mu}+\frac{\partial}{\partial x^p} \frac{\partial}{\partial x^\mu} \frac{d x^\mu}{d \tau}\right] \\ 
+=\frac{d x^p}{d \tau}\left[\frac{\partial \frac{d x^\mu}{d \tau}}{\partial x^p} \frac{\partial}{\partial x^\mu}+\Gamma_{\rho \mu}^k \frac{\partial}{\partial x^p} \frac{d x^\mu}{d \tau}\right] \\ 
+=\frac{d x^p}{d \tau}\left[\frac{\partial \frac{d x^\mu}{d \tau}}{\partial x^p} \frac{\partial}{\partial x^\mu}+\Gamma_{\rho \sigma}^\mu \frac{d x^\rho}{d \tau} \frac{\partial}{\partial x^\mu}\right] \\ 
+=\frac{d x^p}{d \tau}\left[\frac{\partial \frac{d x^\mu}{d \tau}}{\partial x^p}+\Gamma_{p^\sigma}^\mu \frac{d x^\mu}{d \tau}\right] \frac{\partial}{\partial x^\mu}
 \]
 
 Then it gives:
