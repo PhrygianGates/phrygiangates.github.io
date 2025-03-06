@@ -238,19 +238,29 @@ A^\mu = \nabla_u u^\mu
 Expanding explicitly, this becomes:
 
 \[
-\begin{aligned}
 \nabla_u u 
-&= \nabla_{\frac{d x^p}{d \tau} \frac{\partial}{\partial x^p}} \frac{d x^\mu}{d \tau} \frac{\partial}{\partial x^\mu} \\ 
-&= \frac{d x^p}{d \tau} \nabla_{\frac{\partial}{\partial x^p}} \frac{d x^\mu}{d \tau} \frac{\partial}{\partial x^\mu} \\ 
-&= \frac{d x^p}{d \tau} \left[ \frac{\partial}{\partial x^p} \frac{d x^\mu}{d \tau} \frac{\partial}{\partial x^\mu} 
-+ \frac{\partial}{\partial x^p} \frac{\partial}{\partial x^\mu} \frac{d x^\mu}{d \tau} \right] \\ 
-&= \frac{d x^p}{d \tau} \left[ \frac{\partial}{\partial x^p} \left( \frac{d x^\mu}{d \tau} \right) \frac{\partial}{\partial x^\mu} 
-+ \Gamma_{\rho \mu}^k \frac{\partial}{\partial x^p} \frac{d x^\mu}{d \tau} \right] \\ 
-&= \frac{d x^p}{d \tau} \left[ \frac{\partial}{\partial x^p} \left( \frac{d x^\mu}{d \tau} \right) \frac{\partial}{\partial x^\mu} 
-+ \Gamma_{\rho \sigma}^\mu \frac{d x^\rho}{d \tau} \frac{\partial}{\partial x^\mu} \right] \\ 
-&= \frac{d x^p}{d \tau} \left[ \frac{\partial}{\partial x^p} \left( \frac{d x^\mu}{d \tau} \right) 
+= \nabla_{\frac{d x^p}{d \tau} \frac{\partial}{\partial x^p}} \frac{d x^\mu}{d \tau} \frac{\partial}{\partial x^\mu} 
+= \frac{d x^p}{d \tau} \nabla_{\frac{\partial}{\partial x^p}} \frac{d x^\mu}{d \tau} \frac{\partial}{\partial x^\mu} 
+\]
+
+\[
+= \frac{d x^p}{d \tau} \left[ \frac{\partial}{\partial x^p} \frac{d x^\mu}{d \tau} \frac{\partial}{\partial x^\mu} 
++ \frac{\partial}{\partial x^p} \frac{\partial}{\partial x^\mu} \frac{d x^\mu}{d \tau} \right] 
+\]
+
+\[
+= \frac{d x^p}{d \tau} \left[ \frac{\partial}{\partial x^p} \left( \frac{d x^\mu}{d \tau} \right) \frac{\partial}{\partial x^\mu} 
++ \Gamma_{\rho \mu}^k \frac{\partial}{\partial x^p} \frac{d x^\mu}{d \tau} \right] 
+\]
+
+\[
+= \frac{d x^p}{d \tau} \left[ \frac{\partial}{\partial x^p} \left( \frac{d x^\mu}{d \tau} \right) \frac{\partial}{\partial x^\mu} 
++ \Gamma_{\rho \sigma}^\mu \frac{d x^\rho}{d \tau} \frac{\partial}{\partial x^\mu} \right] 
+\]
+
+\[
+= \frac{d x^p}{d \tau} \left[ \frac{\partial}{\partial x^p} \left( \frac{d x^\mu}{d \tau} \right) 
 + \Gamma_{p\sigma}^\mu \frac{d x^\sigma}{d \tau} \right] \frac{\partial}{\partial x^\mu}.
-\end{aligned}
 \]
 
 Then it gives:
@@ -258,9 +268,3 @@ Then it gives:
 \[
 A^\mu = u^\nu\left(\frac{\partial u^\mu}{\partial x^\nu} + \Gamma^\mu_{\rho\nu} u^\rho\right)
 \]
-
-
-
-
-
-
