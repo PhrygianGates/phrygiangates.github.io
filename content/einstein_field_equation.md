@@ -306,8 +306,9 @@ From the traditional Newtonian equation, we have:
 Therefore, we find:
 
 \[
-h_{00} = -2 \phi \quad , \quad g_{00} = -1 - 2\phi
+h_{00} = -2 \phi, g_{00} = -1 - 2\phi
 \]
+
 ---
 
 
@@ -323,44 +324,11 @@ Given \( h_{00} = -2\phi \), we have:
 \nabla^2 h_{00} = -8\pi G \rho
 \]
 
-We get \kappa = 8 \pi G 
+We get
 
 \[
 \kappa = 8\pi G 
 \]
 
--- 
 
-```mermaid
 
-flowchart TB
-
-subgraph General_Relativity["General Relativity"]
-
-direction TB
-
-A[Stress-Energy Tensor] --> B[Spacetime Curvature\n(Einstein Field Equations)]
-
-B --> C[Geodesic Worldlines\n(Geodesic Equation)]
-
-end
-
-subgraph Newtonian_Gravity["Newtonian Gravity"]
-
-direction TB
-
-D[Mass] --> E[Gravitational Field\n(Newton's Law of Gravitation)]
-
-E --> F[Object Acceleration\n(F = ma)]
-
-end
-
-classDef gr fill:#e6f3ff,stroke:#0066cc;
-
-classDef newton fill:#ffe6e6,stroke:#cc0000;
-
-class General_Relativity gr;
-
-class Newtonian_Gravity newton;
-
-```
