@@ -331,20 +331,36 @@ We get \kappa = 8 \pi G
 
 -- 
 
+```mermaid
+
 flowchart TB
-    subgraph General_Relativity["General Relativity"]
-        direction TB
-        A[Stress-Energy Tensor\n(Tμν)] --> B[Spacetime Curvature\n(Einstein Field Equations: Gμν = 8πTμν)]
-        B --> C[Geodesic Worldlines\n(Geodesic Equation: d²xᵐ/dτ² + Γᵐ_αβ dxᵅ/dτ dxᵝ/dτ = 0)]
-    end
 
-    subgraph Newtonian_Gravity["Newtonian Gravity"]
-        direction TB
-        D[Mass (M)] --> E[Gravitational Field\n(Newton's Law: F = -GMm/r²)]
-        E --> F[Object Trajectory\n(Equation of Motion: F = ma)]
-    end
+subgraph General_Relativity["General Relativity"]
 
-    classDef gr fill:#e6f3ff,stroke:#0066cc;
-    classDef newton fill:#ffe6e6,stroke:#cc0000;
-    class General_Relativity gr;
-    class Newtonian_Gravity newton;
+direction TB
+
+A[Stress-Energy Tensor] --> B[Spacetime Curvature\n(Einstein Field Equations)]
+
+B --> C[Geodesic Worldlines\n(Geodesic Equation)]
+
+end
+
+subgraph Newtonian_Gravity["Newtonian Gravity"]
+
+direction TB
+
+D[Mass] --> E[Gravitational Field\n(Newton's Law of Gravitation)]
+
+E --> F[Object Acceleration\n(F = ma)]
+
+end
+
+classDef gr fill:#e6f3ff,stroke:#0066cc;
+
+classDef newton fill:#ffe6e6,stroke:#cc0000;
+
+class General_Relativity gr;
+
+class Newtonian_Gravity newton;
+
+```
