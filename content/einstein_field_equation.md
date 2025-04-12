@@ -264,3 +264,87 @@ Then it gives:
 \[
 A^\mu = u^\nu\left(\frac{\partial u^\mu}{\partial x^\nu} + \Gamma^\mu_{\rho\nu} u^\rho\right)
 \]
+
+--- 
+
+Consider the case where \( \mathbf{F} = 0 \) (excluding gravity). The geodesic equation becomes:
+
+\[
+\frac{d^2 x^\mu}{d \tau^2} + \Gamma^\mu_{\rho\nu} \frac{d x^\rho}{d \tau} \frac{d x^\nu}{d \tau} = 0
+\]
+
+In the slow-motion approximation, \( u^0 \gg u^i \), so the equation simplifies to:
+
+\[
+\frac{d^2 x^\mu}{d \tau^2} + \Gamma^\mu_{00} \left( \frac{d x^0}{d \tau} \right)^2 = 0
+\]
+
+From previous calculations, we know:
+
+\[
+\Gamma^\mu_{00} = - \frac{1}{2} \eta^{\mu\lambda} \partial_\lambda h_{00}
+\]
+
+Plugging this in, we get:
+
+\[
+\frac{d^2 x^\mu}{d \tau^2} = \frac{1}{2} \eta^{\mu\lambda} \partial_\lambda h_{00} \left( \frac{d x^0}{d \tau} \right)^2
+\]
+
+Focusing on the spatial components:
+
+\[
+\frac{d^2 x^i}{d t^2} = \frac{1}{2} \delta^{ij} \partial_j h_{00}
+\]
+
+From the traditional Newtonian equation, we have:
+
+\[
+\frac{d^2 x^i}{d t^2} = - \delta^{ij} \partial_j \phi
+\]
+
+Therefore, we find:
+
+\[
+h_{00} = -2 \phi \quad , \quad g_{00} = -1 - 2\phi
+\]
+---
+
+
+From Poisson's equation in Newtonian gravity:
+
+\[
+\nabla^2 \phi = 4\pi G \rho
+\]
+
+Given \( h_{00} = -2\phi \), we have:
+
+\[
+\nabla^2 h_{00} = -8\pi G \rho
+\]
+
+We get \kappa = 8 \pi G 
+
+\[
+\kappa = 8\pi G 
+\]
+
+-- 
+
+flowchart TB
+    subgraph General_Relativity["General Relativity"]
+        direction TB
+        A[Stress-Energy Tensor\n(Tμν)] --> B[Spacetime Curvature\n(Einstein Field Equations: Gμν = 8πTμν)]
+        B --> C[Geodesic Worldlines\n(Geodesic Equation: d²xᵐ/dτ² + Γᵐ_αβ dxᵅ/dτ dxᵝ/dτ = 0)]
+    end
+
+    subgraph Newtonian_Gravity["Newtonian Gravity"]
+        direction TB
+        D[Mass (M)] --> E[Gravitational Field\n(Newton's Law: F = -GMm/r²)]
+        E --> F[Object Trajectory\n(Equation of Motion: F = ma)]
+    end
+
+    classDef gr fill:#e6f3ff,stroke:#0066cc;
+    classDef newton fill:#ffe6e6,stroke:#cc0000;
+    class General_Relativity gr;
+    class Newtonian_Gravity newton;
