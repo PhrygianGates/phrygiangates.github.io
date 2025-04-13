@@ -1,5 +1,5 @@
 +++
-date = '2024-04-13T17:51:09+08:00'
+date = '2025-04-13T17:51:09+08:00'
 katex = true
 title = 'FLRW Cosmology Model'
 tags = ['The Early Universe']
@@ -156,7 +156,9 @@ Plug in the final Einstein tensor into the Einstein equation. Let's take \( G_{t
 G_{tt} = 8\pi G T_{tt} \quad (\text{we use natural units, so } c = 1)
 \]
 
-\( T_{tt} = \rho \) (\(\rho\) can be understood as energy density or mass density, since \( E = mc^2 \) in natural units)
+\[
+T_{tt} = \rho \quad (\rho \text{ can be understood as energy density or mass density, since } E = mc^2 \text{ in natural units})
+\]
 
 So, plugging in the result of \( G_{tt} \), we have:
 
