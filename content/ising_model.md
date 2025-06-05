@@ -35,6 +35,7 @@ Substituting these into the expression for \(\langle E \rangle\):
 The average spin \(\langle \sigma \rangle\) is given by:
 \[ \langle \sigma \rangle = \frac{1}{Z} \sum_{\sigma \in \{+1, -1\}} \sigma e^{\beta J\sigma} = \tanh(\beta J) \]
 
+---
 
 Now, let's consider a one-dimensional (1D) chain of \(N\) spins. This is the 1D Ising model.
 The energy of the system, assuming interactions only between nearest neighbors, is given by:
@@ -69,16 +70,5 @@ Each individual sum over a single \(\mu_j\) is:
 Substituting this back, we get the partition function for the 1D open chain of \(N\) spins:
 \[ Z = 2 [2 \cosh(\beta J)]^{N-1} \]
 This result is for an open chain with \(N\) spins and \(N-1\) bonds.
-Let's check for small \(N\):
--   If \(N=1\) (a single spin, 0 bonds), the energy sum is empty (\(E=0\)). Then \(Z = \sum_{\sigma_1} e^0 = 2\). Our formula gives \(Z = 2 [2 \cosh(\beta J)]^0 = 2 \cdot 1 = 2\). This is consistent.
--   If \(N=2\) (two spins, one bond \(\mu_1 = \sigma_1 \sigma_2\)), the energy is \(E = -J \sigma_1 \sigma_2\). Our formula gives \(Z = 2 [2 \cosh(\beta J)]^1 = 4 \cosh(\beta J)\).
-    A direct calculation:
-    \begin{itemize}
-        \item \(\sigma_1=+1, \sigma_2=+1 \implies E = -J\), term \(e^{\beta J}\)
-        \item \(\sigma_1=+1, \sigma_2=-1 \implies E = +J\), term \(e^{-\beta J}\)
-        \item \(\sigma_1=-1, \sigma_2=+1 \implies E = +J\), term \(e^{-\beta J}\)
-        \item \(\sigma_1=-1, \sigma_2=-1 \implies E = -J\), term \(e^{\beta J}\)
-    \end{itemize}
-    So, \(Z = 2e^{\beta J} + 2e^{-\beta J} = 2(e^{\beta J} + e^{-\beta J}) = 4 \cosh(\beta J)\). This also matches.
 
 To be continued...
