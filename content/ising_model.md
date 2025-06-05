@@ -69,6 +69,13 @@ Each individual sum over a single \(\mu_j\) is:
 \[ \sum_{\mu \in \{\pm 1\}} e^{\beta J \mu} = e^{\beta J(+1)} + e^{\beta J(-1)} = 2 \cosh(\beta J) \]
 Substituting this back, we get the partition function for the 1D open chain of \(N\) spins:
 \[ Z = 2 [2 \cosh(\beta J)]^{N-1} \]
-This result is for an open chain with \(N\) spins and \(N-1\) bonds.
 
-To be continued...
+We can also compute the average value of a bond variable, \(\langle \mu_i \rangle\), which is equivalent to the nearest-neighbor spin correlation \(\langle \sigma_i \sigma_{i+1} \rangle\).
+Due to the factorization of the partition function in terms of \(\mu_j\) variables:
+\[ Z = 2 \prod_{j=1}^{N-1} \left( \sum_{\mu_j \in \{\pm 1\}} e^{\beta J \mu_j} \right) \]
+the expectation value \(\langle \mu_i \rangle\) (for any specific bond \(i \in \{1, \dots, N-1\}\)) simplifies. When forming the expectation value, the sums over \(\mu_j\) for \(j \neq i\) will appear in both the numerator and the denominator and thus cancel out. This is because each \(\mu_j\) is an independent variable in the product form of \(Z\). The calculation for \(\langle \mu_i \rangle\) effectively isolates the \(i\)-th term:
+\[ \langle \mu_i \rangle = \frac{\sum_{\mu_i \in \{\pm 1\}} \mu_i e^{\beta J \mu_i}}{\sum_{\mu_i \in \{\pm 1\}} e^{\beta J \mu_i}} \]
+This expression is identical in form to that for the average spin \(\langle \sigma \rangle\) of a single, isolated spin with energy \(E = -J\sigma\). As previously derived (see the calculation of \(\langle \sigma \rangle = \tanh(\beta J)\) for a single spin earlier in this document), this type of average evaluates to \(\tanh(\beta J)\).
+Therefore:
+\[ \langle \mu_i \rangle = \langle \sigma_i \sigma_{i+1} \rangle = \tanh(\beta J) \]
+
