@@ -79,3 +79,28 @@ This expression is identical in form to that for the average spin \(\langle \sig
 Therefore:
 \[ \langle \mu_i \rangle = \langle \sigma_i \sigma_{i+1} \rangle = \tanh(\beta J) \]
 
+---
+
+In the mean field approximation, we simplify the Ising model by focusing on a single, central spin and treating its interactions with its neighbors in an averaged or "mean" way. This approach is particularly effective when each spin interacts with a large number of other spins (i.e., in high dimensions).
+
+Consider a single spin \(\sigma\) on a \(d\)-dimensional lattice. This spin is surrounded by \(2d\) nearest neighbors. The exact energy contribution from the interaction of this central spin with its neighbors is:
+\[ E = -J \sigma \sum_{j=1}^{2d} \sigma_j \]
+where the sum is over the \(2d\) nearest neighbors, denoted by \(\sigma_j\).
+
+The core idea of the mean field approximation is to replace the instantaneous value of each neighboring spin, \(\sigma_j\), with its statistical average (the mean magnetization), which we denote as \(\langle \sigma \rangle\) or \(\bar{\sigma}\). This approximation assumes that the effect of fluctuations of individual spins around this average value is negligible.
+
+With this approximation, the interaction term simplifies:
+\[ \sum_{j=1}^{2d} \sigma_j \approx \sum_{j=1}^{2d} \langle \sigma \rangle = 2d \langle \sigma \rangle \]
+
+Substituting this back into the energy expression for the central spin, we get the *mean field energy*:
+\[ E_{MF} = -J \sigma (2d \langle \sigma \rangle) = -(2dJ) \sigma \langle \sigma \rangle \]
+
+This mean field energy is equivalent to the energy of a single spin \(\sigma\) in an effective magnetic field \(H_{eff}\) given by \(H_{eff} = 2dJ\langle \sigma \rangle\).
+
+The statistical mechanics of this single spin in its effective field are straightforward to analyze. The average value of this central spin, \(\langle \sigma \rangle\), can be calculated just like for the case of a single spin in an external field, which we already derived:
+\[ \langle \sigma \rangle = \tanh(\beta H_{eff}) \]
+
+Substituting the expression for our effective field \(H_{eff}\) and denoting the average magnetization \(\langle \sigma \rangle\) by \(\bar{\sigma}\), we arrive at the central equation of mean field theory:
+\[ \bar{\sigma} = \tanh(2d\beta J \bar{\sigma}) \]
+
+
