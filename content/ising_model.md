@@ -132,4 +132,30 @@ This critical temperature, also known as the Curie temperature, separates two di
 
 The emergence of spontaneous magnetization below a critical temperature is a **phase transition**. The mean field approximation, despite its simplifications, successfully captures this fundamental collective phenomenon in the Ising model.
 
+---
+
+Now, let's introduce an external magnetic field, \(B\), applied to the system. The energy of a single spin \(\sigma\) now has an additional term from its interaction with this field:
+\[ E_{spin} = -J \sigma \sum_{j=1}^{2d} \sigma_j - B\sigma \]
+
+Using the same mean field approximation (\(\sum \sigma_j \approx 2d\bar{\sigma}\)), the mean field energy for the central spin is:
+\[ E_{MF} = -J \sigma (2d \bar{\sigma}) - B\sigma = -(2dJ\bar{\sigma} + B)\sigma \]
+The total effective magnetic field experienced by the spin is now the sum of the internal mean field from its neighbors and the external field \(B\), so \(H_{eff} = 2dJ\bar{\sigma} + B\).
+
+The self-consistency equation for the average magnetization \(\bar{\sigma}\) is modified accordingly:
+\[ \bar{\sigma} = \tanh(\beta H_{eff}) = \tanh(\beta(2dJ\bar{\sigma} + B)) \]
+
+Let's analyze this using our previous substitution, \(y = 2d\beta J \bar{\sigma}\) and \(\bar{\sigma} = \frac{k_B T}{2dJ} y\). The equation becomes:
+\[ \frac{k_B T}{2dJ} y = \tanh(y + \beta B) \]
+
+The external field \(B\) fundamentally changes the behavior of the system. In our graphical analysis, we still have the straight line \(f(y) = \frac{k_B T}{2dJ} y\), but the second function is now \(g(y) = \tanh(y + \beta B)\). The \(\beta B\) term shifts the \(\tanh\) curve horizontally.
+
+This leads to important physical consequences:
+
+1.  **No Sharp Phase Transition:** With an external field (\(B \neq 0\)), the \(\tanh(y + \beta B)\) curve no longer passes through the origin. For \(B>0\), it is shifted left and intercepts the vertical axis at \(\tanh(\beta B) > 0\). As a result, there is always a non-zero intersection point, meaning \(\bar{\sigma}\) is always greater than zero. The sharp phase transition at \(T_c\) disappears. Magnetization no longer appears "spontaneously" at a critical temperature but changes smoothly as a function of temperature.
+
+2.  **Explicit Symmetry Breaking:** The external field explicitly breaks the up/down symmetry that existed when \(B=0\). The spins are preferentially aligned with the field at all temperatures. Consequently, there is no longer a "choice" for the system to spontaneously magnetize in one of two directions. The direction is determined by the external field.
+
+In summary, an external magnetic field removes the sharp ferromagnetic phase transition by forcing a net magnetization at all temperatures. The collective, spontaneous ordering is replaced by a smooth response to the guiding influence of the field.
+
+
 
