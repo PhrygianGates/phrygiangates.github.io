@@ -103,4 +103,33 @@ The statistical mechanics of this single spin in its effective field are straigh
 Substituting the expression for our effective field \(H_{eff}\) and denoting the average magnetization \(\langle \sigma \rangle\) by \(\bar{\sigma}\), we arrive at the central equation of mean field theory:
 \[ \bar{\sigma} = \tanh(2d\beta J \bar{\sigma}) \]
 
+To understand its implications, we can analyze it graphically.
+
+Let's define a new variable \(y = 2d\beta J \bar{\sigma}\). From this, we have \(\bar{\sigma} = \frac{y}{2d\beta J}\). Substituting this back into the equation gives:
+\[ \frac{y}{2d\beta J} = \tanh(y) \]
+Recalling that \(\beta = 1/(k_B T)\), where \(T\) is the temperature and \(k_B\) is the Boltzmann constant, we can rewrite the equation as:
+\[ \frac{k_B T}{2dJ} y = \tanh(y) \]
+The solutions for \(y\) (and thus for \(\bar{\sigma}\)) are the intersection points of two functions:
+1. A straight line passing through the origin, \(f(y) = \left(\frac{k_B T}{2dJ}\right) y\), with a slope that depends on temperature.
+2. The hyperbolic tangent function, \(g(y) = \tanh(y)\).
+
+We can immediately see that \(y=0\) is always a solution, which corresponds to \(\bar{\sigma}=0\). This represents a state with no net magnetization (a paramagnetic state).
+
+To determine if non-zero magnetization is possible, we need to analyze the slope of these two functions at the origin. The slope of `tanh(y)` at \(y=0\) is:
+\[ \left. \frac{d}{dy} \tanh(y) \right|_{y=0} = \left. (1 - \tanh^2(y)) \right|_{y=0} = 1 \]
+
+The behavior of the system is determined by the slope of the line, \(\frac{k_B T}{2dJ}\):
+
+*   **Case 1: High Temperature.** If the slope of the line is greater than the initial slope of \(\tanh(y)\), i.e., \(\frac{k_B T}{2dJ} > 1\), the only intersection point is at \(y=0\). In this regime, the only solution is \(\bar{\sigma}=0\).
+*   **Case 2: Low Temperature.** If the slope of the line is less than the initial slope of \(\tanh(y)\), i.e., \(\frac{k_B T}{2dJ} < 1\), the line will intersect the \(\tanh(y)\) curve at three points: \(y=0\) and two symmetric, non-zero solutions \(\pm y_0\). These correspond to \(\bar{\sigma}=0\) and \(\bar{\sigma}=\pm\bar{\sigma}_0\).
+
+This analysis reveals the existence of a **critical temperature**, \(T_c\), which marks the boundary between these two behaviors. The transition occurs when the slope of the line is exactly 1:
+\[ \frac{k_B T_c}{2dJ} = 1 \implies T_c = \frac{2dJ}{k_B} \]
+
+This critical temperature, also known as the Curie temperature, separates two distinct phases of the material:
+- For \(T > T_c\), the system has only one stable state with \(\bar{\sigma}=0\). Thermal energy dominates, preventing the spins from aligning. This is the **paramagnetic phase**.
+- For \(T < T_c\), the solution \(\bar{\sigma}=0\) becomes unstable, while two new stable solutions \(\pm\bar{\sigma}_0\) appear. The system spontaneously develops a non-zero magnetization as the interaction energy overcomes thermal fluctuations. This is the **ferromagnetic phase**.
+
+The emergence of spontaneous magnetization below a critical temperature is a **phase transition**. The mean field approximation, despite its simplifications, successfully captures this fundamental collective phenomenon in the Ising model.
+
 
