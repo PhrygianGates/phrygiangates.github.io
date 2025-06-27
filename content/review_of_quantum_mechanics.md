@@ -1,5 +1,5 @@
 +++
-date = '2025-06-265T22:40:00+08:00'
+date = '2025-06-26T22:40:00+08:00'
 katex = true
 title = 'Review of quantum mechanics'
 tags = ['Advanced Quantum Mechanics']
