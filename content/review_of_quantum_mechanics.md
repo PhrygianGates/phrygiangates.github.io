@@ -22,7 +22,7 @@ $$
 \psi(x) = \langle x|\psi\rangle
 $$
 
-### Understanding the Wavefunction: An Analogy
+---
 
 The notation \(\langle x|\psi\rangle\) can be confusing. It's helpful to draw an analogy to a familiar discrete vector space, like 3D Euclidean space.
 
@@ -52,5 +52,33 @@ $$
 p(x) = |\psi(x)|^2 = \psi^*(x)\psi(x)
 $$
 where \(\psi^*(x)\) is the complex conjugate of \(\psi(x)\).
+
+---
+
+Just as state vectors can be represented in a basis, so can operators. The form an operator takes depends on the basis you choose to work in.
+
+#### Position Operator
+The simplest operator in the position basis is the **position operator**, \(\hat{x}\). Its action on a state vector \(|\psi\rangle\), when viewed from the position basis, is simply multiplication by the position \(x\):
+$$
+\langle x | \hat{x} | \psi \rangle = x \langle x | \psi \rangle = x \psi(x)
+$$
+So, in the position representation, the \(\hat{x}\) operator is just "multiply by \(x\)".
+
+#### Momentum Operator
+The **momentum operator**, \(\hat{p}\), has a less trivial representation. In the position basis, the action of \(\hat{p}\) is that of a differential operator:
+$$
+\langle x | \hat{p} | \psi \rangle = -i\hbar \frac{\partial}{\partial x} \psi(x)
+$$
+This is a fundamental postulate of quantum mechanics. It establishes a deep connection between momentum and the spatial variation of the wavefunction. A state with high momentum has a wavefunction that oscillates very rapidly as a function of position.
+
+We can use this to find the wavefunction of a state with a definite momentum \(p\). Such a state is an eigenvector of the momentum operator, satisfying \(\hat{p}|p\rangle = p|p\rangle\). Writing this in the position basis gives a differential equation for its wavefunction, \(\psi_p(x) = \langle x|p\rangle\):
+$$
+-i\hbar \frac{\partial}{\partial x} \psi_p(x) = p \, \psi_p(x)
+$$
+The solution is a plane wave:
+$$
+\psi_p(x) = A e^{ipx/\hbar}
+$$
+This shows that a state of definite momentum is a wave with a single, constant wavelength, spread throughout all of space.
 
 
