@@ -71,9 +71,9 @@ $$
 $$
 This is a fundamental postulate of quantum mechanics. It establishes a deep connection between momentum and the spatial variation of the wavefunction. A state with high momentum has a wavefunction that oscillates very rapidly as a function of position.
 
-We can use this to find the wavefunction of a state with a definite momentum \(p\). Such a state is an eigenvector of the momentum operator, satisfying \(\hat{p}|p\rangle = p|p\rangle\). Writing this in the position basis gives a differential equation for its wavefunction, \(\psi_p(x) = \langle x|p\rangle\):
+We can use this to find the wavefunction of a state with a "definite momentum \langle p \rangle". Such a state is an eigenvector of the momentum operator, satisfying \(\hat{p}|p\rangle = p|p\rangle\). Writing this in the position basis gives a differential equation for its wavefunction, \(\psi_p(x) = \langle x|p\rangle\) (think of \(|p\rangle\) as \(|\psi\rangle\) in the previous equation):
 $$
--i\hbar \frac{\partial}{\partial x} \psi_p(x) = p \, \psi_p(x)
+-i\hbar \frac{\partial}{\partial x} \psi_p(x) = \langle x | \hat{p} | p \rangle = p \langle x | p \rangle = p \, \psi_p(x)
 $$
 The solution is a plane wave:
 $$
