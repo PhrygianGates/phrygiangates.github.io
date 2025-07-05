@@ -130,11 +130,10 @@ So, the infinitesimal time evolution operator is:
 \[
 U(\epsilon) = I - \frac{i\epsilon}{\hbar} H
 \]
-From this expression, one can derive the Schrödinger equation, which governs the time evolution of quantum states.
 
 ---
 
-### A Note on Why Observables are Hermitian
+#### A Note on Why Observables are Hermitian
 
 It is a fundamental postulate of quantum mechanics that all observables (like position, momentum, and energy) are represented by Hermitian operators. This isn't an arbitrary choice; it's required for the mathematical framework to be consistent with physical reality. There are two primary reasons for this:
 
@@ -142,5 +141,52 @@ It is a fundamental postulate of quantum mechanics that all observables (like po
 
 2.  **Orthogonality of States:** The eigenstates of a Hermitian operator that correspond to different eigenvalues are **orthogonal**. This is crucial for measurement. If we measure an observable and get a specific value, the system's state "collapses" into the corresponding eigenstate. Orthogonality ensures that these possible outcome-states are distinct and independent. After a measurement yielding eigenvalue \(\alpha_1\), the system is in state \(|\alpha_1\rangle\), and the probability of immediately measuring a different value \(\alpha_2\) is zero, because \(\langle\alpha_2|\alpha_1\rangle = 0\). This guarantees that our measurements are unambiguous.
 
+---
 
+We previously found that for an infinitesimal time step \(\epsilon\), the time evolution operator is:
+\[
+U(\epsilon) = I - \frac{i\epsilon}{\hbar} H
+\]
+To find the operator for a finite time interval \(t\), we can divide the interval into \(N\) small steps, where \(t = N\epsilon\). The total evolution is the product of these small evolutions:
+\[
+U(t) = \lim_{N\to\infty} \left(I - \frac{i\epsilon}{\hbar} H\right)^N = \lim_{N\to\infty} \left(I - \frac{it}{N\hbar} H\right)^N
+\]
+This limit is the definition of the exponential function, which gives us the finite time evolution operator:
+\[
+U(t) = e^{-iHt/\hbar}
+\]
+#### Time-Dependent Schrödinger Equation
+Let's return to the infinitesimal form to derive the equation of motion for a state vector. We have:
+\[
+|\psi(t+\epsilon)\rangle = U(\epsilon)|\psi(t)\rangle = \left(I - \frac{i\epsilon}{\hbar} H\right)|\psi(t)\rangle
+\]
+Rearranging this gives:
+\[
+\frac{|\psi(t+\epsilon)\rangle - |\psi(t)\rangle}{\epsilon} = -\frac{i}{\hbar} H |\psi(t)\rangle
+\]
+Taking the limit as \(\epsilon \to 0\), the left side becomes the definition of the derivative, yielding the **Time-Dependent Schrödinger Equation**:
+\[
+i\hbar \frac{\partial}{\partial t}|\psi(t)\rangle = H|\psi(t)\rangle
+\]
+This is the central equation of quantum dynamics, describing how a system's state vector changes over time.
 
+#### Time-Independent Schrödinger Equation
+A special, but very important, case is to consider states with a definite energy. These are the eigenstates of the Hamiltonian, which we will denote by \(|E\rangle\). They satisfy the eigenvalue equation:
+\[
+H|E\rangle = E|E\rangle
+\]
+This is known as the **Time-Independent Schrödinger Equation**.
+
+It is called "time-independent" because its solutions are states whose physical properties do not change in time. These are called **stationary states**. Let's see why. If we take a state with definite energy, \(|\psi(0)\rangle = |E\rangle\), its time evolution is:
+\[
+|\psi(t)\rangle = U(t)|E\rangle = e^{-iHt/\hbar}|E\rangle
+\]
+Since \(|E\rangle\) is an eigenstate of \(H\), we can replace \(H\) with its eigenvalue \(E\):
+\[
+|\psi(t)\rangle = e^{-iEt/\hbar}|E\rangle
+\]
+The state vector \(|E\rangle\) only acquires a time-dependent phase factor. When we calculate the probability density (or any other observable), this phase factor cancels out. For example:
+\[
+|\langle x|\psi(t)\rangle|^2 = |e^{-iEt/\hbar}\langle x|E\rangle|^2 = |e^{-iEt/\hbar}|^2 |\langle x|E\rangle|^2 = |\psi_E(x)|^2
+\]
+The probability distribution is constant in time. The Time-Independent Schrödinger Equation is therefore used to find the set of stable, stationary states and their corresponding energies for a given system.
