@@ -217,9 +217,57 @@ Expanding both sides:
 \[ V - \frac{i\epsilon}{\hbar} VH = V - \frac{i\epsilon}{\hbar} HV \]
 This simplifies to \(VH = HV\), or:
 \[ [V, H] = 0 \]
-A symmetry operator must commute with the Hamiltonian of the system.
 
-#### Generators of Symmetries and Conservation Laws
+#### From Symmetries to Observable Conservation Laws
+
+The condition \([V, H] = 0\) shows that a symmetry operator commutes with the Hamiltonian. But how does this lead to a conservation law for a measurable quantity like energy or momentum? The key is to shift focus from the transformation operator \(V\) to its **generator**.
+
+Conservation laws in physics apply to *observables*—quantities represented by Hermitian operators whose eigenvalues are the real numbers we measure in experiments.
+*   The **symmetry operator \(V\)** (e.g., a finite rotation) is unitary, but typically not Hermitian. Its expectation value \(\langle V \rangle\) is conserved if \([V,H]=0\), but this value doesn't correspond to a standard physical observable.
+*   The **generator \(G\)** of a continuous symmetry is a Hermitian operator. Therefore, it represents a physical observable.
+
+This is why we make the connection: the symmetry of the system (represented by \(V\)) implies the existence of a conserved *observable* (represented by \(G\)). The statement \(\frac{d}{dt}\langle G \rangle = 0\) is the conservation law we are looking for.
+
+Let's illustrate this with the most important examples.
+
+#### Example: Spatial Translation and Momentum Conservation
+Consider a system that is symmetric under spatial translation. This means the laws of physics governing the system are the same everywhere; for example, the potential energy is constant, \(V(x) = V_0\).
+
+A translation by a vector \(\vec{a}\) is performed by the operator \(T(\vec{a})\). When this operator acts on a wavefunction, it shifts its argument:
+\[ T(\vec{a}) \psi(\vec{x}) = \psi(\vec{x}-\vec{a}) \]
+Let's find the generator of this transformation by considering an infinitesimal translation along the x-axis, \(T(\delta x)\). We can Taylor expand the shifted wavefunction:
+\[ \psi(x-\delta x, y, z) \approx \psi(x, y, z) - \delta x \frac{\partial}{\partial x} \psi(x, y, z) \]
+Recall that the momentum operator's x-component is \(\hat{p}_x = -i\hbar \frac{\partial}{\partial x}\), which means \(\frac{\partial}{\partial x} = \frac{i}{\hbar}\hat{p}_x\). Substituting this in:
+\[ T(\delta x)\psi(\vec{x}) \approx \psi(\vec{x}) - \delta x \left(\frac{i}{\hbar}\hat{p}_x\right) \psi(\vec{x}) = \left(I - \frac{i}{\hbar} \delta x \hat{p}_x\right) \psi(\vec{x}) \]
+This shows that for an infinitesimal translation, the operator is \(T(\delta x) \approx I - \frac{i}{\hbar} \delta x \hat{p}_x\). By extending this to a finite translation \(a\), we get the exponential form:
+\[ T(a) = e^{-ia\hat{p}_x/\hbar} \]
+This reveals that the **momentum operator \(\hat{p}\) is the generator of spatial translations.**
+
+If the Hamiltonian is invariant under translation, then \([T(a), H] = 0\), which implies that the generator also commutes with the Hamiltonian:
+\[ [\hat{p}, H] = 0 \]
+Following our derivation for a general generator \(G\), this immediately means that the expectation value of momentum is conserved: \(\frac{d}{dt}\langle \hat{p} \rangle = 0\).
+
+#### Example: Rotational Invariance and Angular Momentum Conservation
+Now consider a system symmetric under rotations, such as an atom in a central potential \(V(r) = V(|\vec{r}|)\).
+
+A rotation of the physical system by an angle \(\theta\) about an axis \(\hat{n}\) is performed by the operator \(R(\hat{n}, \theta)\). When this operator acts on a wavefunction, it rotates the coordinate system in the opposite direction:
+\[ R(\hat{n}, \theta) \psi(\vec{r}) = \psi(R^{-1}(\hat{n}, \theta)\vec{r}) \]
+Let's find the generator by considering an infinitesimal rotation by an angle \(\delta\phi\) around the z-axis. The inverse rotation transforms the coordinates as:
+*   \(x' = x \cos(-\delta\phi) - y \sin(-\delta\phi) \approx x + y\delta\phi\)
+*   \(y' = x \sin(-\delta\phi) + y \cos(-\delta\phi) \approx y - x\delta\phi\)
+*   \(z' = z\)
+
+Applying this to the wavefunction and performing a Taylor expansion:
+\[ R(\hat{z}, \delta\phi)\psi(x,y,z) = \psi(x+y\delta\phi, y-x\delta\phi, z) \approx \psi(x,y,z) + y\delta\phi \frac{\partial\psi}{\partial x} - x\delta\phi \frac{\partial\psi}{\partial y} \]
+\[ R(\hat{z}, \delta\phi)\psi \approx \left( I + \delta\phi \left(y\frac{\partial}{\partial x} - x\frac{\partial}{\partial y}\right) \right) \psi \]
+We recognize the z-component of the angular momentum operator: \(\hat{L}_z = \hat{x}\hat{p}_y - \hat{y}\hat{p}_x = -i\hbar\left(x\frac{\partial}{\partial y} - y\frac{\partial}{\partial x}\right) = i\hbar\left(y\frac{\partial}{\partial x} - x\frac{\partial}{\partial y}\right)\).
+This means \(\left(y\frac{\partial}{\partial x} - x\frac{\partial}{\partial y}\right) = \frac{-i}{\hbar}\hat{L}_z\). Substituting this in:
+\[ R(\hat{z}, \delta\phi)\psi \approx \left( I + \delta\phi \left(\frac{-i}{\hbar}\hat{L}_z\right) \right)\psi = \left( I - \frac{i}{\hbar} \delta\phi \hat{L}_z \right)\psi \]
+The finite rotation operator is therefore:
+\[ R(\hat{z}, \theta) = e^{-i\theta\hat{L}_z/\hbar} \]
+This shows that the **angular momentum operator \(\hat{L}\) is the generator of rotations.**
+
+If the Hamiltonian is rotationally invariant, then \([R, H] = 0\), which implies \([\hat{L}, H] = 0\). This leads to the conservation of angular momentum: \(\frac{d}{dt}\langle \hat{L} \rangle = 0\).
 
 Many symmetries in physics are continuous, meaning they can be built up from infinitesimal transformations. Examples include translations in space, rotations, and time translation itself. A continuous unitary symmetry operator \(V(\lambda)\) depending on a parameter \(\lambda\) can be written in terms of a Hermitian operator \(G\), called the **generator** of the symmetry:
 \[ V(\lambda) = e^{i\lambda G} \]
