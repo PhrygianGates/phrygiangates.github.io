@@ -190,3 +190,57 @@ The state vector \(|E\rangle\) only acquires a time-dependent phase factor. When
 |\langle x|\psi(t)\rangle|^2 = |e^{-iEt/\hbar}\langle x|E\rangle|^2 = |e^{-iEt/\hbar}|^2 |\langle x|E\rangle|^2 = |\psi_E(x)|^2
 \]
 The probability distribution is constant in time. The Time-Independent Schrödinger Equation is therefore used to find the set of stable, stationary states and their corresponding energies for a given system.
+
+
+---
+
+A symmetry in physics is a transformation that leaves the laws of physics unchanged. In quantum mechanics, this has a profound consequence: for every continuous symmetry of a system, there is a corresponding conserved quantity. This is the quantum mechanical version of Noether's theorem.
+
+Let's consider a transformation represented by a unitary operator \(V\). This operator acts on a state vector \(|\psi\rangle\) to produce a transformed state \(|\psi'\rangle = V|\psi\rangle\).
+
+For \(V\) to be a symmetry of the dynamics, the time evolution of the system must be the same for the original and transformed states. If a state \(|\psi_1\rangle\) at time \(t_1\) evolves to \(|\psi_2\rangle\) at time \(t_2\), then the transformed state \(V|\psi_1\rangle\) must evolve to \(V|\psi_2\rangle\) over the same time interval.
+
+Let \(U(t_2-t_1)\) be the time evolution operator. The evolution of the original state is:
+\[ |\psi_2\rangle = U(t_2-t_1) |\psi_1\rangle \]
+The evolution of the transformed state must be:
+\[ V|\psi_2\rangle = U(t_2-t_1) (V|\psi_1\rangle) \]
+Substituting the first equation into the second gives:
+\[ V(U(t_2-t_1)|\psi_1\rangle) = U(t_2-t_1)V|\psi_1\rangle \]
+Since this must hold for any state \(|\psi_1\rangle\), it implies that the symmetry operator \(V\) must commute with the time evolution operator \(U(t)\):
+\[ [V, U(t)] = VU(t) - U(t)V = 0 \]
+
+This is a general condition for a transformation to be a symmetry. Now, let's see what this means for the Hamiltonian. We know that \(U(t) = e^{-iHt/\hbar}\). For \(V\) to commute with \(U(t)\), it must commute with \(H\). We can see this by considering an infinitesimal time step \(\epsilon\):
+\[ U(\epsilon) = I - \frac{i\epsilon}{\hbar} H \]
+The commutation relation becomes:
+\[ V\left(I - \frac{i\epsilon}{\hbar} H\right) = \left(I - \frac{i\epsilon}{\hbar} H\right)V \]
+Expanding both sides:
+\[ V - \frac{i\epsilon}{\hbar} VH = V - \frac{i\epsilon}{\hbar} HV \]
+This simplifies to \(VH = HV\), or:
+\[ [V, H] = 0 \]
+A symmetry operator must commute with the Hamiltonian of the system.
+
+#### Generators of Symmetries and Conservation Laws
+
+Many symmetries in physics are continuous, meaning they can be built up from infinitesimal transformations. Examples include translations in space, rotations, and time translation itself. A continuous unitary symmetry operator \(V(\lambda)\) depending on a parameter \(\lambda\) can be written in terms of a Hermitian operator \(G\), called the **generator** of the symmetry:
+\[ V(\lambda) = e^{i\lambda G} \]
+For an infinitesimal transformation with a small parameter \(\delta\lambda\), the operator is approximately:
+\[ V(\delta\lambda) \approx I + i\delta\lambda G \]
+If \(V\) is a symmetry, then \([V(\lambda), H] = 0\) for any \(\lambda\). This implies that the generator \(G\) must also commute with the Hamiltonian:
+\[ [G, H] = 0 \]
+This is a crucial result. It tells us that the observable corresponding to the generator of a symmetry is a conserved quantity. To see this, let's look at the time evolution of the expectation value of \(G\), \(\langle G \rangle\). Using the Schrödinger equation:
+\[ \frac{d}{dt}\langle G \rangle = \frac{d}{dt}\langle\psi(t)|G|\psi(t)\rangle \]
+The time derivative of a state is given by \(\frac{\partial}{\partial t}|\psi(t)\rangle = -\frac{i}{\hbar}H|\psi(t)\rangle\), and for the bra, \(\frac{\partial}{\partial t}\langle\psi(t)| = \frac{i}{\hbar}\langle\psi(t)|H\). Applying the product rule:
+\[ \frac{d}{dt}\langle G \rangle = \left(\frac{d}{dt}\langle\psi(t)|\right)G|\psi(t)\rangle + \langle\psi(t)|G\left(\frac{d}{dt}|\psi(t)\rangle\right) \]
+\[ \frac{d}{dt}\langle G \rangle = \left(\frac{i}{\hbar}\langle\psi(t)|H\right)G|\psi(t)\rangle + \langle\psi(t)|G\left(-\frac{i}{\hbar}H|\psi(t)\rangle\right) \]
+\[ \frac{d}{dt}\langle G \rangle = \frac{i}{\hbar}\left(\langle\psi(t)|HG|\psi(t)\rangle - \langle\psi(t)|GH|\psi(t)\rangle\right) \]
+\[ \frac{d}{dt}\langle G \rangle = \frac{i}{\hbar}\langle\psi(t)|[H, G]|\psi(t)\rangle \]
+Since \([G, H] = 0\), it follows that \([H, G] = 0\). Therefore:
+\[ \frac{d}{dt}\langle G \rangle = 0 \]
+The expectation value of \(G\) is constant in time. This is the essence of Noether's theorem: if a system has a continuous symmetry, then there is a corresponding observable (the generator of the symmetry) whose expectation value is conserved.
+
+Here are some key examples:
+*   **Time Translation Invariance:** The generator is the Hamiltonian \(H\) itself. If \(H\) is not explicitly time-dependent, the system is symmetric under time translation, and energy (the expectation value of \(H\)) is conserved.
+*   **Spatial Translation Invariance:** The generator is the momentum operator \(\hat{p}\). If a system is symmetric under spatial translations (i.e., the potential is uniform), then momentum is conserved.
+*   **Rotational Invariance:** The generator is the angular momentum operator \(\hat{L}\). If a system is symmetric under rotations (e.g., a central potential), then angular momentum is conserved.
+
+---
