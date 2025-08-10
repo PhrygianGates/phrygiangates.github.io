@@ -52,4 +52,13 @@ The commutator, \([M, L_z] = ML_z - L_zM\), acting on the eigenfunction is there
 \[
 [M, L_z]\psi_m(\theta) = m\hbar e^{-im\theta} - (-m\hbar e^{-im\theta}) = 2m\hbar e^{-im\theta}
 \]
-Since the result is not zero (for \(m \neq 0\)), the operators do not commute, so \([M, L_z] \neq 0\). 
+Since the result is not zero (for \(m \neq 0\)), the operators do not commute, so \([M, L_z] \neq 0\).
+
+---
+
+When a system possesses multiple symmetries, their interplay can generate additional conservation laws. Suppose we have two symmetry operators, \(A\) and \(B\), both of which commute with the Hamiltonian \(H\), so that \([A,H]=0\) and \([B,H]=0\). The commutator of these two operators may not be zero. If \(A\) and \(B\) are Hermitian, their commutator is anti-Hermitian, and we can define a new Hermitian operator \(C\) such that \([A,B] = iC\). This new operator is also a conserved quantity. We can show that it commutes with the Hamiltonian, because \([A,H]\) and \([B,H]\) are both zero:
+\[
+[AB-BA, H] = A[B,H] + [A,H]B - B[A,H] - [B,H]A = 0
+\]
+This process of generating new symmetries can be continued by taking further commutators, such as with \(A\) and \(C\), or \(B\) and \(C\), which may yield new operators \(D, E\), and so on. This procedure might continue indefinitely, leading to an infinite number of symmetries, or it might terminate after a finite number of steps. The resulting set of symmetry operators forms a closed system under commutation, known as a commutator algebra, which characterizes the full symmetry of the system.
+
