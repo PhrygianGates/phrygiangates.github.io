@@ -35,3 +35,21 @@ This holds if \(m/\hbar\) is an integer. Traditionally, we denote this integer a
 ---
 
 The energy of the system is connected to the angular momentum quantum number \(m\). A key question is whether energy states are degenerate, for example, if \(E(m) = E(-m)\). This isn't always the case; an external magnetic field, for instance, could break this symmetry. Rotational symmetry alone is not sufficient to guarantee this degeneracy. An additional symmetry is needed, such as reflection symmetry. If the system is symmetric with respect to reflection across an axis (for example, the x-axis in the xy-plane), then clockwise and counter-clockwise motions are equivalent. This mirror symmetry ensures that \(E(m) = E(-m)\). Therefore, it is the combination of these two symmetries—rotation and reflection—that explains the degeneracy of the energy levels in this case.
+
+---
+
+The degeneracy between states with opposite angular momentum, \(E(m) = E(-m)\), arises because the operators for rotation and reflection do not commute. We can demonstrate this by examining the action of these operators on the system's wave function. Let's define a reflection operator \(M\) that acts on the wave function as \(M\psi(\theta) = \psi(-\theta)\). To see how this interacts with the rotation generator, \(L_z\), we can compute their commutator acting on an eigenfunction of angular momentum, \(\psi_m(\theta) = e^{im\theta}\).
+
+We evaluate the action of \(M L_z\) and \(L_z M\) on \(\psi_m(\theta)\). Recalling that \(L_z \psi_m(\theta) = m\hbar \psi_m(\theta)\), we have:
+\[
+ML_z\psi_m(\theta) = M(m\hbar\psi_m(\theta)) = m\hbar\psi_m(-\theta) = m\hbar e^{-im\theta}
+\]
+For the other term, we find:
+\[
+L_zM\psi_m(\theta) = L_z\psi_m(-\theta) = L_z e^{-im\theta} = -m\hbar e^{-im\theta}
+\]
+The commutator, \([M, L_z] = ML_z - L_zM\), acting on the eigenfunction is therefore:
+\[
+[M, L_z]\psi_m(\theta) = m\hbar e^{-im\theta} - (-m\hbar e^{-im\theta}) = 2m\hbar e^{-im\theta}
+\]
+Since the result is not zero (for \(m \neq 0\)), the operators do not commute, so \([M, L_z] \neq 0\). 
