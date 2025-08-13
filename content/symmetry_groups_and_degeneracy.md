@@ -62,3 +62,17 @@ When a system possesses multiple symmetries, their interplay can generate additi
 \]
 This process of generating new symmetries can be continued by taking further commutators, such as with \(A\) and \(C\), or \(B\) and \(C\), which may yield new operators \(D, E\), and so on. This procedure might continue indefinitely, leading to an infinite number of symmetries, or it might terminate after a finite number of steps. The resulting set of symmetry operators forms a closed system under commutation, known as a commutator algebra, which characterizes the full symmetry of the system.
 
+
+---
+This principle can be illustrated with a classical analogy: the Kepler problem of a planetary orbit. Consider an orbit with a specific energy E and an angular momentum vector \(\vec{L}\) perpendicular to its orbital plane. Due to the rotational symmetry of the central gravitational force, we can reorient the entire orbit—for example, by rotating it around the y-axis—to a new configuration. This new orbit has the exact same energy E, but the direction of its angular momentum vector has changed. This is a direct physical manifestation of the principle that rotating an angular momentum component about one axis affects its component on another, a concept formalized by the commutation relations of angular momentum operators. More profoundly, the Kepler problem possesses an additional "hidden" symmetry associated with the conservation of the Laplace-Runge-Lenz vector. It is the complete set of symmetries, combining both rotational invariance and this additional conservation law, that explains the extensive degeneracy of the system, where orbits of different eccentricities can share the same energy. 
+
+--- 
+We can generalize this concept by considering a particle moving freely in a two-dimensional xy-plane, rather than being confined to a circle. To find the generator of rotations in this more general case, we start by examining how the coordinates \((x, y)\) transform under an infinitesimal counter-clockwise rotation by an angle \(\epsilon\). The change in the coordinates is given by \(\Delta x = -\epsilon y\) and \(\Delta y = \epsilon x\). This rotation induces a change in the wave function \(\psi(x, y)\). Using the total differential, we can express the change in the wave function as:
+\[
+\Delta\psi \approx \frac{\partial\psi}{\partial x}\Delta x + \frac{\partial\psi}{\partial y}\Delta y = \frac{\partial\psi}{\partial x}(-\epsilon y) + \frac{\partial\psi}{\partial y}(\epsilon x) = \epsilon\left(x\frac{\partial\psi}{\partial y} - y\frac{\partial\psi}{\partial x}\right)
+\]
+To connect this to quantum mechanical operators, we recall the definition of the momentum operators in the position representation: \(p_x = -i\hbar\frac{\partial}{\partial x}\) and \(p_y = -i\hbar\frac{\partial}{\partial y}\). Substituting these into our expression for \(\Delta\psi\) yields:
+\[
+\Delta\psi = -\frac{i\epsilon}{\hbar}(xp_y - yp_x)\psi
+\]
+By comparing this to the general form for an infinitesimal transformation, \(\Delta\psi = -\frac{i\epsilon}{\hbar}G\psi\), where \(G\) is the generator, we can identify the generator of rotations about the z-axis. The position operator \(y\) and the momentum operator \(p_x\) commute, as they act on independent coordinates. The resulting generator is the z-component of the angular momentum operator, \(L_z = xp_y - yp_x\), which is the quantum mechanical analogue of the classical definition \(\vec{L} = \vec{r} \times \vec{p}\).
