@@ -76,3 +76,27 @@ To connect this to quantum mechanical operators, we recall the definition of the
 \Delta\psi = -\frac{i\epsilon}{\hbar}(xp_y - yp_x)\psi
 \]
 By comparing this to the general form for an infinitesimal transformation, \(\Delta\psi = -\frac{i\epsilon}{\hbar}G\psi\), where \(G\) is the generator, we can identify the generator of rotations about the z-axis. The position operator \(y\) and the momentum operator \(p_x\) commute, as they act on independent coordinates. The resulting generator is the z-component of the angular momentum operator, \(L_z = xp_y - yp_x\), which is the quantum mechanical analogue of the classical definition \(\vec{L} = \vec{r} \times \vec{p}\).
+
+---
+A particle moving in a central force field exhibits rotational invariance. This symmetry implies that the components of the angular momentum operator, \(L_i\), commute with the Hamiltonian, \([L_i, H] = 0\), leading to the conservation of angular momentum. While the components of angular momentum are conserved with respect to the system's energy evolution, they do not necessarily commute with each other. To investigate this, we can compute the commutator of \(L_x\) and \(L_y\). This relies on the fundamental commutation relations of position and momentum, such as \([x,y]=0\), \([p_x, p_y]=0\), and the canonical commutation relation \([x, p_x] = i\hbar\), which is a cornerstone of quantum mechanics. Using the definitions \(L_x = yp_z - zp_y\) and \(L_y = zp_x - xp_z\), we can evaluate their commutator:
+\[
+[L_x, L_y] = [yp_z - zp_y, zp_x - xp_z] = i\hbar(xp_y - yp_x) = i\hbar L_z
+\]
+By cyclic permutation, we also find \([L_y, L_z] = i\hbar L_x\) and \([L_z, L_x] = i\hbar L_y\). The set of operators \(\{L_x, L_y, L_z\}\) is closed under the operation of commutation. Such a structure, where the "product" is defined by the commutator, forms a Lie algebra. This algebra encapsulates the geometry of rotations.
+
+---
+
+The commutation relations derived above allow us to explore the spectrum of angular momentum eigenvalues algebraically, a method reminiscent of the one used for the harmonic oscillator. We begin with the eigenstates of one component, say \(L_z\), denoted by \(|m\rangle\), which satisfy the eigenvalue equation \(L_z|m\rangle = m\hbar|m\rangle\). To navigate between these eigenstates, we can invent new operators. Let us define the ladder operators \(L_+\) and \(L_-\) as:
+\[
+L_+ = L_x + iL_y \quad \text{and} \quad L_- = L_x - iL_y
+\]
+Using the commutation relations for \(L_x, L_y, L_z\), we can find the commutators of these new operators with \(L_z\):
+\[
+[L_+, L_z] = - \hbar L_+ \quad \text{and} \quad [L_-, L_z] = \hbar L_-
+\]
+Let's see how \(L_+\) acts on an eigenstate \(|m\rangle\). We examine the state \(L_+|m\rangle\) and check if it is also an eigenstate of \(L_z\).
+\[
+L_z(L_+|m\rangle) = (L_+L_z - [L_+, L_z])|m\rangle = (L_+ (m\hbar) - (-\hbar L_+))|m\rangle = (m+1)\hbar(L_+|m\rangle)
+\]
+This shows that \(L_+|m\rangle\) is a new eigenstate of \(L_z\) with a new eigenvalue of \((m+1)\hbar\). Thus, \(L_+\) acts as a raising operator, increasing the angular momentum quantum number by one unit. Similarly, \(L_-\) is a lowering operator. For any physical system, we expect the angular momentum to be bounded; there must be a highest and a lowest possible value for \(m\). This termination is necessary because quantities like total angular momentum squared, \(L^2\), are related to energy and must be finite. If there is a maximum state \(|m_{max}\rangle\), applying the raising operator must yield zero: \(L_+|m_{max}\rangle = 0\). Similarly, for a minimum state, \(L_-|m_{min}\rangle=0\). From this requirement, one can show that \(m_{max} = -m_{min}\), and that the allowed values for the angular momentum quantum number fall into two categories: integers (\(\dots, -1, 0, 1, \dots\)) and half-integers (\(\dots, -1/2, 1/2, \dots\)). For orbital angular momentum, which originates from the spatial motion of particles (\(\vec{L} = \vec{r} \times \vec{p}\)), only the integer values are physically realized.
+
