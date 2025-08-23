@@ -1,5 +1,5 @@
 +++
-date = '2025-08-08T23:45:00+08:00'
+date = '2025-08-23T23:45:00+08:00'
 katex = true
 title = 'Symmetry Groups and Degeneracy'
 tags = ['Advanced Quantum Mechanics']
@@ -99,4 +99,13 @@ Let's see how \(L_+\) acts on an eigenstate \(|m\rangle\). We examine the state 
 L_z(L_+|m\rangle) = (L_+L_z - [L_+, L_z])|m\rangle = (L_+ (m\hbar) - (-\hbar L_+))|m\rangle = (m+1)\hbar(L_+|m\rangle)
 \]
 This shows that \(L_+|m\rangle\) is a new eigenstate of \(L_z\) with a new eigenvalue of \((m+1)\hbar\). Thus, \(L_+\) acts as a raising operator, increasing the angular momentum quantum number by one unit. Similarly, \(L_-\) is a lowering operator. For any physical system, we expect the angular momentum to be bounded; there must be a highest and a lowest possible value for \(m\). This termination is necessary because quantities like total angular momentum squared, \(L^2\), are related to energy and must be finite. If there is a maximum state \(|m_{max}\rangle\), applying the raising operator must yield zero: \(L_+|m_{max}\rangle = 0\). Similarly, for a minimum state, \(L_-|m_{min}\rangle=0\). From this requirement, one can show that \(m_{max} = -m_{min}\), and that the allowed values for the angular momentum quantum number fall into two categories: integers (\(\dots, -1, 0, 1, \dots\)) and half-integers (\(\dots, -1/2, 1/2, \dots\)). For orbital angular momentum, which originates from the spatial motion of particles (\(\vec{L} = \vec{r} \times \vec{p}\)), only the integer values are physically realized.
+
+
+---
+
+For a rotationally symmetric system, the angular momentum operators commute with the Hamiltonian, which implies that they share a common set of eigenstates. This is a fundamental result from quantum mechanics: if two operators commute, we can always find a basis of states that are simultaneous eigenstates of both. This is because for any energy eigenstate \(|\psi\rangle\) of \(H\) with energy \(E\), the state \(L_z|\psi\rangle\) also has the same energy, since \(H(L_z|\psi\rangle) = L_z H |\psi\rangle = E(L_z|\psi\rangle)\). For a non-degenerate energy level, this forces \(|\psi\rangle\) to also be an eigenstate of \(L_z\). By definition, a non-degenerate energy level has only one unique state (up to a constant factor) associated with it. Since both \(|\psi\rangle\) and \(L_z|\psi\rangle\) have the same energy \(E\), \(L_z|\psi\rangle\) must be proportional to \(|\psi\rangle\), meaning \(L_z|\psi\rangle = c|\psi\rangle\) for some constant \(c\). This is precisely the definition of \(|\psi\rangle\) being an eigenstate of \(L_z\). For degenerate levels, where multiple states can share the same energy, this argument doesn't hold for a single state, but it guarantees that \(L_z\) maps the degenerate subspace onto itself, allowing us to construct a basis of simultaneous eigenstates within that subspace. We can therefore label an energy eigenstate by its angular momentum quantum number, \(m\), and consider a state \(|m\rangle\) such that \(H|m\rangle = E|m\rangle\). We can then examine the energy of the state that results from applying the raising operator, \(L_+|m\rangle\), which is proportional to \(|m+1\rangle\). Applying the Hamiltonian to this new state, and using the fact that all angular momentum operators commute with \(H\), we find:
+\[
+HL_+|m\rangle = L_+H|m\rangle = L_+(E|m\rangle) = E(L_+|m\rangle)
+\]
+This demonstrates that the new state, and by extension the eigenstate \(|m+1\rangle\), has the same energy \(E\). It follows that all states connected by the ladder operators, from a minimum to a maximum \(m\) value, are degenerate. This energy degeneracy is a direct consequence of the system's rotational symmetry.
 
