@@ -11,3 +11,28 @@ To solve for the state of a particle in a system with a central potential, such 
 ---
 
 The angular part of the problem is governed by the angular momentum operators, \\(L_x, L_y, L_z\\). These operators do not commute with each other, obeying commutation relations such as \\( [L_x, L_y] = i\hbar L_z \\). Because they do not commute, a quantum state cannot have a definite value for all three components simultaneously. The standard approach is to choose one component, conventionally \\(L_z\\), and find its common eigenstates with the total angular momentum squared operator \\(L^2\\). We can label these eigenstates by their respective quantum numbers, for example as \\(|m\rangle\\), which corresponds to an eigenvalue of \\(m\hbar\\) for the \\(L_z\\) operator. To explore the spectrum of these eigenvalues, we introduce the ladder operators, defined as \\(L_{\pm} = L_x \pm iL_y\\). These operators have a powerful function: when the raising operator \\(L_+\\) acts on an eigenstate \\(|m\rangle\\), it produces a new state that is also an eigenstate of \\(L_z\\), but with its eigenvalue increased to \\((m+1)\hbar\\). Consequently, we can label this new state as \\(|m+1\rangle\\), leading to the fundamental relation \\( L_+|m\rangle \propto |m+1\rangle \\). This algebraic method reveals a "ladder" of eigenstates, spaced by one unit of angular momentum along the z-axis.
+
+The ladder of eigenstates is both finite and symmetrical. Its finiteness implies that there must be a maximum state \\(|l\rangle\\) and a minimum state \\(|-l\rangle\\), corresponding to the maximum and minimum projections of angular momentum. Acting on these extremal states with the raising or lowering operators, respectively, must yield a null vector: \\(L_+|l\rangle = 0\\) and \\(L_-|-l\rangle = 0\\). The symmetry of the ladder means that the quantum numbers \\(m\\) are centered around zero, leading to two possible structures: integer steps (e.g., ..., -1, 0, 1, ...) or half-integer steps (e.g., ..., -1/2, 1/2, ...).
+
+The property of the maximum state, \\(L_+|l\rangle = 0\\), allows us to determine the eigenvalue of the total angular momentum squared operator, \\(L^2\\). By expressing \\(L^2\\) in terms of the ladder operators and \\(L_z\\), we can find its value. Using the identity \\(L^2 = L_-L_+ + L_z^2 + \hbar L_z\\) and applying it to the state \\(|l\rangle\\) gives us the result:
+$$
+\begin{aligned}
+L^2 |l\rangle &= (L_-L_+ + L_z^2 + \hbar L_z) |l\rangle \\
+&= L_- (L_+|l\rangle) + (L_z^2 + \hbar L_z)|l\rangle \\
+&= 0 + ((l\hbar)^2 + \hbar(l\hbar))|l\rangle \\
+&= l(l+1)\hbar^2 |l\rangle
+\end{aligned}
+$$
+A crucial insight is that every state within the same multiplet shares this same eigenvalue for \\(L^2\\). We can demonstrate this by showing that if a state is an eigenstate of \\(L^2\\), then the state created by applying \\(L_-\\) is also an eigenstate with the same eigenvalue. This follows from the fact that \\(L^2\\) commutes with its components \\(L_i\\), and therefore also with the ladder operator \\(L_-\\) (i.e., \\([L^2, L_-] = 0\\)). The derivation is as follows:
+$$
+\begin{aligned}
+L^2 |l-1\rangle &\propto L^2 (L_-|l\rangle) \\
+&= L_- (L^2 |l\rangle) \\
+&= L_- (l(l+1)\hbar^2 |l\rangle) \\
+&= l(l+1)\hbar^2 (L_-|l\rangle) \\
+&\propto l(l+1)\hbar^2 |l-1\rangle
+\end{aligned}
+$$
+By repeatedly applying the lowering operator, we can see that this holds for all states down to \\(|-l\rangle\\), confirming that the value \\(l(l+1)\hbar^2\\) is a characteristic of the entire multiplet, independent of the magnetic quantum number \\(m\\).
+
+There is a helpful classical analogy. Classically, an angular momentum vector of a fixed length can point in any direction in space, and its projection onto an axis can vary continuously. In quantum mechanics, the situation is different. While the magnitude of the angular momentum vector is fixed for a given multiplet (determined by \\(L^2\\)), its "direction" is quantized. The vector's projection onto the z-axis can only take on a discrete set of \\(2l+1\\) values, corresponding to the allowed states from \\(m = -l\\) to \\(m = +l\\).
