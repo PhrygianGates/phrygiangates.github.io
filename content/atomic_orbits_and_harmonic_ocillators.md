@@ -36,3 +36,20 @@ $$
 By repeatedly applying the lowering operator, we can see that this holds for all states down to \\(|-l\rangle\\), confirming that the value \\(l(l+1)\hbar^2\\) is a characteristic of the entire multiplet, independent of the magnetic quantum number \\(m\\).
 
 There is a helpful classical analogy. Classically, an angular momentum vector of a fixed length can point in any direction in space, and its projection onto an axis can vary continuously. In quantum mechanics, the situation is different. While the magnitude of the angular momentum vector is fixed for a given multiplet (determined by \\(L^2\\)), its "direction" is quantized. The vector's projection onto the z-axis can only take on a discrete set of \\(2l+1\\) values, corresponding to the allowed states from \\(m = -l\\) to \\(m = +l\\).
+
+---
+
+The angular part of the wavefunction, \\( Y(\theta, \phi) \\), is described by the spherical harmonics, denoted \\( Y_{l,m}(\theta, \phi) \\). These functions are the simultaneous eigenfunctions of the total angular momentum squared operator \\(L^2\\) and its z-component \\(L_z\\). In the language of wavefunctions, they are the position-space representation of the abstract eigenstates \\(|l, m\rangle\\), satisfying the eigenvalue equations \\( L^2 Y_{l,m}(\theta, \phi) = l(l+1)\hbar^2 Y_{l,m}(\theta, \phi) \\) and \\( L_z Y_{l,m}(\theta, \phi) = m\hbar Y_{l,m}(\theta, \phi) \\).
+
+---
+
+A profound consequence of the spherical symmetry of the central potential is the degeneracy of energy levels. The Hamiltonian \\(H\\) commutes with all components of the angular momentum operator, which implies \\([H, L^2] = 0\\) and \\([H, L_z] = 0\\). This allows for a set of common eigenstates for \\(H\\), \\(L^2\\), and \\(L_z\\). The commutation of \\(H\\) with the ladder operators \\(L_{\pm}\\) means that applying these operators to an energy eigenstate does not change its energy. We can show this mathematically:
+$$
+\begin{aligned}
+H(L_{\pm}|\psi\rangle) &= L_{\pm}(H|\psi\rangle) \quad (\text{since } [H, L_{\pm}] = 0) \\
+&= L_{\pm}(E|\psi\rangle) \\
+&= E(L_{\pm}|\psi\rangle)
+\end{aligned}
+$$
+Since the ladder operators connect all the \\(2l+1\\) states within a multiplet (from \\(m=-l\\) to \\(m=+l\\)), all these states must share the same energy eigenvalue \\(E\\). This energy degeneracy is a direct result of the rotational symmetry of the system.
+
