@@ -57,3 +57,19 @@ H(L_{\pm}|\psi\rangle) &= L_{\pm}(H|\psi\rangle) \quad (\text{since } [H, L_{\pm
 $$
 Since the ladder operators connect all the \\(2l+1\\) states within a multiplet (from \\(m=-l\\) to \\(m=+l\\)), all these states must share the same energy eigenvalue \\(E\\). This energy degeneracy is a direct result of the rotational symmetry of the system.
 
+---
+
+Having addressed the angular behavior of the wavefunction, we now turn our attention to its radial dependence. A classical analogy provides a useful starting point. For a particle in a central potential, the total energy, or Hamiltonian, can be expressed in terms of its radial and angular momentum. The kinetic energy separates into a radial component and a rotational component, leading to the expression:
+$$
+H = \frac{p_r^2}{2m} + \frac{L^2}{2mr^2} + V(r)
+$$
+Here, \\( p_r \\) is the radial momentum and \\( L \\) is the magnitude of the angular momentum. This formulation effectively reduces the problem to a one-dimensional system in the radial coordinate \\(r\\), where the particle moves in an effective potential \\( V_{\text{eff}}(r) = V(r) + \frac{L^2}{2mr^2} \\). The additional term, \\( \frac{L^2}{2mr^2} \\), is known as the centrifugal barrier; it represents a repulsive potential that pushes the particle away from the origin due to its angular motion.
+
+---
+
+This classical picture has a direct parallel in quantum mechanics. After separating variables in the Schrödinger equation, the radial part of the wavefunction, \\( R(r) \\), is found to obey a one-dimensional differential equation known as the radial Schrödinger equation. Since the angular part of the wavefunction is an eigenstate of the \\(L^2\\) operator with eigenvalue \\(l(l+1)\\hbar^2\\), this value replaces the classical \\(L^2\\) in the Hamiltonian. The resulting equation for the radial function \\(R(r)\\) incorporates an effective potential that is structurally identical to its classical counterpart:
+$$
+\left[ -\frac{\hbar^2}{2m} \frac{1}{r^2} \frac{d}{dr} \left(r^2 \frac{d}{dr}\right) + \frac{l(l+1)\hbar^2}{2mr^2} + V(r) \right] R(r) = E R(r)
+$$
+The term \\( \frac{l(l+1)\hbar^2}{2mr^2} \\) is the quantum mechanical centrifugal barrier. Therefore, solving for the energy spectrum of a particle in a central potential reduces to solving this one-dimensional Schrödinger equation for the radial wavefunction \\( R(r) \\), where the effective potential depends on the angular momentum quantum number \\(l\\).
+
