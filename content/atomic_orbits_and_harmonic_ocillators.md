@@ -67,9 +67,18 @@ Here, \\( p_r \\) is the radial momentum and \\( L \\) is the magnitude of the a
 
 ---
 
-This classical picture has a direct parallel in quantum mechanics. After separating variables in the Schrödinger equation, the radial part of the wavefunction, \\( R(r) \\), is found to obey a one-dimensional differential equation known as the radial Schrödinger equation. Since the angular part of the wavefunction is an eigenstate of the \\(L^2\\) operator with eigenvalue \\(l(l+1)\\hbar^2\\), this value replaces the classical \\(L^2\\) in the Hamiltonian. The resulting equation for the radial function \\(R(r)\\) incorporates an effective potential that is structurally identical to its classical counterpart:
+The rigorous path to the quantum mechanical radial equation begins with the time-independent Schrödinger equation in three dimensions, \\( \hat{H}\psi = E\psi \\), where the Hamiltonian operator is \\( \hat{H} = -\frac{\hbar^2}{2m}\nabla^2 + V(r) \\). The crucial step is to express the Laplacian operator, \\(\nabla^2\\), in spherical coordinates, which separates it into radial and angular parts. The angular part is directly related to the total angular momentum squared operator, \\(\hat{L}^2\\), allowing us to write the Laplacian in the compact form:
+$$
+\nabla^2 = \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial}{\partial r}\right) - \frac{\hat{L}^2}{\hbar^2 r^2}
+$$
+Substituting this back into the Schrödinger equation and applying the separation of variables \\( \psi(r, \theta, \phi) = R(r)Y_{l,m}(\theta, \phi) \\), we can make use of the fact that \\( Y_{l,m} \\) is an eigenfunction of \\( \hat{L}^2 \\) with eigenvalue \\( l(l+1)\hbar^2 \\). This allows us to replace the operator \\( \hat{L}^2 \\) with this constant value and cancel the angular part \\( Y_{l,m} \\) from both sides, yielding the radial Schrödinger equation for \\( R(r) \\):
 $$
 \left[ -\frac{\hbar^2}{2m} \frac{1}{r^2} \frac{d}{dr} \left(r^2 \frac{d}{dr}\right) + \frac{l(l+1)\hbar^2}{2mr^2} + V(r) \right] R(r) = E R(r)
 $$
-The term \\( \frac{l(l+1)\hbar^2}{2mr^2} \\) is the quantum mechanical centrifugal barrier. Therefore, solving for the energy spectrum of a particle in a central potential reduces to solving this one-dimensional Schrödinger equation for the radial wavefunction \\( R(r) \\), where the effective potential depends on the angular momentum quantum number \\(l\\).
+
+To simplify this equation for practical problem-solving, a substitution is commonly introduced. By defining a new radial function, \\( u(r) = rR(r) \\), the radial Schrödinger equation can be rewritten into a form that is mathematically identical to the one-dimensional Schrödinger equation:
+$$
+\left[ -\frac{\hbar^2}{2m} \frac{d^2}{dr^2} + V_{\text{eff}}(r) \right] u(r) = E u(r)
+$$
+Here, the effective potential \\( V_{\text{eff}}(r) = V(r) + \frac{l(l+1)\hbar^2}{2mr^2} \\) includes both the central potential and the centrifugal barrier. This simplified form is particularly useful for analyzing the behavior of the wavefunction and for finding the energy eigenvalues of the system.
 
