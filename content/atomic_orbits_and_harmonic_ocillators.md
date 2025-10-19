@@ -82,3 +82,59 @@ $$
 $$
 Here, the effective potential \\( V_{\text{eff}}(r) = V(r) + \frac{l(l+1)\hbar^2}{2mr^2} \\) includes both the central potential and the centrifugal barrier. This simplified form is particularly useful for analyzing the behavior of the wavefunction and for finding the energy eigenvalues of the system.
 
+---
+
+## 量子谐振子 (Quantum Harmonic Oscillator)
+
+量子谐振子是量子力学中少数几个可以精确求解的系统之一，也是一个极其重要的模型。它不仅可以用来描述原子在晶格中的振动、分子的振动，还在量子场论中扮演着核心角色。
+
+### 哈密顿量与薛定谔方程
+
+经典谐振子的势能是 \\( V(x) = \frac{1}{2}m\omega^2x^2 \\)，其中 \\( m \\) 是质量，\\(\omega\\) 是振动频率。在量子力学中，我们将其转化为算符形式，得到哈密顿量：
+$$
+\hat{H} = \frac{\hat{p}^2}{2m} + \frac{1}{2}m\omega^2\hat{x}^2
+$$
+其中 \\(\hat{x}\\) 和 \\(\hat{p}\\) 分别是位置和动量算符。对应的定态薛定谔方程为：
+$$
+\left( -\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + \frac{1}{2}m\omega^2x^2 \right) \psi(x) = E \psi(x)
+$$
+
+### 梯算符方法 (Ladder Operator Method)
+
+直接求解这个二阶微分方程是可行的，但有一种更优雅的代数方法，即引入梯算符（也称为创生和湮灭算符）。我们定义：
+$$
+\begin{aligned}
+a &= \sqrt{\frac{m\omega}{2\hbar}}\left(\hat{x} + \frac{i}{m\omega}\hat{p}\right) \\
+a^\dagger &= \sqrt{\frac{m\omega}{2\hbar}}\left(\hat{x} - \frac{i}{m\omega}\hat{p}\right)
+\end{aligned}
+$$
+这两个算符不互相对易，它们的对易关系是 \\([a, a^\dagger] = 1\\)。
+
+通过这两个算符，我们可以将哈密顿量重写为：
+$$
+\hat{H} = \hbar\omega \left(a^\dagger a + \frac{1}{2}\right)
+$$
+这个形式极大地简化了问题。我们引入一个"粒子数算符" \\(N = a^\dagger a\\)。如果 \\(|\psi\rangle\\) 是 \\(H\\) 的本征态，能量为 \\(E\\)，那么它也必须是 \\(N\\) 的本征态。
+
+梯算符的作用是：
+- **湮灭算符 (Annihilation Operator) \\(a\\):** 当它作用在一个能量本征态上时，会得到一个新的能量本征态，但能量降低了 \\(\hbar\omega\\)。
+- **创生算符 (Creation Operator) \\(a^\dagger\\):** 当它作用在一个能量本征态上时，会得到一个新的能量本征态，但能量增加了 \\(\hbar\omega\\)。
+
+### 能级与基态
+
+由于能量不能无限降低，必须存在一个最低能量态，即基态 \\(|0\rangle\\)，它满足 \\(a|0\rangle = 0\\)。我们可以从这个条件出发，解出基态的波函数，并得到基态能量：
+$$
+H|0\rangle = \hbar\omega \left(a^\dagger a + \frac{1}{2}\right)|0\rangle = \frac{1}{2}\hbar\omega|0\rangle
+$$
+所以基态能量是 \\(E_0 = \frac{1}{2}\hbar\omega\\)，这被称为"零点能"，是纯粹的量子效应，意味着即使在绝对零度，系统也无法完全静止。
+
+通过反复对基态作用创生算符，我们可以得到一系列的激发态 \\(|n\rangle\\)：
+$$
+|n\rangle = \frac{(a^\dagger)^n}{\sqrt{n!}}|0\rangle
+$$
+对应的能量本征值是：
+$$
+E_n = \left(n + \frac{1}{2}\right)\hbar\omega, \quad n = 0, 1, 2, ...
+$$
+这表明量子谐振子的能级是等间距的，间隔为 \\(\hbar\omega\\)。这个简洁而深刻的结果是量子力学的一个标志性特征。
+
