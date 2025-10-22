@@ -54,25 +54,7 @@ a^\dagger a &= \frac{1}{2\omega} (p^2 + \omega^2 x^2 - i\omega(-i)) \\
 最后，所有激发态都可以由基态通过创生算符生成。从基态 \(|0\rangle\) 出发，不断使用创生算符 \(a^\dagger\)，就可以像爬梯子一样得到所有的激发态：
 \[ |n\rangle = \frac{(a^\dagger)^n}{\sqrt{n!}} |0\rangle \]
 
-这里的 $\frac{1}{\sqrt{n!}}$ 是归一化因子。为了确保态 $|n\rangle$ 是归一化的，即 $\langle n|n\rangle = 1$，我们需要这个因子。推导过程如下：
-
-我们定义 $|n\rangle = C_n (a^\dagger)^n |0\rangle$，其中 $C_n$ 是待定的归一化常数。根据归一化条件：
-\[ \langle n|n\rangle = \langle 0 | (C_n^* a^n) (C_n (a^\dagger)^n) | 0 \rangle = |C_n|^2 \langle 0 | a^n (a^\dagger)^n | 0 \rangle = 1 \]
-
-要解出 $C_n$，我们需要计算 $\langle 0 | a^n (a^\dagger)^n | 0 \rangle$ 的值。利用升降算符的对易关系 $[a, a^\dagger] = 1$，可以证明一个更有用的关系：$[a, (a^\dagger)^n] = n(a^\dagger)^{n-1}$。
-
-利用这个关系，我们可以计算 $a(a^\dagger)^n|0\rangle$：
-\[ a(a^\dagger)^n|0\rangle = ([a, (a^\dagger)^n] + (a^\dagger)^n a)|0\rangle = n(a^\dagger)^{n-1}|0\rangle \]
-这里用到了 $a|0\rangle=0$。
-
-现在，我们可以来计算 $\langle 0 | a^n (a^\dagger)^n | 0 \rangle$：
-\[ \langle 0 | a^n (a^\dagger)^n | 0 \rangle = \langle 0 | a^{n-1} (a(a^\dagger)^n) | 0 \rangle = \langle 0 | a^{n-1} (n(a^\dagger)^{n-1}) | 0 \rangle = n \langle 0 | a^{n-1} (a^\dagger)^{n-1} | 0 \rangle \]
-这是一个递推关系。一直递推下去，我们得到：
-\[ \langle 0 | a^n (a^\dagger)^n | 0 \rangle = n \cdot (n-1) \cdots 1 \cdot \langle 0 | a^0 (a^\dagger)^0 | 0 \rangle = n! \langle 0 | 0 \rangle = n! \]
-
-将这个结果代入归一化条件：
-\[ |C_n|^2 n! = 1 \implies |C_n| = \frac{1}{\sqrt{n!}} \]
-按惯例，我们选择 $C_n$ 为正实数，所以 $C_n = \frac{1}{\sqrt{n!}}$。
+表达式中的分母 \(\sqrt{n!}\) 是归一化常数。它的作用是确保态矢量 \(|n\rangle\) 的长度为1，即 \(\langle n|n\rangle = 1\)，这是量子力学中概率诠释的基本要求。如果我们从基态 \(|0\rangle\) （假设已归一化）出发，每次应用创生算符 \(a^\dagger\) 都会改变态矢量的长度。例如，未归一化的 \(a^\dagger|0\rangle\) 态的内积（模方）为 \(\langle 0| a a^\dagger |0\rangle = \langle 0| (a^\dagger a + 1) |0\rangle = 1\)。而未归一化的 \((a^\dagger)^2|0\rangle\) 态的内积是 \(\langle 0| a^2 (a^\dagger)^2 |0\rangle = 2\)。可以归纳出，\((a^\dagger)^n|0\rangle\) 的模方是 \(n!\)。因此，为了使最终的 \(|n\rangle\) 态满足归一化条件 \(\langle n|n\rangle=1\)，我们需要将其除以 \(\sqrt{n!}\)。
 
 这表明所有能态构成了一个以 \(\omega\) 为间隔的等距能谱。这个图像也是量子场论中“粒子”概念的来源，每一次 \(a^\dagger\) 的作用，都相当于在场中“创生”了一个能量为 \(\omega\) 的量子。
 
