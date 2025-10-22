@@ -3,7 +3,6 @@ date = '2025-10-22T18:00:00+08:00'
 katex = true
 title = 'Spin'
 tags = ['Advanced Quantum Mechanics']
-draft: false
 +++
 
 对于一维谐振子问题，其哈密顿量可以表示为 \(H = \frac{p^2}{2} + \frac{1}{2}\omega^2 x^2\)。我们的目标是求解其能量本征方程 \(H\varphi = E\varphi\)。为了用一种更简洁的代数方法求解，我们引入一对阶梯算符，定义为：
