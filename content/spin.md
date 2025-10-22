@@ -40,7 +40,14 @@ a^\dagger a &= \frac{1}{2\omega} (p^2 + \omega^2 x^2 - i\omega(-i)) \\
 
 首先，体系的能量是量子化的。由于 \(H\) 和 \(N\) 仅相差常数，它们拥有共同的本征态。若 \(|n\rangle\) 是 \(N\) 的一个本征态，其本征值为 \(n\)，即 \(N|n\rangle = n|n\rangle\)，那么作用哈密顿算符会得到 \(H|n\rangle = \omega(N+\frac{1}{2})|n\rangle = \omega(n+\frac{1}{2})|n\rangle\)。这意味着体系的能量只能取一系列离散值：
 \[ E_n = \omega\left(n + \frac{1}{2}\right) \]
-其次，算符 \(a^\dagger\) 和 \(a\) 扮演了能量阶梯的“梯子”角色。可以证明，\(a\) 作用在态 \(|n\rangle\) 上会得到一个对应于 \(n-1\) 的新状态，因此被称为湮灭算符；而 \(a^\dagger\) 作用在态 \(|n\rangle\) 上则会得到一个对应于 \(n+1\) 的新状态，因此被称为创生算符。它们分别使能量本征值减小或增加一个单位 \(\omega\)。
+其次，算符 \(a^\dagger\) 和 \(a\) 扮演了能量阶梯的“梯子”角色。为了证明这一点，我们首先计算它们与哈密顿量的对易关系。利用 \([x, p] = i\)，我们可以得到 \([a, a^\dagger] = 1\)。由此可得：
+\[ [H, a] = [\omega(a^\dagger a + 1/2), a] = \omega[a^\dagger a, a] = -\omega a \]
+\[ [H, a^\dagger] = [\omega(a^\dagger a + 1/2), a^\dagger] = \omega[a^\dagger a, a^\dagger] = \omega a^\dagger \]
+现在，我们将 \(H\) 作用在 \(a|n\rangle\) 上，其中 \(|n\rangle\) 是能量为 \(E_n\) 的本征态：
+\[ H(a|n\rangle) = (aH + [H, a])|n\rangle = aE_n|n\rangle - \omega a|n\rangle = (E_n - \omega)(a|n\rangle) \]
+这表明 \(a|n\rangle\) 是一个新的能量本征态，其能量比 \(E_n\) 恰好少了一个量子 \(\omega\)。因此，\(a\) 作用在态 \(|n\rangle\) 上会得到一个对应于 \(n-1\) 的新状态，故被称为湮灭算符。同理，我们可以证明 \(a^\dagger\) 的作用：
+\[ H(a^\dagger|n\rangle) = (a^\dagger H + [H, a^\dagger])|n\rangle = a^\dagger E_n|n\rangle + \omega a^\dagger|n\rangle = (E_n + \omega)(a^\dagger|n\rangle) \]
+这表明 \(a^\dagger|n\rangle\) 的能量为 \(E_n + \omega\)，所以 \(a^\dagger\) 被称为创生算符。它们分别使能量本征值减小或增加一个单位 \(\omega\)。
 
 另外，由于体系能量不能无限降低（\(H\) 是正定的），必须存在一个能量最低的基态，记为 \(|0\rangle\)。湮灭算符作用于基态不能再降低其能量，因此必然有 \(a|0\rangle = 0\)。此时，粒子数算符的本征值为 \(n=0\)，对应的基态能量为 \(E_0 = \omega(0 + \frac{1}{2}) = \frac{\omega}{2}\)。这个著名的“零点能”是量子效应的直接体现。
 
