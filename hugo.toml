@@ -27,4 +27,5 @@ defaultContentLanguage = 'en'
 [params]
   math = true
   katex = true
+  mainSections = ["posts"]
 
