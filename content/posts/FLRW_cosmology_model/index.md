@@ -2,6 +2,7 @@
 date = '2025-04-13T17:51:09+08:00'
 title = 'FLRW Cosmology Model'
 tags = ['The Early Universe']
+category = "Physics"
 +++
 
 In this post, I would like to introduce the basic assumption of modern cosmology, i.e. the FLRW model, also as an application of Einstein field equation.

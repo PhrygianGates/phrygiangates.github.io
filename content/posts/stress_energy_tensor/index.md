@@ -2,6 +2,7 @@
 date = '2025-01-04T00:36:09+08:00'
 title = 'Stress-Energy Tensor'
 tags = ['The Early Universe']
+category = "Physics"
 +++
 
 In this post, I would like to build some fundational knowledge about the Einstein Field Equations. First, I will pose several questions based on the last post about cosmology:

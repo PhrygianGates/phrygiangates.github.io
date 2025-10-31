@@ -2,6 +2,7 @@
 date = '2025-06-05T21:24:00+08:00'
 title = 'Ising Model'
 tags = ['Statistical Mechanics']
+category = "Physics"
 +++
 
 Following Susskind's Statistical Mechanics course, lecture 9.

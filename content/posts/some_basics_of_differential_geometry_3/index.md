@@ -2,6 +2,7 @@
 date = '2025-02-07T21:35:09+08:00'
 title = 'Some Basics of Differential Geometry 3'
 tags = ['The Early Universe']
+category = "Physics"
 +++
 
 In this post, I would like to study some basic knowledge of the \( \nabla \) symbol, as well as an important formula related with riemann tensor.
