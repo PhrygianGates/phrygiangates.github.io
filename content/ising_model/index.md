@@ -1,6 +1,5 @@
 +++
 date = '2025-06-05T21:24:00+08:00'
-katex = true
 title = 'Ising Model'
 tags = ['Statistical Mechanics']
 +++

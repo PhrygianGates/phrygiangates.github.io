@@ -1,6 +1,5 @@
 +++
 date = '2025-03-07T00:15:09+08:00'
-katex = true
 title = 'Einstein Field Equation'
 tags = ['The Early Universe']
 +++

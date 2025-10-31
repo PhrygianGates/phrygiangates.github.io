@@ -1,6 +1,5 @@
 +++
 date = '2025-08-23T23:45:00+08:00'
-katex = true
 title = 'Symmetry Groups and Degeneracy'
 tags = ['Advanced Quantum Mechanics']
 +++ 

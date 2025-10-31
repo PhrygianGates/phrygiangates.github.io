@@ -1,11 +1,19 @@
 baseURL = 'https://phrygiangates.github.io'
-languageCode = 'en-us'
 title = 'Phrygiangates'
-theme = 'diary'
+theme = 'PaperMod'
+defaultContentLanguage = 'en'
 
-# Taxonomies
+[languages]
+  [languages.en]
+    languageName = 'English'
+    weight = 1
+  [languages.zh]
+    languageName = '中文'
+    weight = 2
+
 [taxonomies]
   tag = 'tags'
+  category = 'categories'
 
 [markup]
   [markup.goldmark]
@@ -13,8 +21,9 @@ theme = 'diary'
       [markup.goldmark.extensions.passthrough]
         enable = true
         [markup.goldmark.extensions.passthrough.delimiters]
-          block = [['\[', '\]'], ['$$', '$$']]
-          inline = [['\(', '\)']]
+          block = [['\\[', '\\]'], ['$$', '$$']]
+          inline = [['\\(', '\\)']]
+
 [params]
-  math = true
+  katex = true
 

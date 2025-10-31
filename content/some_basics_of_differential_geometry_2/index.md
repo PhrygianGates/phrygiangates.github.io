@@ -1,6 +1,5 @@
 +++
 date = '2025-01-28T11:05:09-05:00'
-katex = true
 title = 'Some Basics of Differential Geometry 2'
 tags = ['The Early Universe']
 +++

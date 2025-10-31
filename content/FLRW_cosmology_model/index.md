@@ -1,6 +1,5 @@
 +++
 date = '2025-04-13T17:51:09+08:00'
-katex = true
 title = 'FLRW Cosmology Model'
 tags = ['The Early Universe']
 +++

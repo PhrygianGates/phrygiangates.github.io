@@ -1,6 +1,5 @@
 +++
 date = '2025-01-20T02:52:00-05:00'
-katex = true
 title = 'Understanding Treasury Bonds'
 tags = ['Investment']
 +++

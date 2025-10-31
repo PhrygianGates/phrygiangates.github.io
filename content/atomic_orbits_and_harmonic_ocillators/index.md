@@ -1,6 +1,5 @@
 +++
 date = '2025-09-20T19:00:00+08:00'
-katex = true
 title = 'Atomic Orbits And Harmonic Ocillators'
 tags = ['Advanced Quantum Mechanics']
 +++ 

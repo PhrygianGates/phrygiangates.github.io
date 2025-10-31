@@ -1,6 +1,5 @@
 +++
 date = '2025-01-04T00:36:09+08:00'
-katex = true
 title = 'Stress-Energy Tensor'
 tags = ['The Early Universe']
 +++
