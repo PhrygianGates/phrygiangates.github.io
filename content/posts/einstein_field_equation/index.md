@@ -2,7 +2,7 @@
 date = '2025-03-07T00:15:09+08:00'
 title = 'Einstein Field Equation'
 tags = ['The Early Universe']
-category = "Physics"
+categories = ["Physics"]
 +++
 
 To derive the Einstein field equation, we start from physical considerations involving energy and momentum, and geometry considerations from the curvature of spacetime.

@@ -2,7 +2,7 @@
 date = '2025-01-21T07:21:09-05:00'
 title = 'Some Basics of Differential Geometry'
 tags = ['The Early Universe']
-category = "Physics"
+categories = ["Physics"]
 +++
 
 In this post, I would like to build some basics of differential geometry for understanding the Einstein Field Equations.

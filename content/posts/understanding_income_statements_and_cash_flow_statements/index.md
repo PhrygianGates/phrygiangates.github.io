@@ -3,7 +3,7 @@ date = '2024-12-24T23:18:00+08:00'
 katex = true
 title = 'Understanding Income Statements and Cash Flow Statements'
 tags = ['Investment']
-category = "Finance"
+categories = ["Finance"]
 +++
 
 I'm trying to learn financial investment, so I will first attempt to read financial reports to understand the business activities happening in the world.

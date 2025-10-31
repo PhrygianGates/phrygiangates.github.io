@@ -2,7 +2,7 @@
 date = '2025-01-28T11:05:09-05:00'
 title = 'Some Basics of Differential Geometry 2'
 tags = ['The Early Universe']
-category = "Physics"
+categories = ["Physics"]
 +++
 
 In this post, we will delve deeper into the concepts of differential geometry, mainly focusing on the notion of riemann tensor, ricci tensor, and ricci scalar.

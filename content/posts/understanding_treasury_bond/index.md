@@ -2,7 +2,7 @@
 date = '2025-01-20T02:52:00-05:00'
 title = 'Understanding Treasury Bonds'
 tags = ['Investment']
-category = "Finance"
+categories = ["Finance"]
 +++
 
 I would like to learn some basic information about treasury bonds. The following questions are of interest to me:

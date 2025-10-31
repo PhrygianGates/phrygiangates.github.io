@@ -2,7 +2,7 @@
 date = '2025-06-26T22:40:00+08:00'
 title = 'Review of quantum mechanics'
 tags = ['Advanced Quantum Mechanics']
-category = "Physics"
+categories = ["Physics"]
 +++
 
 In quantum mechanics, the state of a physical system is described by a state vector, denoted using Dirac's bra-ket notation as \(|\psi\rangle\). These state vectors are elements of a complex vector space called a Hilbert space.

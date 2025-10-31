@@ -2,7 +2,7 @@
 date = '2024-12-23T17:01:09+08:00'
 title = 'Inflation Cosmology: Is our universe part of a multiuniverse?'
 tags = ['The Early Universe']
-category = "Physics"
+categories = ["Physics"]
 +++
 
 I want to learn about cosmology, maybe start with the book "An Introduction to Modern Cosmology" by Andrew Liddle and the lecture "The Early Universe" by MIT OpenCourseWare.
