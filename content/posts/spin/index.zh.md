@@ -1,6 +1,6 @@
 +++
 date = '2025-10-22T18:00:00+08:00'
-title = 'Spin'
+title = '自旋'
 tags = ['Advanced Quantum Mechanics']
 categories = ["Physics"]
 +++
