@@ -77,12 +77,12 @@ a^\dagger a &= \frac{1}{2\omega} (p^2 + \omega^2 x^2 - i\omega(-i)) \\
 接下来我们计算第一激发态 \(|1\rangle\) 的波函数。它可以通过在基态上作用一个产生算符 \(a^\dagger\) 得到。假设 \(a^\dagger \propto -i \frac{d}{dx} + i\omega x\)，并设 \(\omega=1\)，则有：
 \[ \psi_1(x) = a^\dagger \psi_0(x) \propto \left(-i \frac{d}{dx} + ix\right) e^{-\frac{1}{2}x^2} = 2x e^{-\frac{1}{2}x^2} \]
 下图展示了函数 \(f(x) = xe^{-\frac{1}{2}x^2}\) 及其平方的图像。其中 \(f(x)^2\) 正比于粒子在第一激发态时在空间中各个位置出现的概率密度。从图中可以看出，粒子在 \(x=0\) 处出现的概率为零。
-![](images/Screenshot%202025-11-01%20at%202.47.45 PM.png)
+![](images/Screenshot1.png)
 
 对于第二激发态 \(|2\rangle\)，我们同样可以通过作用产生算符得到 \(\psi_2(x) = a^\dagger \psi_1(x)\)。忽略所有系数，其形式大致如下：
 \[ \psi_2(x) \propto \left(-\frac{d}{dx}+x\right) \left(xe^{-\frac{1}{2}x^2}\right) \propto (1-2x^2)e^{-\frac{1}{2}x^2} \]
 其波函数概率密度的图像如下所示：
-![](images/Screenshot%202025-11-01%20at%202.57.41 PM.png)
+![](images/Screenshot2.png)
 
 上面这些不同能级的波函数在空间中的分布图像，让人联想到高中化学课上学到的氢原子电子轨道。然而，谐振子模型与氢原子模型是不同的。氢原子中的电子受到的是原子核产生的 \(V(r) \propto 1/r\) 的库仑势，其哈密顿量与谐振子的 \(V(x) \propto x^2\) 势能项不同，因此会解出不同的本征态。
 
