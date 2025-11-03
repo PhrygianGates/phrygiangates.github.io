@@ -5,7 +5,7 @@ tags = ['Random Thoughts']
 categories = ["Finance"]
 +++
 
-今天早上在上班的时候想听有声书，遂在网上搜索，发现了这个[【「疯癫与文明」米歇尔·福柯【有声书 | 同步原文】】] (https://www.bilibili.com/video/BV1vYMxzNELd/?share_source=copy_web&vd_source=f2844617a59fe50f738536977e8c51b8)
+今天早上在上班的时候想听有声书，遂在网上搜索，发现了这个[【「疯癫与文明」米歇尔·福柯【有声书 | 同步原文】】](https://www.bilibili.com/video/BV1vYMxzNELd/?share_source=copy_web&vd_source=f2844617a59fe50f738536977e8c51b8)
 
 我觉得他做的非常恰当，这种社会学、哲学相关的书，仅仅看书往往容易觉得枯燥而放弃阅读，仅仅听书则常忘记上下文而走神并不知所云，这种书最适合用来做同步原文的有声书。于是我开始思考，他是怎么做出来这样的有声书的，用的什么AI工具，怎么把文章和音频正好对上，在r/localllama翻找了半天。开源的解决方案通常都非常复杂，要先把电子书转成音频和带时间戳的字幕，再将字幕和音频同步播放制作成视频。
 

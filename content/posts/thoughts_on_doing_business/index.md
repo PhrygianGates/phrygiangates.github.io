@@ -5,7 +5,7 @@ tags = ['Random Thoughts']
 categories = ["Finance"]
 +++
 
-This morning at work I wanted to listen to an audiobook, so I searched online and found this [【“Madness and Civilization” Michel Foucault【Audiobook | Synchronized Original Text】】] (https://www.bilibili.com/video/BV1vYMxzNELd/?share_source=copy_web&vd_source=f2844617a59fe50f738536977e8c51b8)
+This morning at work I wanted to listen to an audiobook, so I searched online and found this [【“Madness and Civilization” Michel Foucault【Audiobook | Synchronized Original Text】】](https://www.bilibili.com/video/BV1vYMxzNELd/?share_source=copy_web&vd_source=f2844617a59fe50f738536977e8c51b8)
 
 I think he did it very well. For books related to sociology and philosophy, just reading often feels tedious and leads to abandoning the book; just listening often makes you forget the context, zone out, and lose the thread. Books like these are best suited to audiobooks with synchronized original text. So I started thinking about how he made such an audiobook, what AI tools he used, and how he aligned the text and audio exactly, and I rummaged through r/localllama for a long time. Open-source solutions are usually very complex: first convert the e-book into audio and time-stamped subtitles, then synchronize the subtitles with the audio and play them together to make a video.
 
