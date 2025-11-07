@@ -15,8 +15,6 @@ I asked AI again how to achieve simultaneous playback of text and audio when mak
 
 Speechify costs about 1,000 RMB per year. This uploader has around 20,000 followers from making philosophy audiobooks; I estimate there’s a high probability his monthly income from Bilibili exceeds 100 RMB, which can easily cover Speechify’s cost. And in reality, I think he hardly needs to do anything (other than opening a small window on his computer and recording the screen) to make money. Yet at the outset I was actually thinking about how to build an entire complex toolchain just to earn this money.
 
-I think this story is very true-to-life about how to make money.
-
 How did he discover this business opportunity? My guess is that he himself needed audiobooks to better understand these difficult philosophy books, and after using Speechify to read, he realized this was something many people needed, so he went with the flow and turned it into videos and posted them online.
 
 My current side hustle is actually being approached from the same angle; the takeaway for me is to estimate the time cost and see whether there’s a more direct way to implement it.
