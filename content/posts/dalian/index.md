@@ -3,7 +3,6 @@ date = '2025-11-11T09:44:00+08:00'
 title = 'Dalian'
 tags = ['Northeast China']
 categories = ["Travel"]
-hiddenInHomeList = true
 +++
 
 I’m now at Dalian Train Station waiting for a train to Dandong. I arrived in Dalian the morning before last and stayed for two days.

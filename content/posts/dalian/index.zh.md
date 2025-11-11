@@ -3,6 +3,7 @@ date = '2025-11-11T09:44:00+08:00'
 title = '大连'
 tags = ['Northeast China']
 categories = ["Travel"]
+hiddenInHomeList = true
 +++
 
 现在我在大连火车站等前往丹东的火车。我前天早上到大连，在大连呆了两天。
