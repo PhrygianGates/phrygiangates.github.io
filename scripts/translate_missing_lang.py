@@ -277,7 +277,7 @@ def main() -> None:
     parser.add_argument("--content-root", default=str(Path(__file__).resolve().parents[1] / "content" / "posts"),
                         help="Root directory of posts (default: content/posts)")
     parser.add_argument("--only", default=None, help="Process only this single post directory name (slug)")
-    parser.add_argument("--model", default=os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-5-20250807"),
+    parser.add_argument("--model", default=os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-5.1-20251113"),
                         help="Azure OpenAI deployment name to use")
     args = parser.parse_args()
 
