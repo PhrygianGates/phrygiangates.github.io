@@ -43,10 +43,46 @@ a_j|n_1,\dots,n_j,\dots\rangle
 \hat{\Psi}^\dagger(x_0)\,|0\rangle = |x_0\rangle .
 \]
 
-为了把这个想法写成可计算的形式，选取单粒子 Hilbert 空间中的一组正交归一基 \(\{|j\rangle\}\)，并记它们的位置表象为 \(\phi_j(x)=\langle x|j\rangle\)。在 Fock 空间里，令 \(a_j^\dagger\) 表示“在单粒子态 \(|j\rangle\) 上增加一个粒子”的创生算符（相应地 \(a_j\) 湮灭该模的一个粒子），满足 \([a_j,a_k^\dagger]=\delta_{jk}\)。则场算符可以展开为
+为了把这个想法写成可计算的形式，我们先选取一组完备、正交归一的单粒子态 \(\{|j\rangle\}\)（\(j=1,2,\dots\)）。它们在位置表象的波函数记为
 \[
-\hat{\Psi}(x)=\sum_j a_j\,\langle x|j\rangle=\sum_j a_j\,\phi_j(x),\qquad
-\hat{\Psi}^\dagger(x)=\sum_j a_j^\dagger\,\langle j|x\rangle=\sum_j a_j^\dagger\,\phi_j^*(x).
+\psi_j(x)\equiv \langle x|j\rangle,\qquad \langle j|x\rangle=\psi_j^*(x).
+\]
+并满足完备性
+\[
+\sum_j |j\rangle\langle j| = I
+\]
+（这里的 \(I\) 是单粒子希尔伯特空间上的单位算符）。
+
+接着在福克空间中，对每个单粒子模式 \(j\) 引入一对玻色子的湮灭/创生算符 \(a_j, a_j^\dagger\)，满足
+\[
+[a_j,a_k^\dagger]=\delta_{jk},\qquad [a_j,a_k]=0,\qquad [a_j^\dagger,a_k^\dagger]=0.
+\]
+并在占有数基底
+\[
+|n_1,n_2,\dots\rangle
+\]
+上定义它们的作用：
+\[
+a_j|n_1,\dots,n_j,\dots\rangle=\sqrt{n_j}\,|n_1,\dots,n_j-1,\dots\rangle,
+\]
+\[
+a_j^\dagger|n_1,\dots,n_j,\dots\rangle=\sqrt{n_j+1}\,|n_1,\dots,n_j+1,\dots\rangle.
+\]
+真空态定义为
+\[
+|0\rangle \equiv |0,0,0,\dots\rangle.
+\]
+于是“一粒子处于模式 \(j\)”的态是
+\[
+a_j^\dagger|0\rangle = |0,\dots,1_j,\dots\rangle \equiv |j\rangle.
+\]
+这里最后一个等号就是把福克空间的一粒子子空间与单粒子希尔伯特空间做识别：一粒子子空间中的基向量 \(a_j^\dagger|0\rangle\) 对应单粒子态 \(|j\rangle\)。在这个约定下，我们可以用同一个记号 \(|j\rangle\) 来写这两件事。
+
+现在定义场算符为
+\[
+\hat{\Psi}(x)=\sum_j a_j\,\psi_j(x)=\sum_j a_j\langle x|j\rangle,
+\qquad
+\hat{\Psi}^\dagger(x)=\sum_j a_j^\dagger\,\psi_j^*(x)=\sum_j a_j^\dagger\langle j|x\rangle.
 \]
 
 用这个展开，我们可以验证上面的“创生”性质。对真空态作用：
@@ -66,3 +102,18 @@ a_j|n_1,\dots,n_j,\dots\rangle
 = \sum_j \langle j|x_0\rangle\,|j\rangle .
 \]
 两式相同，因此 \(\hat{\Psi}^\dagger(x_0)|0\rangle=|x_0\rangle\) 成立。
+
+顺便说一句，这套定义也能把“一粒子态”和“波函数”的对应关系写得非常直接。任取一个一粒子态
+\[
+|\psi\rangle=\sum_j c_j\,a_j^\dagger|0\rangle,
+\]
+由于在一粒子子空间里 \(a_j^\dagger|0\rangle\equiv |j\rangle\)，它在位置表象的波函数就是
+\[
+\psi(x)=\langle x|\psi\rangle=\sum_j c_j\,\langle x|j\rangle=\sum_j c_j\,\psi_j(x).
+\]
+把 \(\hat{\Psi}(x)\) 作用到这个一粒子态上，会得到对应的振幅并把系统送回真空：
+\[
+\hat{\Psi}(x)|\psi\rangle
+=\sum_j c_j\,\psi_j(x)\,|0\rangle
+=\psi(x)\,|0\rangle.
+\]
