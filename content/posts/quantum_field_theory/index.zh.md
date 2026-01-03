@@ -43,7 +43,15 @@ a_j|n_1,\dots,n_j,\dots\rangle
 \hat{\Psi}^\dagger(x_0)\,|0\rangle = |x_0\rangle .
 \]
 
-为了把这个想法写成可计算的形式，我们先选取一组完备、正交归一的单粒子态 \(\{|u_j\rangle\}\)（\(j=1,2,\dots\)）。这里的 \(j\) 只是单粒子基向量的编号（例如动量本征态的标签），不是“粒子数”；粒子数由 \(|n\rangle\) 或 \(|n_1,n_2,\dots\rangle\) 里的 \(n,n_j\) 来表示。它们在位置表象的波函数记为
+为了把这个想法写成可计算的形式，我们先选取一组完备、正交归一的单粒子态 \(\{|u_j\rangle\}\)（\(j=1,2,\dots\)）。这里的 \(j\) 只是单粒子基向量的编号（例如动量本征态的标签），不是“粒子数”；粒子数由 \(|n\rangle\) 或 \(|n_1,n_2,\dots\rangle\) 里的 \(n,n_j\) 来表示。
+
+这里需要强调一个容易混淆的点：\(|u_j\rangle\) 是“单粒子希尔伯特空间”里的态向量；而后面会出现的 \(|1_j\rangle\) 则是我们用许多谐振子构造出来的“总空间”里的向量。它们严格来说不住在同一个空间里，因此不能直接写成 \(|u_j\rangle=|1_j\rangle\)。所谓“对应”，指的是：只看总占据数为 1 的那部分状态，它与单粒子空间可以一一对应。为了计算方便，我们约定基底之间的对应关系为
+\[
+|u_j\rangle \longleftrightarrow |1_j\rangle \equiv a_j^\dagger|0\rangle.
+\]
+这样，任意单粒子态若写作 \(|\psi\rangle=\sum_j c_j|u_j\rangle\)，那么它在“总占据数为 1”的那部分里就写作 \(\sum_j c_j|1_j\rangle\)。两边用的是同一组系数 \(c_j\)，描述的是同一个单粒子物理态，只是用两套记号来表达。
+
+在位置表象中，这组单粒子态对应的波函数记为
 \[
 u_j(x)\equiv \langle x|u_j\rangle,\qquad \langle u_j|x\rangle=u_j^*(x).
 \]
@@ -106,7 +114,7 @@ a_j^\dagger|0\rangle = |0,\dots,1_j,\dots\rangle \equiv |1_j\rangle.
 \[
 \psi(x)=\langle x|\psi\rangle=\sum_j c_j\,\langle x|u_j\rangle=\sum_j c_j\,u_j(x).
 \]
-把 \(\hat{\Psi}(x)\) 作用到这个一粒子态上，会得到对应的振幅并把系统送回真空：
+把 \(\hat{\Psi}(x)\) 作用到这个一粒子态上，会得到对应的振幅并把系统送回 \(|0\rangle\)：
 \[
 \hat{\Psi}(x)|\psi\rangle
 =\sum_j c_j\,u_j(x)\,|0\rangle
