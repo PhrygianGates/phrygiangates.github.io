@@ -38,7 +38,7 @@ a_j|n_1,\dots,n_j,\dots\rangle
 
 在通常的量子力学里，我们常常固定粒子数来讨论。单粒子波函数是 \(\psi(x)=\langle x|\psi\rangle\)。如果粒子数固定为 \(N\)，多粒子波函数可以写作 \(\psi(x_1,x_2,\dots,x_N)=\langle x_1,x_2,\dots,x_N|\Psi\rangle\)。
 
-相比于量子力学研究固定粒子数的情况，二次量子化的要点是：把 0 粒子、1 粒子、2 粒子等不同粒子数的状态统一放进同一个“总空间”，也就是福克空间；然后用创生/湮灭算符在这个空间里增减粒子数。为此我们引入场算符（算符值场）\(\hat{\Psi}(x)\)：它把位置 \(x\) 作为标记，对应一个作用在福克空间上的算符。\(\hat{\Psi}(x_0)\) 是一个算符，而它的厄米共轭 \(\hat{\Psi}^\dagger(x_0)\) 直观上应该能在位置 \(x_0\) 处“创造”一个粒子；对真空态 \(|0\rangle\) 作用时，它给出一个单粒子位置本征态 \(|x_0\rangle\)：
+如果粒子数不固定，而允许 0 粒子、1 粒子、2 粒子……这些情况同时被讨论，那么我们需要一个“总的”希尔伯特空间来容纳它们。一个很直观的做法是：选定一组完备、正交归一的单粒子基 \(\{|u_j\rangle\}\)，把每个编号 \(j\) 看成一个彼此独立的谐振子自由度；用一对升降算符 \(a_j,a_j^\dagger\) 来减少/增加这个自由度的占据数。接下来我们还会引入一个带位置标签的算符 \(\hat{\Psi}(x)\)。它的厄米共轭 \(\hat{\Psi}^\dagger(x_0)\) 作用在全零占据数的态（下面会记作 \(|0\rangle\)）上，会给出单粒子的位置本征态 \(|x_0\rangle\)：
 \[
 \hat{\Psi}^\dagger(x_0)\,|0\rangle = |x_0\rangle .
 \]
@@ -53,11 +53,11 @@ u_j(x)\equiv \langle x|u_j\rangle,\qquad \langle u_j|x\rangle=u_j^*(x).
 \]
 （这里的 \(I\) 是单粒子希尔伯特空间上的单位算符）。
 
-接着在福克空间中，对每个单粒子模式 \(j\)（也就是我们选定的那组单粒子基 \(|u_j\rangle\) 的编号）引入一对玻色子的湮灭/创生算符 \(a_j, a_j^\dagger\)。这里所谓的“模式”，指的就是：一旦选定单粒子基 \(\{|u_j\rangle\}\)，每个 \(j\) 就对应一个可以被粒子占据的单粒子态；玻色子可以有多个占据同一个模式，而这个模式里的粒子数记作 \(n_j\)。这些算符满足
+接着，对每个编号 \(j\)（也就是我们选定的那组单粒子基 \(|u_j\rangle\) 的编号）引入一对湮灭/创生算符 \(a_j, a_j^\dagger\)。你可以把它们理解为“第 \(j\) 个谐振子”的升降算符：第 \(j\) 个谐振子的占据数（激发数）记作 \(n_j\)。这些算符满足
 \[
 [a_j,a_k^\dagger]=\delta_{jk},\qquad [a_j,a_k]=0,\qquad [a_j^\dagger,a_k^\dagger]=0.
 \]
-这组对易关系保证：对每个固定的 \(j\)，\(\{a_j,a_j^\dagger\}\) 的代数结构与单个谐振子的升降算符相同，因此会自然出现占有数（数态）以及 \(\sqrt{n_j}\) 这样的系数。我们用占有数基底（用每个模式的粒子数 \(n_j\) 来标记的基底）
+这组对易关系保证：对每个固定的 \(j\)，\(\{a_j,a_j^\dagger\}\) 的代数结构与单个谐振子的升降算符相同，因此会自然出现数态以及 \(\sqrt{n_j}\) 这样的系数。我们用占据数基底（用每个谐振子的占据数 \(n_j\) 来标记的基底）
 \[
 |n_1,n_2,\dots\rangle
 \]
@@ -68,24 +68,24 @@ a_j|n_1,\dots,n_j,\dots\rangle=\sqrt{n_j}\,|n_1,\dots,n_j-1,\dots\rangle,
 \[
 a_j^\dagger|n_1,\dots,n_j,\dots\rangle=\sqrt{n_j+1}\,|n_1,\dots,n_j+1,\dots\rangle.
 \]
-真空态（0 粒子态，也就是所有模式占据数都为 0）定义为
+全零占据数的态（也就是所有谐振子的占据数都为 0）定义为
 \[
 |0\rangle \equiv |0,0,0,\dots\rangle.
 \]
-于是“一粒子处于模式 \(j\)”的态是
+于是“只有第 \(j\) 个谐振子的占据数为 1，其它都为 0”的态是
 \[
 a_j^\dagger|0\rangle = |0,\dots,1_j,\dots\rangle \equiv |1_j\rangle.
 \]
-这里的 \(|1_j\rangle\) 表示“一粒子且处在模式 \(j\)”的福克空间态。福克空间的一粒子子空间（粒子数为 1 的那部分）与单粒子希尔伯特空间自然对应：在这个对应下，\(|1_j\rangle\) 与单粒子态 \(|u_j\rangle\) 一一对应。
+这里的 \(|1_j\rangle\) 表示“只有第 \(j\) 个谐振子被激发一次”的态。只看总占据数为 1 的那一部分状态，它与单粒子希尔伯特空间自然对应：在这个对应下，\(|1_j\rangle\) 与单粒子态 \(|u_j\rangle\) 一一对应。
 
-现在定义场算符为
+现在定义这组带位置标签的算符为
 \[
 \hat{\Psi}(x)=\sum_j a_j\,u_j(x)=\sum_j a_j\langle x|u_j\rangle,
 \qquad
 \hat{\Psi}^\dagger(x)=\sum_j a_j^\dagger\,u_j^*(x)=\sum_j a_j^\dagger\langle u_j|x\rangle.
 \]
 
-用这个展开，我们可以验证上面的“创生”性质。对真空态作用：
+用这个展开，我们可以验证上面的性质。对 \(|0\rangle\) 作用：
 \[
 \hat{\Psi}^\dagger(x_0)|0\rangle
 \;=\sum_j a_j^\dagger\,\langle u_j|x_0\rangle\,|0\rangle
@@ -97,13 +97,12 @@ a_j^\dagger|0\rangle = |0,\dots,1_j,\dots\rangle \equiv |1_j\rangle.
 |x_0\rangle = \sum_j |u_j\rangle\langle u_j|x_0\rangle
 = \sum_j \langle u_j|x_0\rangle\,|u_j\rangle .
 \]
-将单粒子态 \(|u_j\rangle\) 与一粒子福克态 \(|1_j\rangle\) 做上面的一一对应识别后，两式逐项相同，因此 \(\hat{\Psi}^\dagger(x_0)|0\rangle=|x_0\rangle\) 成立。
-
+将单粒子态 \(|u_j\rangle\) 与“总占据数为 1”的态 \(|1_j\rangle\) 做上面的一一对应识别后，两式逐项相同，因此 \(\hat{\Psi}^\dagger(x_0)|0\rangle=|x_0\rangle\) 成立。
 顺便说一句，这套定义也能把“一粒子态”和“波函数”的对应关系写得非常直接。任取一个一粒子态
 \[
 |\psi\rangle=\sum_j c_j\,a_j^\dagger|0\rangle=\sum_j c_j\,|1_j\rangle,
 \]
-由于在一粒子子空间里 \(a_j^\dagger|0\rangle\equiv |1_j\rangle\)，并且 \(|1_j\rangle\) 与单粒子态 \(|u_j\rangle\) 对应，它在位置表象的波函数就是
+由于在“总占据数为 1”的那一部分里 \(a_j^\dagger|0\rangle\equiv |1_j\rangle\)，并且 \(|1_j\rangle\) 与单粒子态 \(|u_j\rangle\) 对应，它在位置表象的波函数就是
 \[
 \psi(x)=\langle x|\psi\rangle=\sum_j c_j\,\langle x|u_j\rangle=\sum_j c_j\,u_j(x).
 \]
