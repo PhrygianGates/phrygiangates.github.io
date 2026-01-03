@@ -106,17 +106,4 @@ a_j^\dagger|0\rangle = |0,\dots,1_j,\dots\rangle \equiv |1_j\rangle.
 = \sum_j \langle u_j|x_0\rangle\,|u_j\rangle .
 \]
 将单粒子态 \(|u_j\rangle\) 与“总占据数为 1”的态 \(|1_j\rangle\) 做上面的一一对应识别后，两式逐项相同，因此 \(\hat{\Psi}^\dagger(x_0)|0\rangle=|x_0\rangle\) 成立。
-顺便说一句，这套定义也能把“一粒子态”和“波函数”的对应关系写得非常直接。任取一个一粒子态
-\[
-|\psi\rangle=\sum_j c_j\,a_j^\dagger|0\rangle=\sum_j c_j\,|1_j\rangle,
-\]
-由于在“总占据数为 1”的那一部分里 \(a_j^\dagger|0\rangle\equiv |1_j\rangle\)，并且 \(|1_j\rangle\) 与单粒子态 \(|u_j\rangle\) 对应，它在位置表象的波函数就是
-\[
-\psi(x)=\langle x|\psi\rangle=\sum_j c_j\,\langle x|u_j\rangle=\sum_j c_j\,u_j(x).
-\]
-把 \(\hat{\Psi}(x)\) 作用到这个一粒子态上，会得到对应的振幅并把系统送回 \(|0\rangle\)：
-\[
-\hat{\Psi}(x)|\psi\rangle
-=\sum_j c_j\,u_j(x)\,|0\rangle
-=\psi(x)\,|0\rangle.
-\]
+
