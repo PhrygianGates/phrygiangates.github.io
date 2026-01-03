@@ -43,23 +43,21 @@ a_j|n_1,\dots,n_j,\dots\rangle
 \hat{\Psi}^\dagger(x_0)\,|0\rangle = |x_0\rangle .
 \]
 
-为了把这个想法写成可计算的形式，我们先选取一组完备、正交归一的单粒子态 \(\{|j\rangle\}\)（\(j=1,2,\dots\)）。这里的 \(j\) 只是单粒子基向量的编号（例如动量本征态的标签），不是“粒子数”；粒子数由 \(|n\rangle\) 或 \(|n_1,n_2,\dots\rangle\) 里的 \(n,n_j\) 来表示。它们在位置表象的波函数记为
+为了把这个想法写成可计算的形式，我们先选取一组完备、正交归一的单粒子态 \(\{|u_j\rangle\}\)（\(j=1,2,\dots\)）。这里的 \(j\) 只是单粒子基向量的编号（例如动量本征态的标签），不是“粒子数”；粒子数由 \(|n\rangle\) 或 \(|n_1,n_2,\dots\rangle\) 里的 \(n,n_j\) 来表示。它们在位置表象的波函数记为
 \[
-\psi_j(x)\equiv \langle x|j\rangle,\qquad \langle j|x\rangle=\psi_j^*(x).
+u_j(x)\equiv \langle x|u_j\rangle,\qquad \langle u_j|x\rangle=u_j^*(x).
 \]
 并满足完备性
 \[
-\sum_j |j\rangle\langle j| = I
+\sum_j |u_j\rangle\langle u_j| = I
 \]
 （这里的 \(I\) 是单粒子希尔伯特空间上的单位算符）。
 
-这里说的“模式”，指的就是：一旦选定了单粒子基 \(\{|j\rangle\}\)，每一个编号 \(j\) 就对应一个独立的单粒子自由度（一个“基方向”）。在二次量子化里，我们允许很多个玻色子占据同一个单粒子态 \(|j\rangle\)，于是用占据数 \(n_j\) 来记录“有多少个粒子在这个模式里”。
-
-接着在福克空间中，对每个单粒子模式 \(j\)（也就是我们选定的那组单粒子基 \(|j\rangle\) 的编号）引入一对玻色子的湮灭/创生算符 \(a_j, a_j^\dagger\)，满足
+接着在福克空间中，对每个单粒子模式 \(j\)（也就是我们选定的那组单粒子基 \(|u_j\rangle\) 的编号）引入一对玻色子的湮灭/创生算符 \(a_j, a_j^\dagger\)。这里所谓的“模式”，指的就是：一旦选定单粒子基 \(\{|u_j\rangle\}\)，每个 \(j\) 就对应一个可以被粒子占据的单粒子态；玻色子可以有多个占据同一个模式，而这个模式里的粒子数记作 \(n_j\)。这些算符满足
 \[
 [a_j,a_k^\dagger]=\delta_{jk},\qquad [a_j,a_k]=0,\qquad [a_j^\dagger,a_k^\dagger]=0.
 \]
-并在占有数基底（用每个模式的粒子数 \(n_j\) 来标记的基底；可以把它理解为“对每个模式各自取一个数态 \(|n_j\rangle\)，再把所有模式的数态并排写在一起”）
+这组对易关系保证：对每个固定的 \(j\)，\(\{a_j,a_j^\dagger\}\) 的代数结构与单个谐振子的升降算符相同，因此会自然出现占有数（数态）以及 \(\sqrt{n_j}\) 这样的系数。我们用占有数基底（用每个模式的粒子数 \(n_j\) 来标记的基底）
 \[
 |n_1,n_2,\dots\rangle
 \]
@@ -76,46 +74,42 @@ a_j^\dagger|n_1,\dots,n_j,\dots\rangle=\sqrt{n_j+1}\,|n_1,\dots,n_j+1,\dots\rang
 \]
 于是“一粒子处于模式 \(j\)”的态是
 \[
-a_j^\dagger|0\rangle = |0,\dots,1_j,\dots\rangle \equiv |j\rangle.
+a_j^\dagger|0\rangle = |0,\dots,1_j,\dots\rangle \equiv |1_j\rangle.
 \]
-这里最后一个等号就是把福克空间的一粒子子空间（粒子数为 1 的那部分）与单粒子希尔伯特空间做识别：一粒子子空间中的基向量 \(a_j^\dagger|0\rangle\) 对应单粒子态 \(|j\rangle\)。在这个约定下，我们可以用同一个记号 \(|j\rangle\) 来写这两件事。
+这里的 \(|1_j\rangle\) 表示“一粒子且处在模式 \(j\)”的福克空间态。福克空间的一粒子子空间（粒子数为 1 的那部分）与单粒子希尔伯特空间自然对应：在这个对应下，\(|1_j\rangle\) 与单粒子态 \(|u_j\rangle\) 一一对应。
 
 现在定义场算符为
 \[
-\hat{\Psi}(x)=\sum_j a_j\,\psi_j(x)=\sum_j a_j\langle x|j\rangle,
+\hat{\Psi}(x)=\sum_j a_j\,u_j(x)=\sum_j a_j\langle x|u_j\rangle,
 \qquad
-\hat{\Psi}^\dagger(x)=\sum_j a_j^\dagger\,\psi_j^*(x)=\sum_j a_j^\dagger\langle j|x\rangle.
+\hat{\Psi}^\dagger(x)=\sum_j a_j^\dagger\,u_j^*(x)=\sum_j a_j^\dagger\langle u_j|x\rangle.
 \]
 
 用这个展开，我们可以验证上面的“创生”性质。对真空态作用：
 \[
 \hat{\Psi}^\dagger(x_0)|0\rangle
-=\sum_j a_j^\dagger\,\langle j|x_0\rangle\,|0\rangle
-=\sum_j \langle j|x_0\rangle\,(a_j^\dagger|0\rangle).
+\;=\sum_j a_j^\dagger\,\langle u_j|x_0\rangle\,|0\rangle
+\;=\sum_j \langle u_j|x_0\rangle\,(a_j^\dagger|0\rangle)
+\;=\sum_j \langle u_j|x_0\rangle\,|1_j\rangle .
 \]
-而在一粒子子空间里，可以把 \(|j\rangle\) 与 \(a_j^\dagger|0\rangle\) 对应起来，于是
+另一方面，由完备关系 \(\sum_j|u_j\rangle\langle u_j|=I\)（这是单粒子空间里的等式）立刻得到
 \[
-\hat{\Psi}^\dagger(x_0)|0\rangle
-=\sum_j \langle j|x_0\rangle\,|j\rangle .
+|x_0\rangle = \sum_j |u_j\rangle\langle u_j|x_0\rangle
+= \sum_j \langle u_j|x_0\rangle\,|u_j\rangle .
 \]
-另一方面，由完备关系 \(\sum_j|j\rangle\langle j|=I\) 立刻得到
-\[
-|x_0\rangle = \sum_j |j\rangle\langle j|x_0\rangle
-= \sum_j \langle j|x_0\rangle\,|j\rangle .
-\]
-两式相同，因此 \(\hat{\Psi}^\dagger(x_0)|0\rangle=|x_0\rangle\) 成立。
+将单粒子态 \(|u_j\rangle\) 与一粒子福克态 \(|1_j\rangle\) 做上面的一一对应识别后，两式逐项相同，因此 \(\hat{\Psi}^\dagger(x_0)|0\rangle=|x_0\rangle\) 成立。
 
 顺便说一句，这套定义也能把“一粒子态”和“波函数”的对应关系写得非常直接。任取一个一粒子态
 \[
-|\psi\rangle=\sum_j c_j\,a_j^\dagger|0\rangle,
+|\psi\rangle=\sum_j c_j\,a_j^\dagger|0\rangle=\sum_j c_j\,|1_j\rangle,
 \]
-由于在一粒子子空间里 \(a_j^\dagger|0\rangle\equiv |j\rangle\)，它在位置表象的波函数就是
+由于在一粒子子空间里 \(a_j^\dagger|0\rangle\equiv |1_j\rangle\)，并且 \(|1_j\rangle\) 与单粒子态 \(|u_j\rangle\) 对应，它在位置表象的波函数就是
 \[
-\psi(x)=\langle x|\psi\rangle=\sum_j c_j\,\langle x|j\rangle=\sum_j c_j\,\psi_j(x).
+\psi(x)=\langle x|\psi\rangle=\sum_j c_j\,\langle x|u_j\rangle=\sum_j c_j\,u_j(x).
 \]
 把 \(\hat{\Psi}(x)\) 作用到这个一粒子态上，会得到对应的振幅并把系统送回真空：
 \[
 \hat{\Psi}(x)|\psi\rangle
-=\sum_j c_j\,\psi_j(x)\,|0\rangle
+=\sum_j c_j\,u_j(x)\,|0\rangle
 =\psi(x)\,|0\rangle.
 \]
