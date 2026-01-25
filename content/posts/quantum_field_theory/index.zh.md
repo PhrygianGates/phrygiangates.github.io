@@ -107,3 +107,41 @@ a_j^\dagger|0\rangle = |0,\dots,1_j,\dots\rangle \equiv |1_j\rangle.
 \]
 将单粒子态 \(|u_j\rangle\) 与“总占据数为 1”的态 \(|1_j\rangle\) 做上面的一一对应识别后，两式逐项相同，因此 \(\hat{\Psi}^\dagger(x_0)|0\rangle=|x_0\rangle\) 成立。
 
+顺着这个思路，我们也可以用 \(\hat{\Psi}^\dagger(x)\) 来“在位置 \(x\) 处加一份激发”，从而构造两次激发的态。注意到玻色子的创生算符彼此对易：
+\[
+[a_j^\dagger,a_k^\dagger]=0,
+\]
+于是由
+\(\hat{\Psi}^\dagger(x)=\sum_j a_j^\dagger\,\langle u_j|x\rangle\)
+可以把对易子直接展开来算：
+\[
+[\hat{\Psi}^\dagger(x),\hat{\Psi}^\dagger(y)]
+=\hat{\Psi}^\dagger(x)\hat{\Psi}^\dagger(y)-\hat{\Psi}^\dagger(y)\hat{\Psi}^\dagger(x).
+\]
+把 \(\hat{\Psi}^\dagger\) 的展开代入：
+\[
+\hat{\Psi}^\dagger(x)\hat{\Psi}^\dagger(y)
+=\sum_{j,k} a_j^\dagger a_k^\dagger\,\langle u_j|x\rangle\,\langle u_k|y\rangle,
+\]
+\[
+\hat{\Psi}^\dagger(y)\hat{\Psi}^\dagger(x)
+=\sum_{j,k} a_j^\dagger a_k^\dagger\,\langle u_j|y\rangle\,\langle u_k|x\rangle.
+\]
+因此
+\[
+[\hat{\Psi}^\dagger(x),\hat{\Psi}^\dagger(y)]
+=\sum_{j,k}\Bigl(a_j^\dagger a_k^\dagger-a_k^\dagger a_j^\dagger\Bigr)\,\langle u_j|x\rangle\,\langle u_k|y\rangle
+=\sum_{j,k}[a_j^\dagger,a_k^\dagger]\,\langle u_j|x\rangle\,\langle u_k|y\rangle
+=0.
+\]
+因此定义
+\[
+|x,y\rangle\equiv \hat{\Psi}^\dagger(x)\hat{\Psi}^\dagger(y)|0\rangle,
+\]
+交换两个位置标签不会改变这个态：
+\[
+|y,x\rangle=\hat{\Psi}^\dagger(y)\hat{\Psi}^\dagger(x)|0\rangle
+=\hat{\Psi}^\dagger(x)\hat{\Psi}^\dagger(y)|0\rangle
+=|x,y\rangle.
+\]
+这说明两次激发的态在交换下是对称的，这正是玻色子的交换对称性。
