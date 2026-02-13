@@ -145,3 +145,25 @@ a_j^\dagger|0\rangle = |0,\dots,1_j,\dots\rangle \equiv |1_j\rangle.
 =|x,y\rangle.
 \]
 这说明两次激发的态在交换下是对称的，这正是玻色子的交换对称性。
+
+---
+
+作为一个具体例子，考虑单粒子谐振子的能量本征态 \(|n\rangle\)（\(n=0,1,2,\dots\)）。它们满足正交归一
+\[
+\langle m|n\rangle=\delta_{mn},
+\]
+并构成一组完备基，因此有单位算符的分解
+\[
+\sum_{n=0}^{\infty}|n\rangle\langle n|=I.
+\]
+
+在位置表象中定义它们的波函数
+\[
+\psi_n(x)\equiv \langle x|n\rangle,\qquad \langle n|x\rangle=\psi_n^*(x).
+\]
+于是连续位置基的正交关系 \(\langle y|x\rangle=\delta(y-x)\) 可以写成
+\[
+\delta(y-x)=\langle y|I|x\rangle
+=\sum_{n=0}^{\infty}\langle y|n\rangle\langle n|x\rangle
+=\sum_{n=0}^{\infty}\psi_n(y)\psi_n^*(x).
+\]
