@@ -45,7 +45,7 @@ a_j|n_1,\dots,n_j,\dots\rangle
 
 为了把这个想法写成可计算的形式，我们先选取一组完备、正交归一的单粒子态 \(\{|u_j\rangle\}\)（\(j=1,2,\dots\)）。这里的 \(j\) 只是单粒子基向量的编号（例如动量本征态的标签），不是“粒子数”；粒子数由 \(|n\rangle\) 或 \(|n_1,n_2,\dots\rangle\) 里的 \(n,n_j\) 来表示。
 
-这里需要强调一个容易混淆的点：\(|u_j\rangle\) 是“单粒子希尔伯特空间”里的态向量；而后面会出现的 \(|1_j\rangle\) 则是我们用许多谐振子构造出来的“总空间”里的向量。它们严格来说不住在同一个空间里，因此不能直接写成 \(|u_j\rangle=|1_j\rangle\)。所谓“对应”，指的是：只看总占据数为 1 的那部分状态，它与单粒子空间可以一一对应。为了计算方便，我们约定基底之间的对应关系为
+这里需要强调一个容易混淆的点：\(|u_j\rangle\) 是“单粒子希尔伯特空间”里的态向量；而后面会出现的 \(|1_j\rangle\) 则是我们用许多谐振子构造出来的“总空间”里的向量。它们严格来说不住在同一个空间里，因此不能直接写成 \(|u_j\rangle=|1_j\rangle\)。所谓“对应”，指的是：只看总占据数为 1 的那部分状态，它与单粒子空间可以一一对应(更严谨的说是“单谐振子空间”，即使粒子数不为一，依然可以一一对应，但总占据数等于2的那些就不能一一对应，因为可能不只是某个谐振子的占据数为2，还有可能两个谐振子的占据数为一)。为了计算方便，我们约定基底之间的对应关系为
 \[
 |u_j\rangle \longleftrightarrow |1_j\rangle \equiv a_j^\dagger|0\rangle.
 \]
@@ -167,3 +167,24 @@ a_j^\dagger|0\rangle = |0,\dots,1_j,\dots\rangle \equiv |1_j\rangle.
 =\sum_{n=0}^{\infty}\langle y|n\rangle\langle n|x\rangle
 =\sum_{n=0}^{\infty}\psi_n(y)\psi_n^*(x).
 \]
+
+---
+这里给出一个常用的计算：\(\int dx\,\hat{\Psi}^\dagger(x)\hat{\Psi}(x)\) 等于总占据数算符。
+
+注意 \(\langle m|n\rangle=\delta_{mn}\) 在位置表象下等价于
+\[
+\int dx\,\psi_m^*(x)\psi_n(x)=\delta_{mn}.
+\]
+若用这组基底来标记各个谐振子自由度，则
+\[
+\hat{\Psi}(x)=\sum_n a_n\psi_n(x),\qquad \hat{\Psi}^\dagger(x)=\sum_n a_n^\dagger\psi_n^*(x).
+\]
+于是
+\[
+\int dx\,\hat{\Psi}^\dagger(x)\hat{\Psi}(x)
+=\sum_{m,n}a_m^\dagger a_n\int dx\,\psi_m^*(x)\psi_n(x)
+=\sum_n a_n^\dagger a_n
+\equiv \sum_n N_n
+\equiv N.
+\]
+其中 \(N_n\equiv a_n^\dagger a_n\) 是第 \(n\) 个自由度的占据数算符，而 \(N\) 是总占据数（总激发数）算符（也常被称为总粒子数算符）。
