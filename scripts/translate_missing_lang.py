@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Translate posts to the missing language using Azure OpenAI.
+Translate posts to the missing language using an OpenAI-compatible API.
 
 Behavior:
 - For each directory under content/posts/** containing index.md and/or index.zh.md:
@@ -14,11 +14,10 @@ Constraints for the model (enforced via prompt and masking):
 - Also DO NOT translate code blocks (``` ... ```).
 - Preserve Markdown structure and KaTeX delimiters verbatim.
 
-Environment variables required for Azure OpenAI:
-- AZURE_OPENAI_ENDPOINT https://llm-proxy.perflab.nvidia.com
-- AZURE_OPENAI_API_KEY (your API key)
-- AZURE_OPENAI_DEPLOYMENT gpt-5-20250807 (the deployment name, e.g., gpt-4o-mini) 
-- Optionally: AZURE_OPENAI_API_VERSION (default: 2024-02-15-preview)
+Environment variables:
+- NVIDIA_API_KEY or OPENAI_API_KEY (your API key)
+- Optionally: OPENAI_BASE_URL (default: https://inference-api.nvidia.com)
+- Optionally: OPENAI_MODEL (default: gcp/google/gemini-2.5-pro)
 
 Usage:
   python scripts/translate_missing_lang.py
@@ -37,30 +36,32 @@ from pathlib import Path
 from typing import Dict, List, Tuple
 
 
-# ------------------------------ Azure OpenAI ------------------------------
+# ------------------------------ OpenAI-Compatible API ------------------------------
 
-def get_azure_client():
-    """Return an Azure OpenAI client instance using environment variables."""
-    # The unified OpenAI SDK supports Azure via AzureOpenAI class
+DEFAULT_BASE_URL = "https://inference-api.nvidia.com"
+DEFAULT_MODEL = "gcp/google/gemini-2.5-pro"
+
+
+def get_openai_client():
+    """Return an OpenAI-compatible client instance using environment variables."""
     try:
-        from openai import AzureOpenAI  # type: ignore
+        from openai import OpenAI  # type: ignore
     except Exception as exc:  # pragma: no cover - import-time aid
         raise RuntimeError(
             "Missing dependency: pip install openai>=1.0.0"
         ) from exc
 
-    endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT", "https://llm-proxy.perflab.nvidia.com")
-    api_key = os.environ.get("AZURE_OPENAI_API_KEY")
-    api_version = os.environ.get("AZURE_OPENAI_API_VERSION", "2025-02-01-preview")
-    if not endpoint or not api_key:
+    base_url = os.environ.get("OPENAI_BASE_URL", DEFAULT_BASE_URL)
+    api_key = os.environ.get("NVIDIA_API_KEY") or os.environ.get("OPENAI_API_KEY")
+    if not api_key:
         raise RuntimeError(
-            "AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_API_KEY must be set as environment variables."
+            "NVIDIA_API_KEY or OPENAI_API_KEY must be set as an environment variable."
         )
-    return AzureOpenAI(azure_endpoint=endpoint, api_key=api_key, api_version=api_version)
+    return OpenAI(base_url=base_url, api_key=api_key)
 
 
 def chat_complete(client, model: str, system_prompt: str, user_content: str) -> str:
-    """Call Azure OpenAI Chat Completions and return the text."""
+    """Call OpenAI-compatible Chat Completions and return the text."""
     resp = client.chat.completions.create(
         model=model,
         messages=[
@@ -273,12 +274,12 @@ def process_directory(client, model: str, dir_path: Path) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Translate posts to the missing language using Azure OpenAI")
+    parser = argparse.ArgumentParser(description="Translate posts to the missing language using an OpenAI-compatible API")
     parser.add_argument("--content-root", default=str(Path(__file__).resolve().parents[1] / "content" / "posts"),
                         help="Root directory of posts (default: content/posts)")
     parser.add_argument("--only", default=None, help="Process only this single post directory name (slug)")
-    parser.add_argument("--model", default=os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-5.1-20251113"),
-                        help="Azure OpenAI deployment name to use")
+    parser.add_argument("--model", default=os.environ.get("OPENAI_MODEL", DEFAULT_MODEL),
+                        help="OpenAI-compatible model name to use")
     args = parser.parse_args()
 
     posts_dir = Path(args.content_root)
@@ -286,7 +287,7 @@ def main() -> None:
         print(f"Directory not found: {posts_dir}", file=sys.stderr)
         sys.exit(1)
 
-    client = get_azure_client()
+    client = get_openai_client()
 
     # Iterate only immediate child directories of posts (each post bundle)
     for entry in sorted(posts_dir.iterdir()):
