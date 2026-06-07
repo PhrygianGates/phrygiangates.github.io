@@ -15,9 +15,9 @@ Constraints for the model (enforced via prompt and masking):
 - Preserve Markdown structure and KaTeX delimiters verbatim.
 
 Environment variables:
-- NVIDIA_API_KEY or OPENAI_API_KEY (your API key)
-- Optionally: OPENAI_BASE_URL (default: https://inference-api.nvidia.com)
-- Optionally: OPENAI_MODEL (default: gcp/google/gemini-2.5-pro)
+- LLM_API or NVIDIA_API_KEY (your API key)
+- Optionally: LLM_Endpoint (default: https://inference-api.nvidia.com)
+- Optionally: LLM_Model (default: gcp/google/gemini-2.5-pro)
 
 Usage:
   python scripts/translate_missing_lang.py
@@ -51,11 +51,11 @@ def get_openai_client():
             "Missing dependency: pip install openai>=1.0.0"
         ) from exc
 
-    base_url = os.environ.get("OPENAI_BASE_URL", DEFAULT_BASE_URL)
-    api_key = os.environ.get("NVIDIA_API_KEY") or os.environ.get("OPENAI_API_KEY")
+    base_url = os.environ.get("LLM_Endpoint", DEFAULT_BASE_URL)
+    api_key = os.environ.get("LLM_API") or os.environ.get("NVIDIA_API_KEY")
     if not api_key:
         raise RuntimeError(
-            "NVIDIA_API_KEY or OPENAI_API_KEY must be set as an environment variable."
+            "LLM_API or NVIDIA_API_KEY must be set as an environment variable."
         )
     return OpenAI(base_url=base_url, api_key=api_key)
 
@@ -278,7 +278,7 @@ def main() -> None:
     parser.add_argument("--content-root", default=str(Path(__file__).resolve().parents[1] / "content" / "posts"),
                         help="Root directory of posts (default: content/posts)")
     parser.add_argument("--only", default=None, help="Process only this single post directory name (slug)")
-    parser.add_argument("--model", default=os.environ.get("OPENAI_MODEL", DEFAULT_MODEL),
+    parser.add_argument("--model", default=os.environ.get("LLM_Model", DEFAULT_MODEL),
                         help="OpenAI-compatible model name to use")
     args = parser.parse_args()
 
