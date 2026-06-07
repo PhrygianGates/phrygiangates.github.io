@@ -115,3 +115,244 @@ H_I=g\int dx\left[\Psi_B^\dagger(x)\Psi_C^\dagger(x)\Psi_A(x)+\Psi_A^\dagger(x)\
 \mathcal A=\mathcal A^{(1)}+\mathcal A^{(2)}+\mathcal A^{(3)}+\cdots.
 \]
 如果耦合常数 \(g\) 很小，一阶项通常是 \(g\) 阶，二阶项是 \(g^2\) 阶，所以可以按阶数逐步近似。图像上说 \(A\) “暂时”出现或消失，只是一种描述高阶项的方便语言；严格地说，它是时间演化算符展开中的中间态贡献。
+
+---
+
+我们现在想看看相对论下的情形。先只考虑一维自由粒子，不加入势能。
+
+在普通非相对论情形中，单粒子哈密顿量是
+\[
+H=\frac{p^2}{2m}.
+\]
+在相对论情形中，能量和动量满足
+\[
+H^2=p^2+m^2,
+\]
+这里取 \(c=1\)。如果把 \(c\) 写回来，则是
+\[
+H^2=p^2c^2+m^2c^4.
+\]
+两者的关系可以从低速极限看出来。当 \(p\ll m\) 时，
+\[
+H=\sqrt{p^2+m^2}
+=m\sqrt{1+\frac{p^2}{m^2}}
+\approx m+\frac{p^2}{2m}.
+\]
+这里的 \(m\) 是静止能，在非相对论问题中通常只给出一个整体常数，可以忽略。剩下的就是
+\[
+\frac{p^2}{2m}.
+\]
+所以非相对论哈密顿量可以看成相对论能量在低速极限下去掉静止能之后的结果。
+
+现在把它量子化。在位置表象中，
+\[
+H\to i\frac{\partial}{\partial t},
+\qquad
+p\to -i\frac{\partial}{\partial x}.
+\]
+对于
+\[
+H=\frac{p^2}{2m},
+\]
+我们得到
+\[
+i\frac{\partial \phi}{\partial t}
+=-\frac{1}{2m}\frac{\partial^2\phi}{\partial x^2},
+\]
+也就是普通的薛定谔方程。
+
+对于相对论关系
+\[
+H^2=p^2+m^2,
+\]
+形式上可以写
+\[
+H=\pm\sqrt{p^2+m^2}.
+\]
+这当然也是一种做法。但下面我们想讨论一种更特殊、更优雅的形式：能不能把 \(H\) 写成关于 \(p\) 和 \(m\) 的线性表达式。更具体地说，我们先考虑一个在一维中运动的自由粒子。
+
+最简单的情形是
+\[
+m=0.
+\]
+这时
+\[
+H=\pm p.
+\]
+其中 \(H=p\) 对应向右运动的粒子，\(H=-p\) 对应向左运动的粒子。我们把这两个分量记作 \(\phi_1\) 和 \(\phi_2\)。
+
+对于 \(\phi_1\)，有
+\[
+H=p,
+\]
+所以
+\[
+i\frac{\partial\phi_1}{\partial t}
+=p\phi_1
+=-i\frac{\partial\phi_1}{\partial x}.
+\]
+也就是
+\[
+\frac{\partial\phi_1}{\partial t}
++\frac{\partial\phi_1}{\partial x}=0.
+\]
+它的解是
+\[
+\phi_1=f(x-t),
+\]
+表示一个向右移动的波。
+
+同理，对于 \(\phi_2\)，有
+\[
+H=-p,
+\]
+所以
+\[
+i\frac{\partial\phi_2}{\partial t}
+=-p\phi_2
+=i\frac{\partial\phi_2}{\partial x}.
+\]
+也就是
+\[
+\frac{\partial\phi_2}{\partial t}
+-\frac{\partial\phi_2}{\partial x}=0.
+\]
+它的解是
+\[
+\phi_2=g(x+t),
+\]
+表示一个向左移动的波。
+
+现在我们想把这两个方程写成一种统一的形式。把两个分量合在一起：
+\[
+\Phi=
+\begin{pmatrix}
+\phi_1\\
+\phi_2
+\end{pmatrix}.
+\]
+按照上面的关系，哈密顿量应该对第一分量给出 \(+p\)，对第二分量给出 \(-p\)。因此
+\[
+H\Phi
+=p
+\begin{pmatrix}
+1&0\\
+0&-1
+\end{pmatrix}
+\Phi.
+\]
+我们记
+\[
+\alpha=
+\begin{pmatrix}
+1&0\\
+0&-1
+\end{pmatrix},
+\]
+于是无质量情形可以统一写成
+\[
+H=\alpha p.
+\]
+
+现在考虑
+\[
+m\neq 0.
+\]
+我们猜测哈密顿量可以写成
+\[
+H=\alpha p+\beta m,
+\]
+其中 \(\beta\) 也是一个作用在二分量空间上的矩阵。为了满足相对论关系
+\[
+H^2=p^2+m^2,
+\]
+我们来平方这个表达式。由于 \(\alpha,\beta\) 只作用在 \((\phi_1,\phi_2)\) 这个二分量空间上，而 \(p\) 作用在 \(x\) 上，且 \(m\) 是常数，所以可以把它们和 \(p,m\) 对易：
+\[
+[\alpha,p]=0,\qquad [\beta,p]=0,\qquad [p,m]=0.
+\]
+于是
+\[
+H^2
+=\alpha^2p^2+\beta^2m^2+(\alpha\beta+\beta\alpha)pm.
+\]
+要让它等于
+\[
+p^2+m^2,
+\]
+就需要
+\[
+\alpha^2=1,\qquad
+\beta^2=1,\qquad
+\alpha\beta+\beta\alpha=0.
+\]
+
+我们已经选了
+\[
+\alpha=
+\begin{pmatrix}
+1&0\\
+0&-1
+\end{pmatrix},
+\]
+它满足
+\[
+\alpha^2=1.
+\]
+事实上这就是一个 Pauli 矩阵。Pauli 矩阵的平方都是 \(1\)，并且不同的 Pauli 矩阵彼此反对易。因此我们可以取另一个 Pauli 矩阵作为 \(\beta\)，比如
+\[
+\beta=
+\begin{pmatrix}
+0&1\\
+1&0
+\end{pmatrix}.
+\]
+于是
+\[
+H=\alpha p+\beta m
+=
+\begin{pmatrix}
+p&m\\
+m&-p
+\end{pmatrix}.
+\]
+
+把它作用在
+\[
+\Phi=
+\begin{pmatrix}
+\phi_1\\
+\phi_2
+\end{pmatrix}
+\]
+上，得到
+\[
+i\frac{\partial\phi_1}{\partial t}
+=p\phi_1+m\phi_2,
+\]
+\[
+i\frac{\partial\phi_2}{\partial t}
+=m\phi_1-p\phi_2.
+\]
+因此，一旦 \(m\neq0\)，\(\phi_1\) 和 \(\phi_2\) 的时间演化就彼此相关。第一分量的演化中出现了第二分量，第二分量的演化中也出现了第一分量。换句话说，质量项把右动分量和左动分量耦合在一起。
+
+回过头看，能把
+\[
+H^2=p^2+m^2
+\]
+写成
+\[
+H=\alpha p+\beta m
+\]
+这样的线性形式，一个很重要的假设就是：波函数不是单个 \(\phi\)，而是可以分成
+\[
+\Phi=
+\begin{pmatrix}
+\phi_1\\
+\phi_2
+\end{pmatrix}
+\]
+这两个分量。正是因为有了这个二分量结构，\(\alpha\) 和 \(\beta\) 才能是矩阵，才可能满足反对易关系
+\[
+\alpha\beta+\beta\alpha=0.
+\]
+这一步很像一种因式分解：我们不是直接处理平方形式 \(H^2=p^2+m^2\)，而是通过引入矩阵和二分量波函数，把它写成一个线性的哈密顿量。
