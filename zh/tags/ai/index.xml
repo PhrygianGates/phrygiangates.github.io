@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>AI on Phrygiangates</title><link>https://phrygiangates.github.io/zh/tags/ai/</link><description>Recent content in AI on Phrygiangates</description><generator>Hugo -- 0.149.0</generator><language>zh</language><lastBuildDate>Fri, 07 Nov 2025 23:00:00 +0800</lastBuildDate><atom:link href="https://phrygiangates.github.io/zh/tags/ai/index.xml" rel="self" type="application/rss+xml"/><item><title>自动化语音转录与翻译</title><link>https://phrygiangates.github.io/zh/posts/automating_transcription_and_translation/</link><pubDate>Fri, 07 Nov 2025 23:00:00 +0800</pubDate><guid>https://phrygiangates.github.io/zh/posts/automating_transcription_and_translation/</guid><description>&lt;p&gt;今天心血来潮，想用英语学习各种各样的课程，比如生物、地理这些。Bilibili 上有不少 The Great Courses 的课程，但我之前的观看体验是，这些课程里经常用到很多术语，直接听，哪怕配有英语字幕，也还是不能完全听懂。所以，我就想给这些课程视频配上中英文字幕再看。&lt;/p&gt;
+&lt;p&gt;技术方案很直接：用 &lt;code&gt;yutto&lt;/code&gt; 从 B 站上下载视频，&lt;code&gt;ffmpeg&lt;/code&gt; 从视频中提取音频，&lt;code&gt;whisper.cpp&lt;/code&gt; 从音频转录生成 SRT 字幕（顺便提一下，我用的是 Apple M3 Silicon），最后用 DeepSeek API 翻译 SRT 字幕。&lt;/p&gt;
+&lt;p&gt;实现后发现了一些问题，本质上都是大模型的幻觉导致的。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Whisper 转录有时会出现重复的无意义语句，即使音频很清晰。这可能和音频的采样格式有关，比如声道数、采样率等。我用的是 &lt;code&gt;large-v3&lt;/code&gt; 模型，但听说 &lt;code&gt;v2&lt;/code&gt; 模型在这种情况下可能表现得更稳定一些。&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;272
+00:23:23,360 --&amp;gt; 00:23:27,420
+Now the caldera has a crater at the bottom of the volcano. Now the caldera has a crater
+273
+00:23:27,420 --&amp;gt; 00:23:31,580
+at the bottom of the volcano. Now the caldera has a crater at the bottom of the volcano.
+274
+00:23:31,580 --&amp;gt; 00:23:35,180
+Now the caldera has a crater at the bottom of the volcano. Now the caldera has a crater
+275
+00:23:35,180 --&amp;gt; 00:23:37,440
+at the bottom of the volcano. Now the caldera has a crater at the bottom of the volcano.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;为了让 DeepSeek 能结合上下文进行分析，我选择将多行字幕一同“喂”给它，希望它能根据输入格式，一行一行地翻译出来，并且输出的行数能与输入对齐。然而，至少 DeepSeek 很难完美做到这一点。后来，我强制它输出 JSON 格式，并为每行编号，发现这样可以让翻译结果的总行数与输入总行数相等，但仍然无法保证每行都一一对应，有时会出现错位。我一开始一次性输入 50 行，但发现一旦错位，就会导致很长一段视频的中英文字幕对不上，看着很难受。所以，我把批处理大小调整为一次 10 行，这样即使出现错位，错误也不会持续太久。&lt;/p&gt;</description></item></channel></rss>

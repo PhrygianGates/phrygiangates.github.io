@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Statistical Mechanics on Phrygiangates</title><link>https://phrygiangates.github.io/zh/tags/statistical-mechanics/</link><description>Recent content in Statistical Mechanics on Phrygiangates</description><generator>Hugo -- 0.149.0</generator><language>zh</language><lastBuildDate>Thu, 05 Jun 2025 21:24:00 +0800</lastBuildDate><atom:link href="https://phrygiangates.github.io/zh/tags/statistical-mechanics/index.xml" rel="self" type="application/rss+xml"/><item><title>伊辛模型</title><link>https://phrygiangates.github.io/zh/posts/ising_model/</link><pubDate>Thu, 05 Jun 2025 21:24:00 +0800</pubDate><guid>https://phrygiangates.github.io/zh/posts/ising_model/</guid><description>&lt;p&gt;遵循 Susskind 的 Statistical Mechanics 课程，第 9 讲。&lt;/p&gt;
+&lt;p&gt;伊辛模型中单个自旋的能量为：&lt;/p&gt;
+\[E = -J\sigma\]&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;\(E\) 是该自旋的能量&lt;/li&gt;
+&lt;li&gt;\(J\) 是耦合常数（相互作用强度）&lt;/li&gt;
+&lt;li&gt;\(\sigma\) 是自旋取值，可以是 +1（自旋向上）或 -1（自旋向下）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;聚焦于单个自旋。
+它的配分函数 \(Z\)，对两个构型求和（\(\sigma = +1, \sigma = -1\)），为：
+&lt;/p&gt;
+\[
+Z = \sum_{\sigma \in \{+1, -1\}} e^{-\beta(-J\sigma)} = \sum_{\sigma \in \{+1, -1\}} e^{\beta J\sigma} = e^{\beta J(+1)} + e^{\beta J(-1)} = e^{\beta J} + e^{-\beta J} = 2 \cosh(\beta J)
+\]&lt;p&gt;（对于由 \(N\) 个独立、无相互作用的自旋组成的系统，总配分函数的对数是可加的：\(\ln Z_{total} = N \ln Z\)。）&lt;/p&gt;
+&lt;p&gt;让我们计算该自旋的平均能量 \(\langle E \rangle\)：
+平均能量由 \(\langle E \rangle = -\frac{1}{Z} \frac{\partial Z}{\partial \beta}\) 给出。
+由于 \(Z = 2 \cosh(\beta J)\)，它对 \(\beta\) 的导数为 \(\frac{\partial Z}{\partial \beta} = 2J \sinh(\beta J)\)。
+将这些代入关于 \(\langle E \rangle\) 的表达式中：
+&lt;/p&gt;</description></item></channel></rss>

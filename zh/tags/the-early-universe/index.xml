@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>The Early Universe on Phrygiangates</title><link>https://phrygiangates.github.io/zh/tags/the-early-universe/</link><description>Recent content in The Early Universe on Phrygiangates</description><generator>Hugo -- 0.149.0</generator><language>zh</language><lastBuildDate>Sun, 13 Apr 2025 17:51:09 +0800</lastBuildDate><atom:link href="https://phrygiangates.github.io/zh/tags/the-early-universe/index.xml" rel="self" type="application/rss+xml"/><item><title>弗里德曼-勒梅特-罗伯逊-沃尔克宇宙学模型</title><link>https://phrygiangates.github.io/zh/posts/flrw_cosmology_model/</link><pubDate>Sun, 13 Apr 2025 17:51:09 +0800</pubDate><guid>https://phrygiangates.github.io/zh/posts/flrw_cosmology_model/</guid><description>&lt;p&gt;在这篇文章中，我想介绍现代宇宙学的基本假设，即FLRW模型，同时也作为爱因斯坦场方程的一个应用。&lt;/p&gt;
+&lt;p&gt;思路很简单：给定一个FLRW度规，代入场方程，然后我们就能推导出尺度因子\(a\)（它是度规的一个参数）如何随\(t\)坐标变化。这里我用一个Python程序来表达这些计算。&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; sympy &lt;span style="color:#66d9ef"&gt;as&lt;/span&gt; sp
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; sympy.diffgeom &lt;span style="color:#f92672"&gt;import&lt;/span&gt; Manifold, Patch, CoordSystem, TensorProduct
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; sympy.diffgeom.diffgeom &lt;span style="color:#f92672"&gt;import&lt;/span&gt; metric_to_Ricci_components, metric_to_Christoffel_2nd
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; sympy &lt;span style="color:#f92672"&gt;import&lt;/span&gt; Symbol, Function, sin, simplify, Matrix
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Define spacetime dimensions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;dim &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Define manifold and coordinate system (using spherical coordinates)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;M &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Manifold(&lt;span style="color:#e6db74"&gt;&amp;#39;M&amp;#39;&lt;/span&gt;, dim)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;patch &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Patch(&lt;span style="color:#e6db74"&gt;&amp;#39;P&amp;#39;&lt;/span&gt;, M)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;coords &lt;span style="color:#f92672"&gt;=&lt;/span&gt; CoordSystem(&lt;span style="color:#e6db74"&gt;&amp;#39;coords&amp;#39;&lt;/span&gt;, patch, [
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Symbol(&lt;span style="color:#e6db74"&gt;&amp;#39;t&amp;#39;&lt;/span&gt;, real&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Symbol(&lt;span style="color:#e6db74"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;, real&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;, positive&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Symbol(&lt;span style="color:#e6db74"&gt;&amp;#39;theta&amp;#39;&lt;/span&gt;, real&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;, positive&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Symbol(&lt;span style="color:#e6db74"&gt;&amp;#39;phi&amp;#39;&lt;/span&gt;, real&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Get coordinate functions and basic one-forms&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;t, r, theta, phi &lt;span style="color:#f92672"&gt;=&lt;/span&gt; coords&lt;span style="color:#f92672"&gt;.&lt;/span&gt;coord_functions()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;dt, dr, dtheta, dphi &lt;span style="color:#f92672"&gt;=&lt;/span&gt; coords&lt;span style="color:#f92672"&gt;.&lt;/span&gt;base_oneforms()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Define scale factor and curvature parameter (using natural units c=1)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;a &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Function(&lt;span style="color:#e6db74"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;)(t) &lt;span style="color:#75715e"&gt;# Scale factor as a function of time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;k &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Symbol(&lt;span style="color:#e6db74"&gt;&amp;#39;k&amp;#39;&lt;/span&gt;) &lt;span style="color:#75715e"&gt;# Spatial curvature parameter&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Construct FLRW metric&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# ds² = -dt² + a(t)²[dr²/(1-kr²) + r²(dθ² + sin²θ dφ²)]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;g &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt;TensorProduct(dt, dt) &lt;span style="color:#f92672"&gt;+&lt;/span&gt; \
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; a&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt; (TensorProduct(dr, dr)&lt;span style="color:#f92672"&gt;/&lt;/span&gt;(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#f92672"&gt;-&lt;/span&gt;k&lt;span style="color:#f92672"&gt;*&lt;/span&gt;r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;) &lt;span style="color:#f92672"&gt;+&lt;/span&gt; \
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt; TensorProduct(dtheta, dtheta) &lt;span style="color:#f92672"&gt;+&lt;/span&gt; \
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt; sin(theta)&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt; TensorProduct(dphi, dphi))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Matrix form of the metric (for Einstein tensor calculation)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;g_matrix &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Matrix([
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, a&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#f92672"&gt;/&lt;/span&gt;(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#f92672"&gt;-&lt;/span&gt;k&lt;span style="color:#f92672"&gt;*&lt;/span&gt;r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;), &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, a&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt;r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, a&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt;r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt;sin(theta)&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Calculate Christoffel symbols&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Christoffel &lt;span style="color:#f92672"&gt;=&lt;/span&gt; metric_to_Christoffel_2nd(g)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Calculate Ricci tensor&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Ricci_tensor &lt;span style="color:#f92672"&gt;=&lt;/span&gt; metric_to_Ricci_components(g)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Define coordinate index names&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;coord_names &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#e6db74"&gt;&amp;#39;t&amp;#39;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#39;θ&amp;#39;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#39;φ&amp;#39;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Calculate inverse metric tensor&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;g_inverse &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Matrix([
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, (&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#f92672"&gt;-&lt;/span&gt;k&lt;span style="color:#f92672"&gt;*&lt;/span&gt;r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;)&lt;span style="color:#f92672"&gt;/&lt;/span&gt;a&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#f92672"&gt;/&lt;/span&gt;(a&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt;r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;), &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#f92672"&gt;/&lt;/span&gt;(a&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt;r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt;sin(theta)&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Calculate Ricci scalar R = g^{μν} * R_{μν}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Ricci_scalar &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; j &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Ricci_scalar &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; g_inverse[i, j] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; Ricci_tensor[i, j]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Ricci_scalar &lt;span style="color:#f92672"&gt;=&lt;/span&gt; simplify(Ricci_scalar)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Calculate Einstein tensor G_μν = R_μν - (1/2) * g_μν * R&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Einstein_tensor &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Matrix([[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; _ &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim)] &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; _ &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim)])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; j &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Einstein_tensor[i, j] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Ricci_tensor[i, j] &lt;span style="color:#f92672"&gt;-&lt;/span&gt; (&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#f92672"&gt;/&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;) &lt;span style="color:#f92672"&gt;*&lt;/span&gt; g_matrix[i, j] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; Ricci_scalar
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Einstein_tensor[i, j] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; simplify(Einstein_tensor[i, j])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Print Christoffel symbols&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(&lt;span style="color:#e6db74"&gt;&amp;#34;Christoffel symbols of FLRW metric (Γ^μ_νρ):&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; j &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; k &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; Christoffel[i, j, k] &lt;span style="color:#f92672"&gt;!=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(&lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;Γ^&lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;coord_names[i]&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;_&lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;coord_names[j]&lt;span style="color:#e6db74"&gt;}{&lt;/span&gt;coord_names[k]&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; = &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;simplify(Christoffel[i, j, k])&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Print Ricci tensor&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;\n&lt;/span&gt;&lt;span style="color:#e6db74"&gt;Ricci tensor of FLRW metric (R_μν):&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; j &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; Ricci_tensor[i, j] &lt;span style="color:#f92672"&gt;!=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(&lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;R_&lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;coord_names[i]&lt;span style="color:#e6db74"&gt;}{&lt;/span&gt;coord_names[j]&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; = &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;simplify(Ricci_tensor[i, j])&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Print Ricci scalar&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;\n&lt;/span&gt;&lt;span style="color:#e6db74"&gt;Ricci scalar of FLRW metric (R):&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(&lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;R = &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;Ricci_scalar&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Print Einstein tensor&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;\n&lt;/span&gt;&lt;span style="color:#e6db74"&gt;Einstein tensor of FLRW metric (G_μν):&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; j &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; Einstein_tensor[i, j] &lt;span style="color:#f92672"&gt;!=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(&lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;G_&lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;coord_names[i]&lt;span style="color:#e6db74"&gt;}{&lt;/span&gt;coord_names[j]&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; = &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;Einstein_tensor[i, j]&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;Christoffel symbols of FLRW metric (Γ^μ_νρ):
+Γ^t_rr = -a(t)*Subs(Derivative(a(_xi), _xi), _xi, t)/(k*r**2 - 1)
+Γ^t_θθ = a(t)*r**2*Subs(Derivative(a(_xi), _xi), _xi, t)
+Γ^t_φφ = a(t)*sin(theta)**2*r**2*Subs(Derivative(a(_xi), _xi), _xi, t)
+Γ^r_tr = Subs(Derivative(a(_xi), _xi), _xi, t)/a(t)
+Γ^r_rt = Subs(Derivative(a(_xi), _xi), _xi, t)/a(t)
+Γ^r_rr = -k*r/(k*r**2 - 1)
+Γ^r_θθ = k*r**3 - r
+Γ^r_φφ = (k*r**2 - 1)*sin(theta)**2*r
+Γ^θ_tθ = Subs(Derivative(a(_xi), _xi), _xi, t)/a(t)
+Γ^θ_rθ = 1/r
+Γ^θ_θt = Subs(Derivative(a(_xi), _xi), _xi, t)/a(t)
+Γ^θ_θr = 1/r
+Γ^θ_φφ = -sin(2*theta)/2
+Γ^φ_tφ = Subs(Derivative(a(_xi), _xi), _xi, t)/a(t)
+Γ^φ_rφ = 1/r
+Γ^φ_θφ = 1/tan(theta)
+Γ^φ_φt = Subs(Derivative(a(_xi), _xi), _xi, t)/a(t)
+Γ^φ_φr = 1/r
+Γ^φ_φθ = 1/tan(theta)
+Ricci tensor of FLRW metric (R_μν):
+R_tt = -3*Subs(Derivative(a(_xi), (_xi, 2)), _xi, t)/a(t)
+R_rr = (-2*k - a(t)*Subs(Derivative(a(_xi), (_xi, 2)), _xi, t) - 2*Subs(Derivative(a(_xi), _xi), _xi, t)**2)/(k*r**2 - 1)
+R_θθ = (2*k + a(t)*Subs(Derivative(a(_xi), (_xi, 2)), _xi, t) + 2*Subs(Derivative(a(_xi), _xi), _xi, t)**2)*r**2
+R_φφ = (2*k + a(t)*Subs(Derivative(a(_xi), (_xi, 2)), _xi, t) + 2*Subs(Derivative(a(_xi), _xi), _xi, t)**2)*sin(theta)**2*r**2
+Ricci scalar of FLRW metric (R):
+R = 6*(k + a(t)*Subs(Derivative(a(_xi), (_xi, 2)), _xi, t) + Subs(Derivative(a(_xi), _xi), _xi, t)**2)/a(t)**2
+Einstein tensor of FLRW metric (G_μν):
+G_tt = 3.0*(k + Subs(Derivative(a(_xi), _xi), _xi, t)**2)/a(t)**2
+G_rr = (1.0*k + 2.0*a(t)*Subs(Derivative(a(_xi), (_xi, 2)), _xi, t) + 1.0*Subs(Derivative(a(_xi), _xi), _xi, t)**2)/(k*r**2 - 1)
+G_θθ = (-1.0*k - 2.0*a(t)*Subs(Derivative(a(_xi), (_xi, 2)), _xi, t) - 1.0*Subs(Derivative(a(_xi), _xi), _xi, t)**2)*r**2
+G_φφ = (-1.0*k - 2.0*a(t)*Subs(Derivative(a(_xi), (_xi, 2)), _xi, t) - 1.0*Subs(Derivative(a(_xi), _xi), _xi, t)**2)*sin(theta)**2*r**2
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;p&gt;将最终的爱因斯坦张量代入爱因斯坦方程。以\( G_{tt} \)为例：&lt;/p&gt;</description></item><item><title>爱因斯坦场方程</title><link>https://phrygiangates.github.io/zh/posts/einstein_field_equation/</link><pubDate>Fri, 07 Mar 2025 00:15:09 +0800</pubDate><guid>https://phrygiangates.github.io/zh/posts/einstein_field_equation/</guid><description>&lt;p&gt;为了推导爱因斯坦场方程，我们从涉及能量与动量的物理考量出发，并结合来自时空曲率的几何考量。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;爱因斯坦场方程依赖于三个基本假设：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;能量守恒&lt;/li&gt;
+&lt;li&gt;动量守恒&lt;/li&gt;
+&lt;li&gt;牛顿引力方程&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对于假设1和2，能量-动量张量的守恒律成立：&lt;/p&gt;
+\[
+\nabla_\mu T^{\mu \nu} = 0
+\]&lt;p&gt;能量-动量张量 \(T^{\mu \nu}\) 概括了关键的物理量，其表示为：&lt;/p&gt;
+\[
+T^{\mu \nu} = \begin{pmatrix}
+T^{00} &amp; T^{01} &amp; T^{02} &amp; T^{03} \\
+T^{10} &amp; T^{11} &amp; T^{12} &amp; T^{13} \\
+T^{20} &amp; T^{21} &amp; T^{22} &amp; T^{23} \\
+T^{30} &amp; T^{31} &amp; T^{32} &amp; T^{33}
+\end{pmatrix}
+\]&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;\(T^{00} = \rho\)：能量密度&lt;/li&gt;
+&lt;li&gt;\(T^{i0} = P_i\)：在第\(i\)个空间方向上的动量密度&lt;/li&gt;
+&lt;li&gt;\(T^{0i} = S_i\)：在第\(i\)个空间方向的能流&lt;/li&gt;
+&lt;li&gt;\(\sigma_{ij}\)：空间应力，与压力和应力相关&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个关键特征是该张量的对称性 \(T^{\mu \nu} = T^{\nu \mu}\)，这表明能流 \(S_i\) 等于动量密度 \(P_i\)。尽管这看起来似乎违反直觉，但它自然源于爱因斯坦的质能等价：&lt;/p&gt;</description></item><item><title>微分几何基础 3</title><link>https://phrygiangates.github.io/zh/posts/some_basics_of_differential_geometry_3/</link><pubDate>Fri, 07 Feb 2025 21:35:09 +0800</pubDate><guid>https://phrygiangates.github.io/zh/posts/some_basics_of_differential_geometry_3/</guid><description>&lt;p&gt;在这篇文章中，我希望学习关于\( \nabla \)符号的一些基础知识，以及一个与黎曼曲率张量相关的重要公式。&lt;/p&gt;
+&lt;h2 id="i-联络"&gt;I. 联络&lt;/h2&gt;
+&lt;p&gt;定义：光滑流形\( (M, \mathcal{O}) \)上的联络\( \nabla \)是一个映射，它把由向量场\( X \)和\( (p, q) \)-张量场\( T \)组成的有序对映射为\( (p, q) \)-张量场\( \nabla_X T \)，满足：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;\( \nabla_X f = X f \), \(\forall f \in C^\infty(M) \)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;\( \nabla_X (T + S) = \nabla_X T + \nabla_X S \)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;\( \nabla_X (T(\omega, Y)) = (\nabla_X T)(\omega, Y) + T(\nabla_X \omega, Y) + T(\omega, \nabla_X Y) \)&lt;br&gt;
+（对于\( (1, 1) \)-张量场\( T \)，但对任意\( (p, q) \)-张量场\( T \)同理）。&lt;br&gt;
+（“莱布尼茨”）&lt;/p&gt;</description></item><item><title>微分几何基础 2</title><link>https://phrygiangates.github.io/zh/posts/some_basics_of_differential_geometry_2/</link><pubDate>Tue, 28 Jan 2025 11:05:09 -0500</pubDate><guid>https://phrygiangates.github.io/zh/posts/some_basics_of_differential_geometry_2/</guid><description>&lt;p&gt;在本文中，我们将更深入探讨微分几何的概念，主要聚焦于黎曼张量、里奇张量以及标量曲率的概念。&lt;/p&gt;
+&lt;h2 id="一黎曼张量"&gt;一、黎曼张量&lt;/h2&gt;
+&lt;h3 id="a-定义"&gt;A. 定义&lt;/h3&gt;
+&lt;p&gt;我们从一个\(d\)维流形\(M\)出发，其上赋予了（伪）黎曼度规\(g_{\mu\nu}\)。与该度规相容的联络为Levi-Civita联络\(\nabla\)。黎曼曲率张量（常简称为黎曼张量）\(R^\rho_{\ \sigma\mu\nu}\)定义为作用在向量场\(V^\rho\)上的协变导数的对易子：
+&lt;/p&gt;
+\[
+\bigl[\nabla_\mu, \nabla_\nu\bigr] V^\rho
+\;=\; R^\rho_{\ \sigma\mu\nu} \, V^\sigma.
+\]&lt;p&gt;
+用指标记号，另一种常见的写法是：
+&lt;/p&gt;
+\[
+R^\rho_{\ \sigma\mu\nu}
+\;=\;
+\partial_\mu \Gamma^\rho_{\nu\sigma}
+\;-\;
+\partial_\nu \Gamma^\rho_{\mu\sigma}
+\;+\;
+\Gamma^\rho_{\mu\lambda}\,\Gamma^\lambda_{\nu\sigma}
+\;-\;
+\Gamma^\rho_{\nu\lambda}\,\Gamma^\lambda_{\mu\sigma},
+\]&lt;p&gt;
+其中\(\Gamma^\rho_{\mu\nu}\)是与Levi-Civita联络相关的Christoffel符号。&lt;/p&gt;
+&lt;h4 id="记号约定"&gt;记号约定&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;希腊指标\(\mu, \nu, \rho, \sigma, \ldots\)从0到\(d-1\)（若流形是\(d\)维）。&lt;/li&gt;
+&lt;li&gt;通过度规\(g_{\mu\nu}\)升降指标，例如\(V_\mu = g_{\mu\nu}V^\nu\)。&lt;/li&gt;
+&lt;li&gt;\(\Gamma^\rho_{\mu\nu}\)为Christoffel符号，定义为
+\[
+\Gamma^\rho_{\mu\nu}
+\;=\;
+\frac{1}{2}\,g^{\rho\lambda}
+\Bigl(
+\partial_\mu g_{\lambda\nu}
++\partial_\nu g_{\lambda\mu}
+-\partial_\lambda g_{\mu\nu}
+\Bigr).
+\]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="b-通过沿闭合回路的平行移动推导"&gt;B. 通过沿闭合回路的平行移动推导&lt;/h3&gt;
+&lt;h4 id="1-平行移动"&gt;1. 平行移动&lt;/h4&gt;
+&lt;p&gt;考虑流形上的一个向量场\(V^\rho\)。沿曲线\(\gamma(\tau)\)对\(V^\rho\)进行的“平行移动”由条件给出：\(V^\rho\)沿该曲线的切向方向的协变导数为零。数学上表示为：
+&lt;/p&gt;
+\[
+\frac{dV^\rho}{d\tau} = \frac{d x^\mu}{d\tau} \nabla_\mu V^\rho = 0.
+\]&lt;p&gt;
+展开协变导数，得到：
+&lt;/p&gt;</description></item><item><title>微分几何的一些基础</title><link>https://phrygiangates.github.io/zh/posts/some_basics_of_differential_geometry/</link><pubDate>Tue, 21 Jan 2025 07:21:09 -0500</pubDate><guid>https://phrygiangates.github.io/zh/posts/some_basics_of_differential_geometry/</guid><description>&lt;p&gt;在这篇文章中，我希望建立一些微分几何的基础，以便理解爱因斯坦场方程。&lt;/p&gt;
+&lt;h2 id="1-黎曼曲率张量及其性质"&gt;1. 黎曼曲率张量及其性质&lt;/h2&gt;
+&lt;h3 id="黎曼曲率张量的定义"&gt;黎曼曲率张量的定义：&lt;/h3&gt;
+&lt;p&gt;黎曼曲率张量 \( R^i_{jkl} \) 是微分几何中的一个基本对象，表示流形的内禀曲率。其定义为：
+&lt;/p&gt;
+\[
+R^i_{jkl} = \partial_k \Gamma^i_{jl} - \partial_l \Gamma^i_{jk} + \Gamma^i_{km} \Gamma^m_{jl} - \Gamma^i_{lm} \Gamma^m_{jk}
+\]&lt;p&gt;
+其中 \( \Gamma^i_{jk} \) 是克里斯托费尔符号。&lt;/p&gt;
+&lt;h3 id="黎曼曲率张量的性质"&gt;黎曼曲率张量的性质：&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;比安基恒等式：
+&lt;/p&gt;
+\[
+\nabla_m R^i_{jkl} + \nabla_k R^i_{jlm} + \nabla_l R^i_{jmk} = 0
+\]&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对称性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在最后两个指标上反对称：
+\[
+R^i_{jkl} = -R^i_{jlk}
+\]&lt;/li&gt;
+&lt;li&gt;在交换第一对与第二对指标时反对称：
+\[
+R^i_{jkl} = -R^j_{ikl}
+\]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;应用：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;黎曼张量刻画当沿闭合回路进行平行输运时，向量被旋转或改变的程度。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="2-测地线及其推导原理"&gt;2. 测地线及其推导原理&lt;/h2&gt;
+&lt;h3 id="测地线方程"&gt;测地线方程：&lt;/h3&gt;
+&lt;p&gt;测地线是在弯曲空间中连接两点的最短路径，其方程可通过极小化作用量得到：
+&lt;/p&gt;
+\[
+\int ds = \int \sqrt{g_{\mu \nu} \frac{dx^\mu}{d\tau} \frac{dx^\nu}{d\tau}} \, d\tau
+\]&lt;p&gt;
+其中 \( g_{\mu \nu} \) 是度量张量，\( \tau \) 是仿射参数。&lt;/p&gt;</description></item><item><title>能量-动量张量</title><link>https://phrygiangates.github.io/zh/posts/stress_energy_tensor/</link><pubDate>Sat, 04 Jan 2025 00:36:09 +0800</pubDate><guid>https://phrygiangates.github.io/zh/posts/stress_energy_tensor/</guid><description>&lt;p&gt;在这篇文章中，我想构建一些关于爱因斯坦场方程的基础知识。首先，我将基于上一篇关于宇宙学的文章提出几个问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;什么是爱因斯坦张量和能量-动量张量？&lt;/li&gt;
+&lt;li&gt;爱因斯坦场方程是如何推导出来的？&lt;/li&gt;
+&lt;li&gt;在宇宙学背景下，什么是完美流体近似？&lt;/li&gt;
+&lt;li&gt;我们如何从爱因斯坦场方程推导出弗里德曼方程和加速度方程？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我们参考&lt;a href="https://ocw.mit.edu/courses/8-962-general-relativity-spring-2020/resources/lecture-4-volumes-and-volume-elements-conservation-laws/"&gt;这门课程&lt;/a&gt;。&lt;/p&gt;
+&lt;h3 id="1-四速度与固有时"&gt;1. &lt;strong&gt;四速度与固有时&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;四速度&lt;/strong&gt; \( u^\mu \) 描述粒子在时空中的运动，定义为：&lt;br&gt;
+&lt;/p&gt;
+\[
+u^\mu = \frac{dx^\mu}{d\tau}
+\]&lt;p&gt;&lt;br&gt;
+其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;\( x^\mu = (ct, x, y, z) \)：时空坐标。&lt;/li&gt;
+&lt;li&gt;\( \tau \)：固有时，即在粒子静止系中测得的时间。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在广义相对论中，采用 \( (-, +, +, +) \) 度规符号约定时，四速度的归一化条件为：&lt;br&gt;
+&lt;/p&gt;
+\[
+u^\mu u_\mu = -c^2
+\]&lt;p&gt;如果我们使用自然单位制（\( c = 1 \)），则可简化为：&lt;br&gt;
+&lt;/p&gt;
+\[
+u^\mu u_\mu = -1
+\]&lt;hr&gt;
+&lt;h3 id="2-能量与动量"&gt;2. &lt;strong&gt;能量与动量&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;四动量&lt;/strong&gt; \( P^\mu \) 将能量 \( E \) 与空间动量 \( \vec{p} \) 组合在一起：&lt;br&gt;
+&lt;/p&gt;
+\[
+P^\mu = (E/c, \vec{p})
+\]&lt;p&gt;关键组成：&lt;/p&gt;</description></item><item><title>暴胀宇宙学：我们的宇宙是否是多重宇宙的一部分？</title><link>https://phrygiangates.github.io/zh/posts/inflation_cosmology/</link><pubDate>Mon, 23 Dec 2024 17:01:09 +0800</pubDate><guid>https://phrygiangates.github.io/zh/posts/inflation_cosmology/</guid><description>&lt;p&gt;我想学习宇宙学，也许从 Andrew Liddle 的书《An Introduction to Modern Cosmology》和 MIT OpenCourseWare 的课程《The Early Universe》开始。&lt;/p&gt;
+&lt;h2 id="标准大爆炸"&gt;标准大爆炸&lt;/h2&gt;
+&lt;p&gt;它并不说明大爆炸的成因，而是描述大爆炸之后的结果。它假设在大爆炸之前所有物质已经存在。&lt;/p&gt;
+&lt;h2 id="宇宙暴胀"&gt;宇宙暴胀&lt;/h2&gt;
+&lt;p&gt;大爆炸的前传。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当压力为负时，引力可以表现为排斥。（在下一部分了解更多关于引力与压力关系的内容。）&lt;br&gt;
+早期宇宙中存在一块具有排斥性引力的物质，这就是大爆炸的成因。&lt;br&gt;
+这种排斥性物质的（质量/能量）密度在膨胀过程中不会降低。解决办法是引入负能量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="互补性引力与压力的关系"&gt;互补性：引力与压力的关系&lt;/h2&gt;
+&lt;p&gt;下面是对这些思想的高层次介绍，随后列出了一些宇宙学与广义相对论中的关键公式，展示为何负压可以产生排斥性的引力效应。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="1-能量-动量张量与爱因斯坦场方程"&gt;1. 能量-动量张量与爱因斯坦场方程&lt;/h3&gt;
+&lt;p&gt;在广义相对论（GR）中，引力由爱因斯坦场方程描述，它把时空的几何（通过爱因斯坦张量 \(G_{\mu\nu}\)）与时空的能量与动量内容（通过能量-动量张量 \(T_{\mu\nu}\)）联系起来：&lt;/p&gt;
+\[
+G_{\mu\nu} \;=\; \frac{8\pi G}{c^4}\,T_{\mu\nu},
+\]&lt;p&gt;其中 \(G\) 是引力常数，\(c\) 是光速。左边体现时空的曲率，右边说明质量、能量、动量与压力如何决定这种曲率。&lt;/p&gt;
+&lt;h4 id="完美流体近似"&gt;完美流体近似&lt;/h4&gt;
+&lt;p&gt;在宇宙学中，我们常将宇宙的内容（无论是物质、辐射还是暴胀子场）建模为“完美流体”，其能量-动量张量写作：&lt;/p&gt;
+\[
+T_{\mu\nu} \;=\; (\rho + p)\,u_{\mu}\,u_{\nu} \;+\; p\,g_{\mu\nu}.
+\]&lt;ul&gt;
+&lt;li&gt;\(\rho\) 是能量密度。&lt;/li&gt;
+&lt;li&gt;\(p\) 是压力。&lt;/li&gt;
+&lt;li&gt;\(u_\mu\) 是流体的四速度。&lt;/li&gt;
+&lt;li&gt;\(g_{\mu\nu}\) 是时空的度规张量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这个公式体现了不仅 \(\rho\)，\(p\) 也在决定时空曲率中扮演重要角色，而不仅仅是质量或能量密度本身。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="2-弗里德曼勒梅特罗伯逊沃尔克flrw宇宙学"&gt;2. 弗里德曼–勒梅特–罗伯逊–沃尔克（FLRW）宇宙学&lt;/h3&gt;
+&lt;p&gt;在宇宙学应用中，我们常假设宇宙是均匀、各向同性的，由 FLRW 度规描述。在这一假设下，从爱因斯坦场方程导出两条关键方程（弗里德曼方程）：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;弗里德曼方程（关于膨胀率 \(H = \dot{a}/a\)）：&lt;/p&gt;
+\[
+H^2 \;=\; \left(\frac{\dot{a}}{a}\right)^2 \;=\; \frac{8\pi G}{3}\,\rho \;-\; \frac{k}{a^2} \;+\; \frac{\Lambda}{3},
+\]&lt;p&gt;其中&lt;/p&gt;</description></item></channel></rss>

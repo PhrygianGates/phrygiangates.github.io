@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Investment on Phrygiangates</title><link>https://phrygiangates.github.io/zh/tags/investment/</link><description>Recent content in Investment on Phrygiangates</description><generator>Hugo -- 0.149.0</generator><language>zh</language><lastBuildDate>Mon, 20 Jan 2025 02:52:00 -0500</lastBuildDate><atom:link href="https://phrygiangates.github.io/zh/tags/investment/index.xml" rel="self" type="application/rss+xml"/><item><title>了解国债</title><link>https://phrygiangates.github.io/zh/posts/understanding_treasury_bond/</link><pubDate>Mon, 20 Jan 2025 02:52:00 -0500</pubDate><guid>https://phrygiangates.github.io/zh/posts/understanding_treasury_bond/</guid><description>&lt;p&gt;我想了解一些关于国债的基础信息。我感兴趣的问题包括：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;票面利率如何确定？&lt;/li&gt;
+&lt;li&gt;收益率如何确定？&lt;/li&gt;
+&lt;li&gt;收益率与价格的关系是什么？&lt;/li&gt;
+&lt;li&gt;收益率与利率的关系是什么？&lt;/li&gt;
+&lt;li&gt;从宏观经济角度，美国、中国和日本的国债市场处于什么状态？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我们参考&lt;a href="https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/pages/video-lectures-and-slides/fixed-income-securities/"&gt;这些讲座&lt;/a&gt;。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;国债是政府为筹资而发行的债务证券。它们以稳定性著称，是金融市场中的关键工具。以下是与国债相关关键概念的结构化说明。&lt;/p&gt;
+&lt;h3 id="1-国债的内在属性"&gt;&lt;strong&gt;1. 国债的内在属性&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;国债具有两个内在属性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;面值（本金）：&lt;/strong&gt;&lt;br&gt;
+到期时支付给债券持有人的金额。通常面值为$1,000，但可能有所不同。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;票面利率：&lt;/strong&gt;&lt;br&gt;
+发行时设定的固定年度利率，以面值的百分比表示。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;示例：&lt;/strong&gt; 面值为$1,000、票面利率为5%的债券每年支付$50利息。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="2-国债如何运作"&gt;&lt;strong&gt;2. 国债如何运作&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;持有国债时，你将收到：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;定期票息支付：&lt;/strong&gt; 这些支付基于债券的票面利率。通常为半年付。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;到期偿还面值：&lt;/strong&gt; 在债券期限结束时，将向持有人返还面值。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="示意图债券支付时间线"&gt;&lt;strong&gt;示意图：债券支付时间线&lt;/strong&gt;&lt;/h4&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;|--------------------|--------------------|--------------------| Maturity
+$25 $25 $25 $1,000
+(Coupon Payment) (Coupon Payment) (Coupon Payment) (Face Value + Coupon Payment)
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h3 id="3-市场交易价格与收益率"&gt;&lt;strong&gt;3. 市场交易：价格与收益率&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;国债在二级市场交易，其&lt;strong&gt;价格&lt;/strong&gt;和&lt;strong&gt;收益率&lt;/strong&gt;会随市场状况变化。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;价格：&lt;/strong&gt; 债券价格是投资者愿意为其支付的金额。由于利率和需求变化，价格可能与面值不同。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果市场利率低于债券的票面利率，债券价格会上涨（溢价）。&lt;/li&gt;
+&lt;li&gt;如果市场利率高于债券的票面利率，债券价格会下跌（折价）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;收益率：&lt;/strong&gt; 投资者以当前价格买入并持有至到期所获得的回报。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;反向关系：&lt;/strong&gt; 价格与收益率反向变动。债券价格上升时，收益率下降，反之亦然。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="4-债券价格与到期收益率的计算"&gt;&lt;strong&gt;4. 债券价格与到期收益率的计算&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;债券价格&lt;/strong&gt;等于所有未来现金流（票息支付和面值）按到期收益率（YTM）贴现后的现值之和。&lt;/p&gt;
+&lt;h3 id="公式"&gt;公式：&lt;/h3&gt;
+\[
+P = \sum \frac{C}{(1 + YTM)^t} + \frac{F}{(1 + YTM)^T}
+\]&lt;p&gt;
+其中：&lt;/p&gt;</description></item><item><title>理解利润表与现金流量表</title><link>https://phrygiangates.github.io/zh/posts/understanding_income_statements_and_cash_flow_statements/</link><pubDate>Tue, 24 Dec 2024 23:18:00 +0800</pubDate><guid>https://phrygiangates.github.io/zh/posts/understanding_income_statements_and_cash_flow_statements/</guid><description>&lt;p&gt;我正在学习金融投资，因此我会先尝试阅读财务报告，以了解世界范围内正在发生的商业活动。&lt;/p&gt;
+&lt;p&gt;以下是了解一家公司的基础内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;利润表（损益表）：显示公司在特定期间的收入、费用和利润。需关注的关键指标包括：收入、毛利、营业利润、净利润。它有点像一段视频，显示公司在过去一段期间的经营活动。&lt;/li&gt;
+&lt;li&gt;资产负债表：在特定时间点提供公司资产、负债与权益的快照。它能提供公司财务健康状况及资金来源的洞见。它就像一张快照。&lt;/li&gt;
+&lt;li&gt;现金流量表：突出公司在一段期间内的现金流入与流出，聚焦于经营、投资与筹资活动。这里一个关键指标是自由现金流，表示公司在资本支出之后剩余的现金。&lt;/li&gt;
+&lt;li&gt;股东权益变动表：解释相较上一期间权益的变动情况。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="利润表与现金流量表的区别"&gt;利润表与现金流量表的区别&lt;/h2&gt;
+&lt;h3 id="1-利润表损益表"&gt;&lt;strong&gt;1. 利润表（损益表）&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;关注重点&lt;/strong&gt;：&lt;br&gt;
+利润表展示公司在特定期间（例如一个季度或一年）的收入与费用，并最终计算净利润（盈亏）。它聚焦于权责发生制，即在收入实现时确认收入，在费用发生时确认费用，而不考虑实际现金何时收付。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;关键指标&lt;/strong&gt;：&lt;strong&gt;净利润&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;主要侧重点&lt;/strong&gt;：聚焦一段期间内的盈利能力与财务表现。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;包括内容&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;收入（或销售额）&lt;/strong&gt;：销售商品或提供服务获得的收入。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;销售成本（COGS）&lt;/strong&gt;：与所售商品或服务直接相关的成本。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;营业费用&lt;/strong&gt;：如研发、市场营销与行政管理等间接成本。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;利息与税费&lt;/strong&gt;：与融资与税务相关的其他费用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;示例&lt;/strong&gt;：
+假设某公司（公司 X）销售产品，并在其年度利润表中报告如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;收入&lt;/strong&gt;：$100,000&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;销售成本（COGS）&lt;/strong&gt;：$40,000&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;营业费用&lt;/strong&gt;：$30,000&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;利息费用&lt;/strong&gt;：$5,000&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;税费&lt;/strong&gt;：$5,000&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;净利润&lt;/strong&gt;的计算如下：
+&lt;/p&gt;
+\[
+\text{Net Income} = \text{Revenue} - \text{COGS} - \text{Operating Expenses} - \text{Interest} - \text{Taxes}
+\]&lt;p&gt;
+&lt;/p&gt;
+\[
+\text{Net Income} = 100,000 - 40,000 - 30,000 - 5,000 - 5,000 = 20,000
+\]&lt;p&gt;
+因此，根据其利润表，该公司全年实现利润 &lt;strong&gt;$20,000&lt;/strong&gt;。该利润已赚取，但可能尚未以现金形式收付。&lt;/p&gt;
+&lt;h3 id="2-现金流量表"&gt;&lt;strong&gt;2. 现金流量表&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;关注重点&lt;/strong&gt;：&lt;br&gt;
+现金流量表展示在特定期间内的实际现金流入与流出。它反映公司的流动性——公司持有多少现金以支付账单、进行投资与运营。现金流量表将现金流分为三类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;经营活动&lt;/strong&gt;：由公司核心业务产生或使用的现金（类似净利润，但会调整非现金项目）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;投资活动&lt;/strong&gt;：购买或出售资产（如不动产、设备或投资）所产生的现金。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;筹资活动&lt;/strong&gt;：与借款、发行或回购股票、支付股息相关的现金收付。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;关键指标&lt;/strong&gt;：&lt;strong&gt;现金流&lt;/strong&gt;（尤其是&lt;strong&gt;自由现金流&lt;/strong&gt;，即资本支出后的剩余现金）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;主要侧重点&lt;/strong&gt;：展示&lt;strong&gt;流动性与现金可用性&lt;/strong&gt;，指出公司是否有足够现金维持运营与增长。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;包括内容&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;经营活动现金流&lt;/strong&gt;：对净利润进行调整，包括折旧、营运资金变动与非现金费用等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;投资活动现金流&lt;/strong&gt;：用于购买或出售长期资产（如不动产、设备或投资）的现金。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;筹资活动现金流&lt;/strong&gt;：发行债务或权益所获现金，或用于支付股息与偿还债务的现金。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;示例&lt;/strong&gt;：
+仍以公司 X 为例，假设其现金流量表如下：&lt;/p&gt;</description></item></channel></rss>

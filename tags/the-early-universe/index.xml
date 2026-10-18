@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>The Early Universe on Phrygiangates</title><link>https://phrygiangates.github.io/tags/the-early-universe/</link><description>Recent content in The Early Universe on Phrygiangates</description><generator>Hugo -- 0.149.0</generator><language>en</language><lastBuildDate>Sun, 13 Apr 2025 17:51:09 +0800</lastBuildDate><atom:link href="https://phrygiangates.github.io/tags/the-early-universe/index.xml" rel="self" type="application/rss+xml"/><item><title>FLRW Cosmology Model</title><link>https://phrygiangates.github.io/posts/flrw_cosmology_model/</link><pubDate>Sun, 13 Apr 2025 17:51:09 +0800</pubDate><guid>https://phrygiangates.github.io/posts/flrw_cosmology_model/</guid><description>&lt;p&gt;In this post, I would like to introduce the basic assumption of modern cosmology, i.e. the FLRW model, also as an application of Einstein field equation.&lt;/p&gt;
+&lt;p&gt;The idea is simple, given a FLRW metric, plug into the field equation, then we deduce how the space scale \(a\) (which is a parameter of the metric) changes along with the \(t\) coordinates. Here I express the computation in a Python program.&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; sympy &lt;span style="color:#66d9ef"&gt;as&lt;/span&gt; sp
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; sympy.diffgeom &lt;span style="color:#f92672"&gt;import&lt;/span&gt; Manifold, Patch, CoordSystem, TensorProduct
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; sympy.diffgeom.diffgeom &lt;span style="color:#f92672"&gt;import&lt;/span&gt; metric_to_Ricci_components, metric_to_Christoffel_2nd
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; sympy &lt;span style="color:#f92672"&gt;import&lt;/span&gt; Symbol, Function, sin, simplify, Matrix
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Define spacetime dimensions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;dim &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Define manifold and coordinate system (using spherical coordinates)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;M &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Manifold(&lt;span style="color:#e6db74"&gt;&amp;#39;M&amp;#39;&lt;/span&gt;, dim)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;patch &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Patch(&lt;span style="color:#e6db74"&gt;&amp;#39;P&amp;#39;&lt;/span&gt;, M)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;coords &lt;span style="color:#f92672"&gt;=&lt;/span&gt; CoordSystem(&lt;span style="color:#e6db74"&gt;&amp;#39;coords&amp;#39;&lt;/span&gt;, patch, [
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Symbol(&lt;span style="color:#e6db74"&gt;&amp;#39;t&amp;#39;&lt;/span&gt;, real&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Symbol(&lt;span style="color:#e6db74"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;, real&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;, positive&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Symbol(&lt;span style="color:#e6db74"&gt;&amp;#39;theta&amp;#39;&lt;/span&gt;, real&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;, positive&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Symbol(&lt;span style="color:#e6db74"&gt;&amp;#39;phi&amp;#39;&lt;/span&gt;, real&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Get coordinate functions and basic one-forms&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;t, r, theta, phi &lt;span style="color:#f92672"&gt;=&lt;/span&gt; coords&lt;span style="color:#f92672"&gt;.&lt;/span&gt;coord_functions()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;dt, dr, dtheta, dphi &lt;span style="color:#f92672"&gt;=&lt;/span&gt; coords&lt;span style="color:#f92672"&gt;.&lt;/span&gt;base_oneforms()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Define scale factor and curvature parameter (using natural units c=1)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;a &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Function(&lt;span style="color:#e6db74"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;)(t) &lt;span style="color:#75715e"&gt;# Scale factor as a function of time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;k &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Symbol(&lt;span style="color:#e6db74"&gt;&amp;#39;k&amp;#39;&lt;/span&gt;) &lt;span style="color:#75715e"&gt;# Spatial curvature parameter&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Construct FLRW metric&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# ds² = -dt² + a(t)²[dr²/(1-kr²) + r²(dθ² + sin²θ dφ²)]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;g &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt;TensorProduct(dt, dt) &lt;span style="color:#f92672"&gt;+&lt;/span&gt; \
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; a&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt; (TensorProduct(dr, dr)&lt;span style="color:#f92672"&gt;/&lt;/span&gt;(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#f92672"&gt;-&lt;/span&gt;k&lt;span style="color:#f92672"&gt;*&lt;/span&gt;r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;) &lt;span style="color:#f92672"&gt;+&lt;/span&gt; \
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt; TensorProduct(dtheta, dtheta) &lt;span style="color:#f92672"&gt;+&lt;/span&gt; \
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt; sin(theta)&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt; TensorProduct(dphi, dphi))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Matrix form of the metric (for Einstein tensor calculation)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;g_matrix &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Matrix([
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, a&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#f92672"&gt;/&lt;/span&gt;(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#f92672"&gt;-&lt;/span&gt;k&lt;span style="color:#f92672"&gt;*&lt;/span&gt;r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;), &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, a&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt;r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, a&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt;r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt;sin(theta)&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Calculate Christoffel symbols&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Christoffel &lt;span style="color:#f92672"&gt;=&lt;/span&gt; metric_to_Christoffel_2nd(g)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Calculate Ricci tensor&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Ricci_tensor &lt;span style="color:#f92672"&gt;=&lt;/span&gt; metric_to_Ricci_components(g)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Define coordinate index names&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;coord_names &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#e6db74"&gt;&amp;#39;t&amp;#39;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#39;θ&amp;#39;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#39;φ&amp;#39;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Calculate inverse metric tensor&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;g_inverse &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Matrix([
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, (&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#f92672"&gt;-&lt;/span&gt;k&lt;span style="color:#f92672"&gt;*&lt;/span&gt;r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;)&lt;span style="color:#f92672"&gt;/&lt;/span&gt;a&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#f92672"&gt;/&lt;/span&gt;(a&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt;r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;), &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#f92672"&gt;/&lt;/span&gt;(a&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt;r&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt;sin(theta)&lt;span style="color:#f92672"&gt;**&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Calculate Ricci scalar R = g^{μν} * R_{μν}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Ricci_scalar &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; j &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Ricci_scalar &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; g_inverse[i, j] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; Ricci_tensor[i, j]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Ricci_scalar &lt;span style="color:#f92672"&gt;=&lt;/span&gt; simplify(Ricci_scalar)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Calculate Einstein tensor G_μν = R_μν - (1/2) * g_μν * R&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Einstein_tensor &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Matrix([[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; _ &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim)] &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; _ &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim)])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; j &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Einstein_tensor[i, j] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Ricci_tensor[i, j] &lt;span style="color:#f92672"&gt;-&lt;/span&gt; (&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#f92672"&gt;/&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;) &lt;span style="color:#f92672"&gt;*&lt;/span&gt; g_matrix[i, j] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; Ricci_scalar
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Einstein_tensor[i, j] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; simplify(Einstein_tensor[i, j])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Print Christoffel symbols&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(&lt;span style="color:#e6db74"&gt;&amp;#34;Christoffel symbols of FLRW metric (Γ^μ_νρ):&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; j &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; k &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; Christoffel[i, j, k] &lt;span style="color:#f92672"&gt;!=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(&lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;Γ^&lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;coord_names[i]&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;_&lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;coord_names[j]&lt;span style="color:#e6db74"&gt;}{&lt;/span&gt;coord_names[k]&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; = &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;simplify(Christoffel[i, j, k])&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Print Ricci tensor&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;\n&lt;/span&gt;&lt;span style="color:#e6db74"&gt;Ricci tensor of FLRW metric (R_μν):&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; j &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; Ricci_tensor[i, j] &lt;span style="color:#f92672"&gt;!=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(&lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;R_&lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;coord_names[i]&lt;span style="color:#e6db74"&gt;}{&lt;/span&gt;coord_names[j]&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; = &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;simplify(Ricci_tensor[i, j])&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Print Ricci scalar&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;\n&lt;/span&gt;&lt;span style="color:#e6db74"&gt;Ricci scalar of FLRW metric (R):&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(&lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;R = &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;Ricci_scalar&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Print Einstein tensor&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;\n&lt;/span&gt;&lt;span style="color:#e6db74"&gt;Einstein tensor of FLRW metric (G_μν):&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; j &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(dim):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; Einstein_tensor[i, j] &lt;span style="color:#f92672"&gt;!=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(&lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;G_&lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;coord_names[i]&lt;span style="color:#e6db74"&gt;}{&lt;/span&gt;coord_names[j]&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; = &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;Einstein_tensor[i, j]&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;Christoffel symbols of FLRW metric (Γ^μ_νρ):
+Γ^t_rr = -a(t)*Subs(Derivative(a(_xi), _xi), _xi, t)/(k*r**2 - 1)
+Γ^t_θθ = a(t)*r**2*Subs(Derivative(a(_xi), _xi), _xi, t)
+Γ^t_φφ = a(t)*sin(theta)**2*r**2*Subs(Derivative(a(_xi), _xi), _xi, t)
+Γ^r_tr = Subs(Derivative(a(_xi), _xi), _xi, t)/a(t)
+Γ^r_rt = Subs(Derivative(a(_xi), _xi), _xi, t)/a(t)
+Γ^r_rr = -k*r/(k*r**2 - 1)
+Γ^r_θθ = k*r**3 - r
+Γ^r_φφ = (k*r**2 - 1)*sin(theta)**2*r
+Γ^θ_tθ = Subs(Derivative(a(_xi), _xi), _xi, t)/a(t)
+Γ^θ_rθ = 1/r
+Γ^θ_θt = Subs(Derivative(a(_xi), _xi), _xi, t)/a(t)
+Γ^θ_θr = 1/r
+Γ^θ_φφ = -sin(2*theta)/2
+Γ^φ_tφ = Subs(Derivative(a(_xi), _xi), _xi, t)/a(t)
+Γ^φ_rφ = 1/r
+Γ^φ_θφ = 1/tan(theta)
+Γ^φ_φt = Subs(Derivative(a(_xi), _xi), _xi, t)/a(t)
+Γ^φ_φr = 1/r
+Γ^φ_φθ = 1/tan(theta)
+Ricci tensor of FLRW metric (R_μν):
+R_tt = -3*Subs(Derivative(a(_xi), (_xi, 2)), _xi, t)/a(t)
+R_rr = (-2*k - a(t)*Subs(Derivative(a(_xi), (_xi, 2)), _xi, t) - 2*Subs(Derivative(a(_xi), _xi), _xi, t)**2)/(k*r**2 - 1)
+R_θθ = (2*k + a(t)*Subs(Derivative(a(_xi), (_xi, 2)), _xi, t) + 2*Subs(Derivative(a(_xi), _xi), _xi, t)**2)*r**2
+R_φφ = (2*k + a(t)*Subs(Derivative(a(_xi), (_xi, 2)), _xi, t) + 2*Subs(Derivative(a(_xi), _xi), _xi, t)**2)*sin(theta)**2*r**2
+Ricci scalar of FLRW metric (R):
+R = 6*(k + a(t)*Subs(Derivative(a(_xi), (_xi, 2)), _xi, t) + Subs(Derivative(a(_xi), _xi), _xi, t)**2)/a(t)**2
+Einstein tensor of FLRW metric (G_μν):
+G_tt = 3.0*(k + Subs(Derivative(a(_xi), _xi), _xi, t)**2)/a(t)**2
+G_rr = (1.0*k + 2.0*a(t)*Subs(Derivative(a(_xi), (_xi, 2)), _xi, t) + 1.0*Subs(Derivative(a(_xi), _xi), _xi, t)**2)/(k*r**2 - 1)
+G_θθ = (-1.0*k - 2.0*a(t)*Subs(Derivative(a(_xi), (_xi, 2)), _xi, t) - 1.0*Subs(Derivative(a(_xi), _xi), _xi, t)**2)*r**2
+G_φφ = (-1.0*k - 2.0*a(t)*Subs(Derivative(a(_xi), (_xi, 2)), _xi, t) - 1.0*Subs(Derivative(a(_xi), _xi), _xi, t)**2)*sin(theta)**2*r**2
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;p&gt;Plug in the final Einstein tensor into the Einstein equation. Let&amp;rsquo;s take \( G_{tt} \) as an example:&lt;/p&gt;</description></item><item><title>Einstein Field Equation</title><link>https://phrygiangates.github.io/posts/einstein_field_equation/</link><pubDate>Fri, 07 Mar 2025 00:15:09 +0800</pubDate><guid>https://phrygiangates.github.io/posts/einstein_field_equation/</guid><description>&lt;p&gt;To derive the Einstein field equation, we start from physical considerations involving energy and momentum, and geometry considerations from the curvature of spacetime.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;The Einstein field equation relies on three fundamental assumptions:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Energy conservation&lt;/li&gt;
+&lt;li&gt;Momentum conservation&lt;/li&gt;
+&lt;li&gt;Newtonian gravity equation&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For assumptions 1 and 2, the conservation law for the stress-energy tensor holds:&lt;/p&gt;
+\[
+\nabla_\mu T^{\mu \nu} = 0
+\]&lt;p&gt;The stress-energy tensor \(T^{\mu \nu}\) encapsulates crucial physical quantities and is expressed as:&lt;/p&gt;</description></item><item><title>Some Basics of Differential Geometry 3</title><link>https://phrygiangates.github.io/posts/some_basics_of_differential_geometry_3/</link><pubDate>Fri, 07 Feb 2025 21:35:09 +0800</pubDate><guid>https://phrygiangates.github.io/posts/some_basics_of_differential_geometry_3/</guid><description>&lt;p&gt;In this post, I would like to study some basic knowledge of the \( \nabla \) symbol, as well as an important formula related with riemann tensor.&lt;/p&gt;
+&lt;h2 id="i-connection"&gt;I. Connection&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Definition:&lt;/strong&gt; A connection \( \nabla \) on a smooth manifold \( (M, \mathcal{O}) \) is a map that takes a pair consisting of a vector field \( X \) and a \( (p, q) \)-tensor field \( T \) and sends them to a \( (p, q) \)-tensor field \( \nabla_X T \), satisfying:&lt;/p&gt;</description></item><item><title>Some Basics of Differential Geometry 2</title><link>https://phrygiangates.github.io/posts/some_basics_of_differential_geometry_2/</link><pubDate>Tue, 28 Jan 2025 11:05:09 -0500</pubDate><guid>https://phrygiangates.github.io/posts/some_basics_of_differential_geometry_2/</guid><description>&lt;p&gt;In this post, we will delve deeper into the concepts of differential geometry, mainly focusing on the notion of riemann tensor, ricci tensor, and ricci scalar.&lt;/p&gt;
+&lt;h2 id="i-the-riemann-tensor"&gt;I. The Riemann Tensor&lt;/h2&gt;
+&lt;h3 id="a-definition"&gt;A. Definition&lt;/h3&gt;
+&lt;p&gt;We start with a \(d\)-dimensional manifold \(M\) endowed with a (pseudo-)Riemannian metric \(g_{\mu\nu}\). The connection compatible with the metric is the Levi-Civita connection \(\nabla\). The Riemann curvature tensor (often called simply the Riemann tensor) \(R^\rho_{\ \sigma\mu\nu}\) is defined by the commutator of covariant derivatives acting on a vector field \(V^\rho\):
+&lt;/p&gt;</description></item><item><title>Some Basics of Differential Geometry</title><link>https://phrygiangates.github.io/posts/some_basics_of_differential_geometry/</link><pubDate>Tue, 21 Jan 2025 07:21:09 -0500</pubDate><guid>https://phrygiangates.github.io/posts/some_basics_of_differential_geometry/</guid><description>&lt;p&gt;In this post, I would like to build some basics of differential geometry for understanding the Einstein Field Equations.&lt;/p&gt;
+&lt;h2 id="1-riemann-tensor-and-its-properties"&gt;1. Riemann Tensor and Its Properties&lt;/h2&gt;
+&lt;h3 id="definition-of-the-riemann-tensor"&gt;Definition of the Riemann Tensor:&lt;/h3&gt;
+&lt;p&gt;The Riemann curvature tensor \( R^i_{jkl} \) is a fundamental object in differential geometry, representing the intrinsic curvature of a manifold. It is defined as:
+&lt;/p&gt;
+\[
+R^i_{jkl} = \partial_k \Gamma^i_{jl} - \partial_l \Gamma^i_{jk} + \Gamma^i_{km} \Gamma^m_{jl} - \Gamma^i_{lm} \Gamma^m_{jk}
+\]&lt;p&gt;
+where \( \Gamma^i_{jk} \) are the Christoffel symbols.&lt;/p&gt;</description></item><item><title>Stress-Energy Tensor</title><link>https://phrygiangates.github.io/posts/stress_energy_tensor/</link><pubDate>Sat, 04 Jan 2025 00:36:09 +0800</pubDate><guid>https://phrygiangates.github.io/posts/stress_energy_tensor/</guid><description>&lt;p&gt;In this post, I would like to build some fundational knowledge about the Einstein Field Equations. First, I will pose several questions based on the last post about cosmology:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;What are the einstein tensor and the stress-energy tensor?&lt;/li&gt;
+&lt;li&gt;How is Einstein Field Equations derived?&lt;/li&gt;
+&lt;li&gt;In the context of cosmology, what is the perfect fluid approximation?&lt;/li&gt;
+&lt;li&gt;How can we derive the Friedmann Equation and Acceleration Equation from the Einstein Field Equations?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We refer to &lt;a href="https://ocw.mit.edu/courses/8-962-general-relativity-spring-2020/resources/lecture-4-volumes-and-volume-elements-conservation-laws/"&gt;this course&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Inflation Cosmology: Is our universe part of a multiuniverse?</title><link>https://phrygiangates.github.io/posts/inflation_cosmology/</link><pubDate>Mon, 23 Dec 2024 17:01:09 +0800</pubDate><guid>https://phrygiangates.github.io/posts/inflation_cosmology/</guid><description>&lt;p&gt;I want to learn about cosmology, maybe start with the book &amp;ldquo;An Introduction to Modern Cosmology&amp;rdquo; by Andrew Liddle and the lecture &amp;ldquo;The Early Universe&amp;rdquo; by MIT OpenCourseWare.&lt;/p&gt;
+&lt;h2 id="the-standard-big-bang"&gt;The standard Big Bang&lt;/h2&gt;
+&lt;p&gt;It does not tell the cause of the Bang, but the aftermath of the Bang. It assumes all the matter already existed before the Bang.&lt;/p&gt;
+&lt;h2 id="cosmic-inflation"&gt;Cosmic Inflation&lt;/h2&gt;
+&lt;p&gt;A prequal to the Big Bang.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;gravity can be repulsive when pressure is negative. (Find out more about the relationship between gravity and pressure in the next part.)&lt;br&gt;
+There is a patch of repulsive gravity material in the early universe, which is the cause of the Big Bang.&lt;br&gt;
+The (mass/energy) density of the repulsive material is not lowered as it expands.The resolution is to introduce negative energy.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="complementarity-the-relationship-between-gravity-and-pressure"&gt;Complementarity: The relationship between gravity and pressure&lt;/h2&gt;
+&lt;p&gt;Below is a high-level introduction to these ideas, followed by some of the key formulas in cosmology and general relativity that show why negative pressure can produce a repulsive gravitational effect.&lt;/p&gt;</description></item></channel></rss>

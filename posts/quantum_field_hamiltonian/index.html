@@ -1,0 +1,201 @@
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Quantum Field Hamiltonian | Phrygiangates</title><meta name=keywords content="Advanced Quantum Mechanics"><meta name=description content="We are given a Hamiltonian:
+
+\[
+H=\int dx\left[\Psi^\dagger(x)\left(-\frac{\nabla^2}{2m}\right)\Psi(x)+V(x)\Psi^\dagger(x)\Psi(x)\right].
+\]
+Here we take \(\hbar=1\). The first term is the kinetic energy term, because in single-particle quantum mechanics, \(\hat p^2/(2m)\) in the position representation corresponds to \(-\nabla^2/(2m)\). The second term is the potential energy term, where \(\Psi^\dagger(x)\Psi(x)\) is the particle number density at position \(x\), so \(V(x)\Psi^\dagger(x)\Psi(x)\) represents the potential energy density at \(x\). If we take \(V(x)=mc^2\), it just adds a rest energy to each particle; there is still no interaction force between particles here."><meta name=author content><link rel=canonical href=https://phrygiangates.github.io/posts/quantum_field_hamiltonian/><link crossorigin=anonymous href=/assets/css/stylesheet.a5781257de4197b8e3d54346acdf1dd55a9ba4cb91dcace192fc1baf228c08b5.css integrity="sha256-pXgSV95Bl7jj1UNGrN8d1VqbpMuR3KzhkvwbryKMCLU=" rel="preload stylesheet" as=style><link rel=icon href=https://phrygiangates.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://phrygiangates.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://phrygiangates.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://phrygiangates.github.io/apple-touch-icon.png><link rel=mask-icon href=https://phrygiangates.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://phrygiangates.github.io/posts/quantum_field_hamiltonian/><link rel=alternate hreflang=zh href=https://phrygiangates.github.io/zh/posts/quantum_field_hamiltonian/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],throwOnError:!0})'></script><meta property="og:url" content="https://phrygiangates.github.io/posts/quantum_field_hamiltonian/"><meta property="og:site_name" content="Phrygiangates"><meta property="og:title" content="Quantum Field Hamiltonian"><meta property="og:description" content="We are given a Hamiltonian: \[ H=\int dx\left[\Psi^\dagger(x)\left(-\frac{\nabla^2}{2m}\right)\Psi(x)+V(x)\Psi^\dagger(x)\Psi(x)\right]. \] Here we take \(\hbar=1\). The first term is the kinetic energy term, because in single-particle quantum mechanics, \(\hat p^2/(2m)\) in the position representation corresponds to \(-\nabla^2/(2m)\). The second term is the potential energy term, where \(\Psi^\dagger(x)\Psi(x)\) is the particle number density at position \(x\), so \(V(x)\Psi^\dagger(x)\Psi(x)\) represents the potential energy density at \(x\). If we take \(V(x)=mc^2\), it just adds a rest energy to each particle; there is still no interaction force between particles here."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-04-30T22:30:00+08:00"><meta property="article:modified_time" content="2026-04-30T22:30:00+08:00"><meta property="article:tag" content="Advanced Quantum Mechanics"><meta name=twitter:card content="summary"><meta name=twitter:title content="Quantum Field Hamiltonian"><meta name=twitter:description content="We are given a Hamiltonian:
+
+\[
+H=\int dx\left[\Psi^\dagger(x)\left(-\frac{\nabla^2}{2m}\right)\Psi(x)+V(x)\Psi^\dagger(x)\Psi(x)\right].
+\]
+Here we take \(\hbar=1\). The first term is the kinetic energy term, because in single-particle quantum mechanics, \(\hat p^2/(2m)\) in the position representation corresponds to \(-\nabla^2/(2m)\). The second term is the potential energy term, where \(\Psi^\dagger(x)\Psi(x)\) is the particle number density at position \(x\), so \(V(x)\Psi^\dagger(x)\Psi(x)\) represents the potential energy density at \(x\). If we take \(V(x)=mc^2\), it just adds a rest energy to each particle; there is still no interaction force between particles here."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://phrygiangates.github.io/posts/"},{"@type":"ListItem","position":2,"name":"Quantum Field Hamiltonian","item":"https://phrygiangates.github.io/posts/quantum_field_hamiltonian/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Quantum Field Hamiltonian","name":"Quantum Field Hamiltonian","description":"We are given a Hamiltonian: \\[ H=\\int dx\\left[\\Psi^\\dagger(x)\\left(-\\frac{\\nabla^2}{2m}\\right)\\Psi(x)+V(x)\\Psi^\\dagger(x)\\Psi(x)\\right]. \\] Here we take \\(\\hbar=1\\). The first term is the kinetic energy term, because in single-particle quantum mechanics, \\(\\hat p^2/(2m)\\) in the position representation corresponds to \\(-\\nabla^2/(2m)\\). The second term is the potential energy term, where \\(\\Psi^\\dagger(x)\\Psi(x)\\) is the particle number density at position \\(x\\), so \\(V(x)\\Psi^\\dagger(x)\\Psi(x)\\) represents the potential energy density at \\(x\\). If we take \\(V(x)=mc^2\\), it just adds a rest energy to each particle; there is still no interaction force between particles here.\n","keywords":["Advanced Quantum Mechanics"],"articleBody":"We are given a Hamiltonian: \\[ H=\\int dx\\left[\\Psi^\\dagger(x)\\left(-\\frac{\\nabla^2}{2m}\\right)\\Psi(x)+V(x)\\Psi^\\dagger(x)\\Psi(x)\\right]. \\] Here we take \\(\\hbar=1\\). The first term is the kinetic energy term, because in single-particle quantum mechanics, \\(\\hat p^2/(2m)\\) in the position representation corresponds to \\(-\\nabla^2/(2m)\\). The second term is the potential energy term, where \\(\\Psi^\\dagger(x)\\Psi(x)\\) is the particle number density at position \\(x\\), so \\(V(x)\\Psi^\\dagger(x)\\Psi(x)\\) represents the potential energy density at \\(x\\). If we take \\(V(x)=mc^2\\), it just adds a rest energy to each particle; there is still no interaction force between particles here.\nAccording to the previous article, in the one-dimensional case, we have \\[ \\Psi(x)=\\int \\frac{dp}{\\sqrt{2\\pi}}\\,a(p)e^{ipx},\\qquad \\Psi^\\dagger(x)=\\int \\frac{dq}{\\sqrt{2\\pi}}\\,a^\\dagger(q)e^{-iqx}. \\] Here, \\(a(p)\\) is the operator that annihilates a particle with momentum \\(p\\), and \\(a^\\dagger(q)\\) is the operator that creates a particle with momentum \\(q\\). Let’s first look at the particle number density integral that appears in the potential energy term: \\[ \\int dx\\,\\Psi^\\dagger(x)\\Psi(x) =\\int dx\\int \\frac{dq}{\\sqrt{2\\pi}}\\int \\frac{dp}{\\sqrt{2\\pi}}\\, a^\\dagger(q)a(p)e^{i(p-q)x}. \\] Rearranging, we get \\[ \\int dx\\,\\Psi^\\dagger(x)\\Psi(x) =\\int dp\\,dq\\,a^\\dagger(q)a(p)\\left[\\frac{1}{2\\pi}\\int dx\\,e^{i(p-q)x}\\right]. \\] The integral in the square brackets is the Dirac delta function: \\[ \\frac{1}{2\\pi}\\int dx\\,e^{i(p-q)x}=\\delta(p-q). \\] Intuitively, when \\(p\\neq q\\), the exponential factor oscillates with \\(x\\), and the positive and negative parts cancel each other out; when \\(p=q\\), the exponential factor is equal to 1, and the integral over all space diverges. The Dirac delta function is precisely the object that combines these two properties: it only contributes at \\(p=q\\), and in an integral, it requires setting \\(p=q\\). Therefore, \\[ \\int dx\\,\\Psi^\\dagger(x)\\Psi(x) =\\int dp\\,dq\\,a^\\dagger(q)a(p)\\delta(p-q) =\\int dp\\,a^\\dagger(p)a(p). \\] The action of the operator \\(a^\\dagger(p)a(p)\\) is to first annihilate a particle with momentum \\(p\\) and then create a particle with the same momentum \\(p\\), so it is actually counting the number of particles with momentum \\(p\\). From this, we can see that when this term acts on a certain state, it does not change the momentum of the particles; if \\(V(x)\\) is a constant, then this term only adds the same energy to each particle and does not change the total momentum.\nNow let’s look at the first term, the kinetic energy term: \\[ \\int dx\\,\\Psi^\\dagger(x)\\left(-\\frac{\\nabla^2}{2m}\\right)\\Psi(x). \\] After expanding \\(\\Psi(x)\\) into momentum modes, \\(-\\nabla^2/(2m)\\) only acts on \\(e^{ipx}\\) and gives a factor of \\(p^2/(2m)\\): \\[ -\\frac{\\nabla^2}{2m}e^{ipx}=\\frac{p^2}{2m}e^{ipx}. \\] Therefore, an integral over \\(x\\) also appears: \\[ \\frac{1}{2\\pi}\\int dx\\,e^{i(p-q)x}=\\delta(p-q), \\] Thus, the kinetic energy term becomes \\[ \\int dx\\,\\Psi^\\dagger(x)\\left(-\\frac{\\nabla^2}{2m}\\right)\\Psi(x) =\\int dp\\,\\frac{p^2}{2m}a^\\dagger(p)a(p). \\] This shows that the kinetic energy term just counts how many particles there are for each momentum \\(p\\) and multiplies them by their respective energies \\(p^2/(2m)\\), but it does not change a particle with momentum \\(p\\) into a particle with another momentum.\nSo in the case where \\(V(x)\\) is a constant, for example \\(V(x)=mc^2\\), the entire Hamiltonian can be written as \\[ H=\\int dp\\left(\\frac{p^2}{2m}+mc^2\\right)a^\\dagger(p)a(p). \\] If we apply this \\(H\\) to a state with a definite total momentum, it will only change the phase or energy weight of this state, not its total momentum. This is the meaning of momentum conservation in this free particle system. If \\(V(x)\\) is not a constant but truly depends on position, then the spatial translation symmetry is broken by the external potential, and momentum is generally no longer conserved.\nWhen we consider local interactions of multiple types of particles, the same mechanism gives total momentum conservation, rather than requiring the momentum of each particle to be conserved separately.\nFor example, suppose there are two types of particles, \\(A\\) and \\(B\\). In addition to their respective kinetic energy terms, we can add a local interaction term to the Hamiltonian: \\[ H=H_{\\text{kinetic}}+g\\int dx\\,\\Psi_A^\\dagger(x)\\Psi_B^\\dagger(x)\\Psi_B(x)\\Psi_A(x). \\] Here, \\(g\\) is the coupling constant, which represents the strength of this interaction. This term actually describes the scattering of \\(A\\) and \\(B\\): on the right, \\(\\Psi_A(x)\\) and \\(\\Psi_B(x)\\) first annihilate a \\(A\\) particle and a \\(B\\) particle at the same position \\(x\\), and then on the left, \\(\\Psi_A^\\dagger(x)\\) and \\(\\Psi_B^\\dagger(x)\\) create a \\(A\\) particle and a \\(B\\) particle at the same position. The particle types do not change, but their individual momenta can change.\nIf we expand all these fields into momentum space, we will get something like \\[ \\int dp_A\\,dp_B\\,dq_A\\,dq_B\\, a_A^\\dagger(q_A)a_B^\\dagger(q_B)a_B(p_B)a_A(p_A)\\, \\delta(p_A+p_B-q_A-q_B). \\] Here, \\(p_A,p_B\\) are the momenta of the annihilated incoming particles, and \\(q_A,q_B\\) are the momenta of the created outgoing particles. The integral over \\(x\\) only gives total momentum conservation: \\[ p_A+p_B=q_A+q_B, \\] but it does not require \\(p_A=q_A\\) or \\(p_B=q_B\\). So the momentum of a single particle can change, as long as the total momentum before and after is the same. This is why it is called scattering.\nAs another example, if we want the Hamiltonian to describe a \\(A\\) particle turning into a \\(B\\) particle and a \\(C\\) particle, we can write down \\[ \\Psi_B^\\dagger(x)\\Psi_C^\\dagger(x)\\Psi_A(x). \\] Its action is to annihilate a \\(A\\) and create a \\(B\\) and a \\(C\\). But the Hamiltonian must be Hermitian, because it corresponds to the observable energy and also ensures that the time evolution is unitary. Therefore, we must also add its Hermitian conjugate term: \\[ \\Psi_A^\\dagger(x)\\Psi_C(x)\\Psi_B(x). \\] So the interaction Hamiltonian can be written as \\[ H_I=g\\int dx\\left[\\Psi_B^\\dagger(x)\\Psi_C^\\dagger(x)\\Psi_A(x)+\\Psi_A^\\dagger(x)\\Psi_C(x)\\Psi_B(x)\\right]. \\] The first term describes \\(A\\to B+C\\), and the second term describes the reverse process \\(B+C\\to A\\).\nTime evolution comes from the Schrödinger equation. Here we still take \\(\\hbar=1\\), and if \\(H\\) does not explicitly depend on time, then \\[ |\\phi(t+\\epsilon)\\rangle=e^{-iH\\epsilon}|\\phi(t)\\rangle. \\] Expanding the exponential function, we get \\[ |\\phi(t+\\epsilon)\\rangle =\\left(1-i\\epsilon H-\\frac{\\epsilon^2}{2}H^2+\\cdots\\right)|\\phi(t)\\rangle. \\] So the first-order term \\(-i\\epsilon H|\\phi(t)\\rangle\\) represents the Hamiltonian acting once, and the second-order term \\(-\\epsilon^2H^2|\\phi(t)\\rangle/2\\) represents the Hamiltonian acting twice. For the \\(H_I\\) above, acting once can give \\(A\\to B+C\\) or \\(B+C\\to A\\). Acting twice can give \\(A\\to B+C\\to A\\), and also processes like \\(B+C\\to A\\to B+C\\).\nHere, “first-order” and “second-order” do not mean that in the real world a first-order process happens first, and then a second-order process happens simultaneously; they are different order contributions to the same time evolution amplitude. The total amplitude is the superposition of these terms: \\[ \\mathcal A=\\mathcal A^{(1)}+\\mathcal A^{(2)}+\\mathcal A^{(3)}+\\cdots. \\] If the coupling constant \\(g\\) is small, the first-order term is usually of order \\(g\\), and the second-order term is of order \\(g^2\\), so we can approximate it order by order. Pictorially, saying that \\(A\\) “temporarily” appears or disappears is just a convenient language to describe higher-order terms; strictly speaking, it is the contribution of intermediate states in the expansion of the time evolution operator.\nWe now want to look at the relativistic case. Let’s first consider only a one-dimensional free particle, without adding potential energy.\nIn the ordinary non-relativistic case, the single-particle Hamiltonian is \\[ H=\\frac{p^2}{2m}. \\] In the relativistic case, energy and momentum satisfy \\[ H^2=p^2+m^2, \\] Here we take \\(c=1\\). If we write \\(c\\) back in, it is \\[ H^2=p^2c^2+m^2c^4. \\] The relationship between the two can be seen from the low-speed limit. When \\(p\\ll m\\), \\[ H=\\sqrt{p^2+m^2} =m\\sqrt{1+\\frac{p^2}{m^2}} \\approx m+\\frac{p^2}{2m}. \\] Here, \\(m\\) is the rest energy, which in non-relativistic problems usually just gives an overall constant and can be ignored. What remains is \\[ \\frac{p^2}{2m}. \\] So the non-relativistic Hamiltonian can be seen as the result of the relativistic energy in the low-speed limit after removing the rest energy.\nNow let’s quantize it. In the position representation, \\[ H\\to i\\frac{\\partial}{\\partial t}, \\qquad p\\to -i\\frac{\\partial}{\\partial x}. \\] For \\[ H=\\frac{p^2}{2m}, \\] we get \\[ i\\frac{\\partial \\phi}{\\partial t} =-\\frac{1}{2m}\\frac{\\partial^2\\phi}{\\partial x^2}, \\] which is the ordinary Schrödinger equation.\nFor the relativistic relation \\[ H^2=p^2+m^2, \\] we can formally write \\[ H=\\pm\\sqrt{p^2+m^2}. \\] This is of course one way to do it. But below we want to discuss a more special and elegant form: can we write \\(H\\) as a linear expression in \\(p\\) and \\(m\\). More specifically, let’s first consider a free particle moving in one dimension.\nThe simplest case is \\[ m=0. \\] In this case, \\[ H=\\pm p. \\] where \\(H=p\\) corresponds to a right-moving particle, and \\(H=-p\\) corresponds to a left-moving particle. We denote these two components as \\(\\phi_1\\) and \\(\\phi_2\\).\nFor \\(\\phi_1\\), we have \\[ H=p, \\] So \\[ i\\frac{\\partial\\phi_1}{\\partial t} =p\\phi_1 =-i\\frac{\\partial\\phi_1}{\\partial x}. \\] which is \\[ \\frac{\\partial\\phi_1}{\\partial t} +\\frac{\\partial\\phi_1}{\\partial x}=0. \\] Its solution is \\[ \\phi_1=f(x-t), \\] representing a right-moving wave.\nSimilarly, for \\(\\phi_2\\), we have \\[ H=-p, \\] So \\[ i\\frac{\\partial\\phi_2}{\\partial t} =-p\\phi_2 =i\\frac{\\partial\\phi_2}{\\partial x}. \\] which is \\[ \\frac{\\partial\\phi_2}{\\partial t} -\\frac{\\partial\\phi_2}{\\partial x}=0. \\] Its solution is \\[ \\phi_2=g(x+t), \\] representing a left-moving wave.\nNow we want to write these two equations in a unified form. Combine the two components: \\[ \\Phi= \\begin{pmatrix} \\phi_1\\\\ \\phi_2 \\end{pmatrix}. \\] According to the relations above, the Hamiltonian should give \\(+p\\) for the first component and \\(-p\\) for the second component. Therefore, \\[ H\\Phi =p \\begin{pmatrix} 1\u00260\\\\ 0\u0026-1 \\end{pmatrix} \\Phi. \\] We denote \\[ \\alpha= \\begin{pmatrix} 1\u00260\\\\ 0\u0026-1 \\end{pmatrix}, \\] Thus, the massless case can be written uniformly as \\[ H=\\alpha p. \\]Now consider \\[ m\\neq 0. \\] We guess that the Hamiltonian can be written as \\[ H=\\alpha p+\\beta m, \\] where \\(\\beta\\) is also a matrix acting on the two-component space. To satisfy the relativistic relation \\[ H^2=p^2+m^2, \\] let’s square this expression. Since \\(\\alpha,\\beta\\) only act on the two-component space \\((\\phi_1,\\phi_2)\\), while \\(p=-i\\partial_x\\) acts on \\(x\\); here \\(m\\) is the rest mass parameter of the particle, not a new operator or matrix, and can be seen as a constant times the identity operator, so they can commute with \\(p,m\\): \\[ [\\alpha,p]=0,\\qquad [\\beta,p]=0,\\qquad [p,m]=0. \\] Thus, \\[ H^2 =\\alpha^2p^2+\\beta^2m^2+(\\alpha\\beta+\\beta\\alpha)pm. \\] To make it equal to \\[ p^2+m^2, \\] we need \\[ \\alpha^2=1,\\qquad \\beta^2=1,\\qquad \\alpha\\beta+\\beta\\alpha=0. \\]We have already chosen \\[ \\alpha= \\begin{pmatrix} 1\u00260\\\\ 0\u0026-1 \\end{pmatrix}, \\] which satisfies \\[ \\alpha^2=1. \\] In fact, this is a Pauli matrix. The square of any Pauli matrix is \\(1\\), and different Pauli matrices anti-commute with each other. Therefore, we can take another Pauli matrix as \\(\\beta\\), for example, \\[ \\beta= \\begin{pmatrix} 0\u00261\\\\ 1\u00260 \\end{pmatrix}. \\] Thus, \\[ H=\\alpha p+\\beta m = \\begin{pmatrix} p\u0026m\\\\ m\u0026-p \\end{pmatrix}. \\]Applying it to \\[ \\Phi= \\begin{pmatrix} \\phi_1\\\\ \\phi_2 \\end{pmatrix} \\] , we get \\[ i\\frac{\\partial\\phi_1}{\\partial t} =p\\phi_1+m\\phi_2, \\] \\[ i\\frac{\\partial\\phi_2}{\\partial t} =m\\phi_1-p\\phi_2. \\] Therefore, once \\(m\\neq0\\), the time evolutions of \\(\\phi_1\\) and \\(\\phi_2\\) become correlated. The evolution of the first component involves the second component, and the evolution of the second component also involves the first component. In other words, the mass term couples the right-moving and left-moving components.\nLooking back, being able to write \\[ H^2=p^2+m^2 \\] as \\[ H=\\alpha p+\\beta m \\] such a linear form relies on a very important assumption: the wave function is not a single \\(\\phi\\), but can be divided into \\[ \\Phi= \\begin{pmatrix} \\phi_1\\\\ \\phi_2 \\end{pmatrix} \\] these two components. It is precisely because of this two-component structure that \\(\\alpha\\) and \\(\\beta\\) can be matrices and can possibly satisfy the anti-commutation relation \\[ \\alpha\\beta+\\beta\\alpha=0. \\] This step is much like a kind of factorization: instead of directly dealing with the quadratic form \\(H^2=p^2+m^2\\), we write it as a linear Hamiltonian by introducing matrices and a two-component wave function.\n","wordCount":"1811","inLanguage":"en","datePublished":"2026-04-30T22:30:00+08:00","dateModified":"2026-04-30T22:30:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://phrygiangates.github.io/posts/quantum_field_hamiltonian/"},"publisher":{"@type":"Organization","name":"Phrygiangates","logo":{"@type":"ImageObject","url":"https://phrygiangates.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://phrygiangates.github.io/ accesskey=h title="Phrygiangates (Alt + H)">Phrygiangates</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><ul class=lang-switch><li>|</li><li><a href=https://phrygiangates.github.io/zh/ title=中文 aria-label=中文>Zh</a></li></ul></div></div><ul id=menu></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">Quantum Field Hamiltonian</h1><div class=post-meta><span title='2026-04-30 22:30:00 +0800 +0800'>April 30, 2026</span>&nbsp;|&nbsp;<span>Translations:</span><ul class=i18n_list><li><a href=https://phrygiangates.github.io/zh/posts/quantum_field_hamiltonian/>Zh</a></li></ul></div></header><div class=post-content><p>We are given a Hamiltonian:</p>\[
+H=\int dx\left[\Psi^\dagger(x)\left(-\frac{\nabla^2}{2m}\right)\Psi(x)+V(x)\Psi^\dagger(x)\Psi(x)\right].
+\]<p>Here we take \(\hbar=1\). The first term is the kinetic energy term, because in single-particle quantum mechanics, \(\hat p^2/(2m)\) in the position representation corresponds to \(-\nabla^2/(2m)\). The second term is the potential energy term, where \(\Psi^\dagger(x)\Psi(x)\) is the particle number density at position \(x\), so \(V(x)\Psi^\dagger(x)\Psi(x)\) represents the potential energy density at \(x\). If we take \(V(x)=mc^2\), it just adds a rest energy to each particle; there is still no interaction force between particles here.</p><p>According to the previous article, in the one-dimensional case, we have</p>\[
+\Psi(x)=\int \frac{dp}{\sqrt{2\pi}}\,a(p)e^{ipx},\qquad
+\Psi^\dagger(x)=\int \frac{dq}{\sqrt{2\pi}}\,a^\dagger(q)e^{-iqx}.
+\]<p>Here, \(a(p)\) is the operator that annihilates a particle with momentum \(p\), and \(a^\dagger(q)\) is the operator that creates a particle with momentum \(q\). Let&rsquo;s first look at the particle number density integral that appears in the potential energy term:</p>\[
+\int dx\,\Psi^\dagger(x)\Psi(x)
+=\int dx\int \frac{dq}{\sqrt{2\pi}}\int \frac{dp}{\sqrt{2\pi}}\,
+a^\dagger(q)a(p)e^{i(p-q)x}.
+\]<p>Rearranging, we get</p>\[
+\int dx\,\Psi^\dagger(x)\Psi(x)
+=\int dp\,dq\,a^\dagger(q)a(p)\left[\frac{1}{2\pi}\int dx\,e^{i(p-q)x}\right].
+\]<p>The integral in the square brackets is the Dirac delta function:</p>\[
+\frac{1}{2\pi}\int dx\,e^{i(p-q)x}=\delta(p-q).
+\]<p>Intuitively, when \(p\neq q\), the exponential factor oscillates with \(x\), and the positive and negative parts cancel each other out; when \(p=q\), the exponential factor is equal to 1, and the integral over all space diverges. The Dirac delta function is precisely the object that combines these two properties: it only contributes at \(p=q\), and in an integral, it requires setting \(p=q\). Therefore,</p>\[
+\int dx\,\Psi^\dagger(x)\Psi(x)
+=\int dp\,dq\,a^\dagger(q)a(p)\delta(p-q)
+=\int dp\,a^\dagger(p)a(p).
+\]<p>The action of the operator \(a^\dagger(p)a(p)\) is to first annihilate a particle with momentum \(p\) and then create a particle with the same momentum \(p\), so it is actually counting the number of particles with momentum \(p\). From this, we can see that when this term acts on a certain state, it does not change the momentum of the particles; if \(V(x)\) is a constant, then this term only adds the same energy to each particle and does not change the total momentum.</p><p>Now let&rsquo;s look at the first term, the kinetic energy term:</p>\[
+\int dx\,\Psi^\dagger(x)\left(-\frac{\nabla^2}{2m}\right)\Psi(x).
+\]<p>After expanding \(\Psi(x)\) into momentum modes, \(-\nabla^2/(2m)\) only acts on \(e^{ipx}\) and gives a factor of \(p^2/(2m)\):</p>\[
+-\frac{\nabla^2}{2m}e^{ipx}=\frac{p^2}{2m}e^{ipx}.
+\]<p>Therefore, an integral over \(x\) also appears:</p>\[
+\frac{1}{2\pi}\int dx\,e^{i(p-q)x}=\delta(p-q),
+\]<p>Thus, the kinetic energy term becomes</p>\[
+\int dx\,\Psi^\dagger(x)\left(-\frac{\nabla^2}{2m}\right)\Psi(x)
+=\int dp\,\frac{p^2}{2m}a^\dagger(p)a(p).
+\]<p>This shows that the kinetic energy term just counts how many particles there are for each momentum \(p\) and multiplies them by their respective energies \(p^2/(2m)\), but it does not change a particle with momentum \(p\) into a particle with another momentum.</p><p>So in the case where \(V(x)\) is a constant, for example \(V(x)=mc^2\), the entire Hamiltonian can be written as</p>\[
+H=\int dp\left(\frac{p^2}{2m}+mc^2\right)a^\dagger(p)a(p).
+\]<p>If we apply this \(H\) to a state with a definite total momentum, it will only change the phase or energy weight of this state, not its total momentum. This is the meaning of momentum conservation in this free particle system. If \(V(x)\) is not a constant but truly depends on position, then the spatial translation symmetry is broken by the external potential, and momentum is generally no longer conserved.</p><hr><p>When we consider local interactions of multiple types of particles, the same mechanism gives total momentum conservation, rather than requiring the momentum of each particle to be conserved separately.</p><p>For example, suppose there are two types of particles, \(A\) and \(B\). In addition to their respective kinetic energy terms, we can add a local interaction term to the Hamiltonian:</p>\[
+H=H_{\text{kinetic}}+g\int dx\,\Psi_A^\dagger(x)\Psi_B^\dagger(x)\Psi_B(x)\Psi_A(x).
+\]<p>Here, \(g\) is the coupling constant, which represents the strength of this interaction. This term actually describes the scattering of \(A\) and \(B\): on the right, \(\Psi_A(x)\) and \(\Psi_B(x)\) first annihilate a \(A\) particle and a \(B\) particle at the same position \(x\), and then on the left, \(\Psi_A^\dagger(x)\) and \(\Psi_B^\dagger(x)\) create a \(A\) particle and a \(B\) particle at the same position. The particle types do not change, but their individual momenta can change.</p><p>If we expand all these fields into momentum space, we will get something like</p>\[
+\int dp_A\,dp_B\,dq_A\,dq_B\,
+a_A^\dagger(q_A)a_B^\dagger(q_B)a_B(p_B)a_A(p_A)\,
+\delta(p_A+p_B-q_A-q_B).
+\]<p>Here, \(p_A,p_B\) are the momenta of the annihilated incoming particles, and \(q_A,q_B\) are the momenta of the created outgoing particles. The integral over \(x\) only gives total momentum conservation:</p>\[
+p_A+p_B=q_A+q_B,
+\]<p>but it does not require \(p_A=q_A\) or \(p_B=q_B\). So the momentum of a single particle can change, as long as the total momentum before and after is the same. This is why it is called scattering.</p><p>As another example, if we want the Hamiltonian to describe a \(A\) particle turning into a \(B\) particle and a \(C\) particle, we can write down</p>\[
+\Psi_B^\dagger(x)\Psi_C^\dagger(x)\Psi_A(x).
+\]<p>Its action is to annihilate a \(A\) and create a \(B\) and a \(C\). But the Hamiltonian must be Hermitian, because it corresponds to the observable energy and also ensures that the time evolution is unitary. Therefore, we must also add its Hermitian conjugate term:</p>\[
+\Psi_A^\dagger(x)\Psi_C(x)\Psi_B(x).
+\]<p>So the interaction Hamiltonian can be written as</p>\[
+H_I=g\int dx\left[\Psi_B^\dagger(x)\Psi_C^\dagger(x)\Psi_A(x)+\Psi_A^\dagger(x)\Psi_C(x)\Psi_B(x)\right].
+\]<p>The first term describes \(A\to B+C\), and the second term describes the reverse process \(B+C\to A\).</p><p>Time evolution comes from the Schrödinger equation. Here we still take \(\hbar=1\), and if \(H\) does not explicitly depend on time, then</p>\[
+|\phi(t+\epsilon)\rangle=e^{-iH\epsilon}|\phi(t)\rangle.
+\]<p>Expanding the exponential function, we get</p>\[
+|\phi(t+\epsilon)\rangle
+=\left(1-i\epsilon H-\frac{\epsilon^2}{2}H^2+\cdots\right)|\phi(t)\rangle.
+\]<p>So the first-order term \(-i\epsilon H|\phi(t)\rangle\) represents the Hamiltonian acting once, and the second-order term \(-\epsilon^2H^2|\phi(t)\rangle/2\) represents the Hamiltonian acting twice. For the \(H_I\) above, acting once can give \(A\to B+C\) or \(B+C\to A\). Acting twice can give \(A\to B+C\to A\), and also processes like \(B+C\to A\to B+C\).</p><p>Here, &ldquo;first-order&rdquo; and &ldquo;second-order&rdquo; do not mean that in the real world a first-order process happens first, and then a second-order process happens simultaneously; they are different order contributions to the same time evolution amplitude. The total amplitude is the superposition of these terms:</p>\[
+\mathcal A=\mathcal A^{(1)}+\mathcal A^{(2)}+\mathcal A^{(3)}+\cdots.
+\]<p>If the coupling constant \(g\) is small, the first-order term is usually of order \(g\), and the second-order term is of order \(g^2\), so we can approximate it order by order. Pictorially, saying that \(A\) &ldquo;temporarily&rdquo; appears or disappears is just a convenient language to describe higher-order terms; strictly speaking, it is the contribution of intermediate states in the expansion of the time evolution operator.</p><hr><p>We now want to look at the relativistic case. Let&rsquo;s first consider only a one-dimensional free particle, without adding potential energy.</p><p>In the ordinary non-relativistic case, the single-particle Hamiltonian is</p>\[
+H=\frac{p^2}{2m}.
+\]<p>In the relativistic case, energy and momentum satisfy</p>\[
+H^2=p^2+m^2,
+\]<p>Here we take \(c=1\). If we write \(c\) back in, it is</p>\[
+H^2=p^2c^2+m^2c^4.
+\]<p>The relationship between the two can be seen from the low-speed limit. When \(p\ll m\),</p>\[
+H=\sqrt{p^2+m^2}
+=m\sqrt{1+\frac{p^2}{m^2}}
+\approx m+\frac{p^2}{2m}.
+\]<p>Here, \(m\) is the rest energy, which in non-relativistic problems usually just gives an overall constant and can be ignored. What remains is</p>\[
+\frac{p^2}{2m}.
+\]<p>So the non-relativistic Hamiltonian can be seen as the result of the relativistic energy in the low-speed limit after removing the rest energy.</p><p>Now let&rsquo;s quantize it. In the position representation,</p>\[
+H\to i\frac{\partial}{\partial t},
+\qquad
+p\to -i\frac{\partial}{\partial x}.
+\]<p>For</p>\[
+H=\frac{p^2}{2m},
+\]<p>we get</p>\[
+i\frac{\partial \phi}{\partial t}
+=-\frac{1}{2m}\frac{\partial^2\phi}{\partial x^2},
+\]<p>which is the ordinary Schrödinger equation.</p><p>For the relativistic relation</p>\[
+H^2=p^2+m^2,
+\]<p>we can formally write</p>\[
+H=\pm\sqrt{p^2+m^2}.
+\]<p>This is of course one way to do it. But below we want to discuss a more special and elegant form: can we write \(H\) as a linear expression in \(p\) and \(m\). More specifically, let&rsquo;s first consider a free particle moving in one dimension.</p><p>The simplest case is</p>\[
+m=0.
+\]<p>In this case,</p>\[
+H=\pm p.
+\]<p>where \(H=p\) corresponds to a right-moving particle, and \(H=-p\) corresponds to a left-moving particle. We denote these two components as \(\phi_1\) and \(\phi_2\).</p><p>For \(\phi_1\), we have</p>\[
+H=p,
+\]<p>So</p>\[
+i\frac{\partial\phi_1}{\partial t}
+=p\phi_1
+=-i\frac{\partial\phi_1}{\partial x}.
+\]<p>which is</p>\[
+\frac{\partial\phi_1}{\partial t}
++\frac{\partial\phi_1}{\partial x}=0.
+\]<p>Its solution is</p>\[
+\phi_1=f(x-t),
+\]<p>representing a right-moving wave.</p><p>Similarly, for \(\phi_2\), we have</p>\[
+H=-p,
+\]<p>So</p>\[
+i\frac{\partial\phi_2}{\partial t}
+=-p\phi_2
+=i\frac{\partial\phi_2}{\partial x}.
+\]<p>which is</p>\[
+\frac{\partial\phi_2}{\partial t}
+-\frac{\partial\phi_2}{\partial x}=0.
+\]<p>Its solution is</p>\[
+\phi_2=g(x+t),
+\]<p>representing a left-moving wave.</p><p>Now we want to write these two equations in a unified form. Combine the two components:</p>\[
+\Phi=
+\begin{pmatrix}
+\phi_1\\
+\phi_2
+\end{pmatrix}.
+\]<p>According to the relations above, the Hamiltonian should give \(+p\) for the first component and \(-p\) for the second component. Therefore,</p>\[
+H\Phi
+=p
+\begin{pmatrix}
+1&0\\
+0&-1
+\end{pmatrix}
+\Phi.
+\]<p>We denote</p>\[
+\alpha=
+\begin{pmatrix}
+1&0\\
+0&-1
+\end{pmatrix},
+\]<p>Thus, the massless case can be written uniformly as</p>\[
+H=\alpha p.
+\]<p>Now consider</p>\[
+m\neq 0.
+\]<p>We guess that the Hamiltonian can be written as</p>\[
+H=\alpha p+\beta m,
+\]<p>where \(\beta\) is also a matrix acting on the two-component space. To satisfy the relativistic relation</p>\[
+H^2=p^2+m^2,
+\]<p>let&rsquo;s square this expression. Since \(\alpha,\beta\) only act on the two-component space \((\phi_1,\phi_2)\), while \(p=-i\partial_x\) acts on \(x\); here \(m\) is the rest mass parameter of the particle, not a new operator or matrix, and can be seen as a constant times the identity operator, so they can commute with \(p,m\):</p>\[
+[\alpha,p]=0,\qquad [\beta,p]=0,\qquad [p,m]=0.
+\]<p>Thus,</p>\[
+H^2
+=\alpha^2p^2+\beta^2m^2+(\alpha\beta+\beta\alpha)pm.
+\]<p>To make it equal to</p>\[
+p^2+m^2,
+\]<p>we need</p>\[
+\alpha^2=1,\qquad
+\beta^2=1,\qquad
+\alpha\beta+\beta\alpha=0.
+\]<p>We have already chosen</p>\[
+\alpha=
+\begin{pmatrix}
+1&0\\
+0&-1
+\end{pmatrix},
+\]<p>which satisfies</p>\[
+\alpha^2=1.
+\]<p>In fact, this is a Pauli matrix. The square of any Pauli matrix is \(1\), and different Pauli matrices anti-commute with each other. Therefore, we can take another Pauli matrix as \(\beta\), for example,</p>\[
+\beta=
+\begin{pmatrix}
+0&1\\
+1&0
+\end{pmatrix}.
+\]<p>Thus,</p>\[
+H=\alpha p+\beta m =
+\begin{pmatrix}
+p&m\\
+m&-p
+\end{pmatrix}.
+\]<p>Applying it to</p>\[
+\Phi=
+\begin{pmatrix}
+\phi_1\\
+\phi_2
+\end{pmatrix}
+\]<p>, we get</p>\[
+i\frac{\partial\phi_1}{\partial t}
+=p\phi_1+m\phi_2,
+\]<p></p>\[
+i\frac{\partial\phi_2}{\partial t}
+=m\phi_1-p\phi_2.
+\]<p>Therefore, once \(m\neq0\), the time evolutions of \(\phi_1\) and \(\phi_2\) become correlated. The evolution of the first component involves the second component, and the evolution of the second component also involves the first component. In other words, the mass term couples the right-moving and left-moving components.</p><p>Looking back, being able to write</p>\[
+H^2=p^2+m^2
+\]<p>as</p>\[
+H=\alpha p+\beta m
+\]<p>such a linear form relies on a very important assumption: the wave function is not a single \(\phi\), but can be divided into</p>\[
+\Phi=
+\begin{pmatrix}
+\phi_1\\
+\phi_2
+\end{pmatrix}
+\]<p>these two components. It is precisely because of this two-component structure that \(\alpha\) and \(\beta\) can be matrices and can possibly satisfy the anti-commutation relation</p>\[
+\alpha\beta+\beta\alpha=0.
+\]<p>This step is much like a kind of factorization: instead of directly dealing with the quadratic form \(H^2=p^2+m^2\), we write it as a linear Hamiltonian by introducing matrices and a two-component wave function.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://phrygiangates.github.io/tags/advanced-quantum-mechanics/>Advanced Quantum Mechanics</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://phrygiangates.github.io/>Phrygiangates</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>

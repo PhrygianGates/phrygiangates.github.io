@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Statistical Mechanics on Phrygiangates</title><link>https://phrygiangates.github.io/tags/statistical-mechanics/</link><description>Recent content in Statistical Mechanics on Phrygiangates</description><generator>Hugo -- 0.149.0</generator><language>en</language><lastBuildDate>Thu, 05 Jun 2025 21:24:00 +0800</lastBuildDate><atom:link href="https://phrygiangates.github.io/tags/statistical-mechanics/index.xml" rel="self" type="application/rss+xml"/><item><title>Ising Model</title><link>https://phrygiangates.github.io/posts/ising_model/</link><pubDate>Thu, 05 Jun 2025 21:24:00 +0800</pubDate><guid>https://phrygiangates.github.io/posts/ising_model/</guid><description>&lt;p&gt;Following Susskind&amp;rsquo;s Statistical Mechanics course, lecture 9.&lt;/p&gt;
+&lt;p&gt;The energy of a single spin in the Ising model is given by:&lt;/p&gt;
+\[E = -J\sigma\]&lt;p&gt;where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;\(E\) is the energy of the spin&lt;/li&gt;
+&lt;li&gt;\(J\) is the coupling constant (strength of interaction)&lt;/li&gt;
+&lt;li&gt;\(\sigma\) is the spin value, which can be either +1 (spin up) or -1 (spin down)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Focus on a single spin.
+Its partition function \(Z\), summing over the two configurations (\(\sigma = +1, \sigma = -1\)), is:
+&lt;/p&gt;</description></item></channel></rss>

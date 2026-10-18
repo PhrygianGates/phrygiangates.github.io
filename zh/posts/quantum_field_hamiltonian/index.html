@@ -1,0 +1,254 @@
+<!doctype html><html lang=zh dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>量子场哈密顿量 | Phrygiangates</title><meta name=keywords content="Advanced Quantum Mechanics"><meta name=description content="我们给一个哈密顿量：
+
+\[
+H=\int dx\left[\Psi^\dagger(x)\left(-\frac{\nabla^2}{2m}\right)\Psi(x)+V(x)\Psi^\dagger(x)\Psi(x)\right].
+\]
+这里取 \(\hbar=1\)。第一项是动能项，因为单粒子量子力学中 \(\hat p^2/(2m)\) 在位置表象里对应 \(-\nabla^2/(2m)\)。第二项是势能项，其中 \(\Psi^\dagger(x)\Psi(x)\) 是位置 \(x\) 处的粒子数密度，所以 \(V(x)\Psi^\dagger(x)\Psi(x)\) 表示在 \(x\) 处的势能密度。如果取 \(V(x)=mc^2\)，它就是给每个粒子加上一份静止能；这里仍然没有粒子之间的相互作用力。
+根据上一篇文章，在一维情况下有
+
+\[
+\Psi(x)=\int \frac{dp}{\sqrt{2\pi}}\,a(p)e^{ipx},\qquad
+\Psi^\dagger(x)=\int \frac{dq}{\sqrt{2\pi}}\,a^\dagger(q)e^{-iqx}.
+\]
+这里 \(a(p)\) 是湮灭一个动量为 \(p\) 的粒子的算符，\(a^\dagger(q)\) 是产生一个动量为 \(q\) 的粒子的算符。先看势能项里出现的粒子数密度积分：
+
+\[
+\int dx\,\Psi^\dagger(x)\Psi(x)
+=\int dx\int \frac{dq}{\sqrt{2\pi}}\int \frac{dp}{\sqrt{2\pi}}\,
+a^\dagger(q)a(p)e^{i(p-q)x}.
+\]
+整理得到
+
+\[
+\int dx\,\Psi^\dagger(x)\Psi(x)
+=\int dp\,dq\,a^\dagger(q)a(p)\left[\frac{1}{2\pi}\int dx\,e^{i(p-q)x}\right].
+\]
+方括号里的积分就是 Dirac delta 函数：
+
+\[
+\frac{1}{2\pi}\int dx\,e^{i(p-q)x}=\delta(p-q).
+\]
+直观地说，当 \(p\neq q\) 时，指数因子随 \(x\) 振荡，正负部分相互抵消；当 \(p=q\) 时，指数因子等于 1，对全空间积分发散。Dirac delta 函数正是把这两种性质合在一起的对象：它只在 \(p=q\) 处有贡献，并且在积分中要求令 \(p=q\)。因此
+"><meta name=author content><link rel=canonical href=https://phrygiangates.github.io/zh/posts/quantum_field_hamiltonian/><link crossorigin=anonymous href=/assets/css/stylesheet.a5781257de4197b8e3d54346acdf1dd55a9ba4cb91dcace192fc1baf228c08b5.css integrity="sha256-pXgSV95Bl7jj1UNGrN8d1VqbpMuR3KzhkvwbryKMCLU=" rel="preload stylesheet" as=style><link rel=icon href=https://phrygiangates.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://phrygiangates.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://phrygiangates.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://phrygiangates.github.io/apple-touch-icon.png><link rel=mask-icon href=https://phrygiangates.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://phrygiangates.github.io/posts/quantum_field_hamiltonian/><link rel=alternate hreflang=zh href=https://phrygiangates.github.io/zh/posts/quantum_field_hamiltonian/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],throwOnError:!0})'></script><meta property="og:url" content="https://phrygiangates.github.io/zh/posts/quantum_field_hamiltonian/"><meta property="og:site_name" content="Phrygiangates"><meta property="og:title" content="量子场哈密顿量"><meta property="og:description" content="我们给一个哈密顿量： \[ H=\int dx\left[\Psi^\dagger(x)\left(-\frac{\nabla^2}{2m}\right)\Psi(x)+V(x)\Psi^\dagger(x)\Psi(x)\right]. \] 这里取 \(\hbar=1\)。第一项是动能项，因为单粒子量子力学中 \(\hat p^2/(2m)\) 在位置表象里对应 \(-\nabla^2/(2m)\)。第二项是势能项，其中 \(\Psi^\dagger(x)\Psi(x)\) 是位置 \(x\) 处的粒子数密度，所以 \(V(x)\Psi^\dagger(x)\Psi(x)\) 表示在 \(x\) 处的势能密度。如果取 \(V(x)=mc^2\)，它就是给每个粒子加上一份静止能；这里仍然没有粒子之间的相互作用力。
+根据上一篇文章，在一维情况下有 \[ \Psi(x)=\int \frac{dp}{\sqrt{2\pi}}\,a(p)e^{ipx},\qquad \Psi^\dagger(x)=\int \frac{dq}{\sqrt{2\pi}}\,a^\dagger(q)e^{-iqx}. \] 这里 \(a(p)\) 是湮灭一个动量为 \(p\) 的粒子的算符，\(a^\dagger(q)\) 是产生一个动量为 \(q\) 的粒子的算符。先看势能项里出现的粒子数密度积分： \[ \int dx\,\Psi^\dagger(x)\Psi(x) =\int dx\int \frac{dq}{\sqrt{2\pi}}\int \frac{dp}{\sqrt{2\pi}}\, a^\dagger(q)a(p)e^{i(p-q)x}. \] 整理得到 \[ \int dx\,\Psi^\dagger(x)\Psi(x) =\int dp\,dq\,a^\dagger(q)a(p)\left[\frac{1}{2\pi}\int dx\,e^{i(p-q)x}\right]. \] 方括号里的积分就是 Dirac delta 函数： \[ \frac{1}{2\pi}\int dx\,e^{i(p-q)x}=\delta(p-q). \] 直观地说，当 \(p\neq q\) 时，指数因子随 \(x\) 振荡，正负部分相互抵消；当 \(p=q\) 时，指数因子等于 1，对全空间积分发散。Dirac delta 函数正是把这两种性质合在一起的对象：它只在 \(p=q\) 处有贡献，并且在积分中要求令 \(p=q\)。因此 "><meta property="og:locale" content="zh"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-04-30T22:30:00+08:00"><meta property="article:modified_time" content="2026-04-30T22:30:00+08:00"><meta property="article:tag" content="Advanced Quantum Mechanics"><meta name=twitter:card content="summary"><meta name=twitter:title content="量子场哈密顿量"><meta name=twitter:description content="我们给一个哈密顿量：
+
+\[
+H=\int dx\left[\Psi^\dagger(x)\left(-\frac{\nabla^2}{2m}\right)\Psi(x)+V(x)\Psi^\dagger(x)\Psi(x)\right].
+\]
+这里取 \(\hbar=1\)。第一项是动能项，因为单粒子量子力学中 \(\hat p^2/(2m)\) 在位置表象里对应 \(-\nabla^2/(2m)\)。第二项是势能项，其中 \(\Psi^\dagger(x)\Psi(x)\) 是位置 \(x\) 处的粒子数密度，所以 \(V(x)\Psi^\dagger(x)\Psi(x)\) 表示在 \(x\) 处的势能密度。如果取 \(V(x)=mc^2\)，它就是给每个粒子加上一份静止能；这里仍然没有粒子之间的相互作用力。
+根据上一篇文章，在一维情况下有
+
+\[
+\Psi(x)=\int \frac{dp}{\sqrt{2\pi}}\,a(p)e^{ipx},\qquad
+\Psi^\dagger(x)=\int \frac{dq}{\sqrt{2\pi}}\,a^\dagger(q)e^{-iqx}.
+\]
+这里 \(a(p)\) 是湮灭一个动量为 \(p\) 的粒子的算符，\(a^\dagger(q)\) 是产生一个动量为 \(q\) 的粒子的算符。先看势能项里出现的粒子数密度积分：
+
+\[
+\int dx\,\Psi^\dagger(x)\Psi(x)
+=\int dx\int \frac{dq}{\sqrt{2\pi}}\int \frac{dp}{\sqrt{2\pi}}\,
+a^\dagger(q)a(p)e^{i(p-q)x}.
+\]
+整理得到
+
+\[
+\int dx\,\Psi^\dagger(x)\Psi(x)
+=\int dp\,dq\,a^\dagger(q)a(p)\left[\frac{1}{2\pi}\int dx\,e^{i(p-q)x}\right].
+\]
+方括号里的积分就是 Dirac delta 函数：
+
+\[
+\frac{1}{2\pi}\int dx\,e^{i(p-q)x}=\delta(p-q).
+\]
+直观地说，当 \(p\neq q\) 时，指数因子随 \(x\) 振荡，正负部分相互抵消；当 \(p=q\) 时，指数因子等于 1，对全空间积分发散。Dirac delta 函数正是把这两种性质合在一起的对象：它只在 \(p=q\) 处有贡献，并且在积分中要求令 \(p=q\)。因此
+"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://phrygiangates.github.io/zh/posts/"},{"@type":"ListItem","position":2,"name":"量子场哈密顿量","item":"https://phrygiangates.github.io/zh/posts/quantum_field_hamiltonian/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"量子场哈密顿量","name":"量子场哈密顿量","description":"我们给一个哈密顿量： \\[ H=\\int dx\\left[\\Psi^\\dagger(x)\\left(-\\frac{\\nabla^2}{2m}\\right)\\Psi(x)+V(x)\\Psi^\\dagger(x)\\Psi(x)\\right]. \\] 这里取 \\(\\hbar=1\\)。第一项是动能项，因为单粒子量子力学中 \\(\\hat p^2/(2m)\\) 在位置表象里对应 \\(-\\nabla^2/(2m)\\)。第二项是势能项，其中 \\(\\Psi^\\dagger(x)\\Psi(x)\\) 是位置 \\(x\\) 处的粒子数密度，所以 \\(V(x)\\Psi^\\dagger(x)\\Psi(x)\\) 表示在 \\(x\\) 处的势能密度。如果取 \\(V(x)=mc^2\\)，它就是给每个粒子加上一份静止能；这里仍然没有粒子之间的相互作用力。\n根据上一篇文章，在一维情况下有 \\[ \\Psi(x)=\\int \\frac{dp}{\\sqrt{2\\pi}}\\,a(p)e^{ipx},\\qquad \\Psi^\\dagger(x)=\\int \\frac{dq}{\\sqrt{2\\pi}}\\,a^\\dagger(q)e^{-iqx}. \\] 这里 \\(a(p)\\) 是湮灭一个动量为 \\(p\\) 的粒子的算符，\\(a^\\dagger(q)\\) 是产生一个动量为 \\(q\\) 的粒子的算符。先看势能项里出现的粒子数密度积分： \\[ \\int dx\\,\\Psi^\\dagger(x)\\Psi(x) =\\int dx\\int \\frac{dq}{\\sqrt{2\\pi}}\\int \\frac{dp}{\\sqrt{2\\pi}}\\, a^\\dagger(q)a(p)e^{i(p-q)x}. \\] 整理得到 \\[ \\int dx\\,\\Psi^\\dagger(x)\\Psi(x) =\\int dp\\,dq\\,a^\\dagger(q)a(p)\\left[\\frac{1}{2\\pi}\\int dx\\,e^{i(p-q)x}\\right]. \\] 方括号里的积分就是 Dirac delta 函数： \\[ \\frac{1}{2\\pi}\\int dx\\,e^{i(p-q)x}=\\delta(p-q). \\] 直观地说，当 \\(p\\neq q\\) 时，指数因子随 \\(x\\) 振荡，正负部分相互抵消；当 \\(p=q\\) 时，指数因子等于 1，对全空间积分发散。Dirac delta 函数正是把这两种性质合在一起的对象：它只在 \\(p=q\\) 处有贡献，并且在积分中要求令 \\(p=q\\)。因此 ","keywords":["Advanced Quantum Mechanics"],"articleBody":"我们给一个哈密顿量： \\[ H=\\int dx\\left[\\Psi^\\dagger(x)\\left(-\\frac{\\nabla^2}{2m}\\right)\\Psi(x)+V(x)\\Psi^\\dagger(x)\\Psi(x)\\right]. \\] 这里取 \\(\\hbar=1\\)。第一项是动能项，因为单粒子量子力学中 \\(\\hat p^2/(2m)\\) 在位置表象里对应 \\(-\\nabla^2/(2m)\\)。第二项是势能项，其中 \\(\\Psi^\\dagger(x)\\Psi(x)\\) 是位置 \\(x\\) 处的粒子数密度，所以 \\(V(x)\\Psi^\\dagger(x)\\Psi(x)\\) 表示在 \\(x\\) 处的势能密度。如果取 \\(V(x)=mc^2\\)，它就是给每个粒子加上一份静止能；这里仍然没有粒子之间的相互作用力。\n根据上一篇文章，在一维情况下有 \\[ \\Psi(x)=\\int \\frac{dp}{\\sqrt{2\\pi}}\\,a(p)e^{ipx},\\qquad \\Psi^\\dagger(x)=\\int \\frac{dq}{\\sqrt{2\\pi}}\\,a^\\dagger(q)e^{-iqx}. \\] 这里 \\(a(p)\\) 是湮灭一个动量为 \\(p\\) 的粒子的算符，\\(a^\\dagger(q)\\) 是产生一个动量为 \\(q\\) 的粒子的算符。先看势能项里出现的粒子数密度积分： \\[ \\int dx\\,\\Psi^\\dagger(x)\\Psi(x) =\\int dx\\int \\frac{dq}{\\sqrt{2\\pi}}\\int \\frac{dp}{\\sqrt{2\\pi}}\\, a^\\dagger(q)a(p)e^{i(p-q)x}. \\] 整理得到 \\[ \\int dx\\,\\Psi^\\dagger(x)\\Psi(x) =\\int dp\\,dq\\,a^\\dagger(q)a(p)\\left[\\frac{1}{2\\pi}\\int dx\\,e^{i(p-q)x}\\right]. \\] 方括号里的积分就是 Dirac delta 函数： \\[ \\frac{1}{2\\pi}\\int dx\\,e^{i(p-q)x}=\\delta(p-q). \\] 直观地说，当 \\(p\\neq q\\) 时，指数因子随 \\(x\\) 振荡，正负部分相互抵消；当 \\(p=q\\) 时，指数因子等于 1，对全空间积分发散。Dirac delta 函数正是把这两种性质合在一起的对象：它只在 \\(p=q\\) 处有贡献，并且在积分中要求令 \\(p=q\\)。因此 \\[ \\int dx\\,\\Psi^\\dagger(x)\\Psi(x) =\\int dp\\,dq\\,a^\\dagger(q)a(p)\\delta(p-q) =\\int dp\\,a^\\dagger(p)a(p). \\] 算符 \\(a^\\dagger(p)a(p)\\) 的作用是先湮灭一个动量为 \\(p\\) 的粒子，再产生一个同样动量为 \\(p\\) 的粒子，所以它实际上是在数动量为 \\(p\\) 的粒子数。由此可以看出，当这一项作用在某个态上时，它不会改变粒子的动量；如果 \\(V(x)\\) 是常数，那么这一项只给每个粒子加上同样的能量，也不会改变总动量。\n再看第一项，也就是动能项： \\[ \\int dx\\,\\Psi^\\dagger(x)\\left(-\\frac{\\nabla^2}{2m}\\right)\\Psi(x). \\] 把 \\(\\Psi(x)\\) 展开成动量模式以后，\\(-\\nabla^2/(2m)\\) 只作用在 \\(e^{ipx}\\) 上，并给出因子 \\(p^2/(2m)\\)： \\[ -\\frac{\\nabla^2}{2m}e^{ipx}=\\frac{p^2}{2m}e^{ipx}. \\] 因此同样会出现对 \\(x\\) 的积分： \\[ \\frac{1}{2\\pi}\\int dx\\,e^{i(p-q)x}=\\delta(p-q), \\] 于是动能项变成 \\[ \\int dx\\,\\Psi^\\dagger(x)\\left(-\\frac{\\nabla^2}{2m}\\right)\\Psi(x) =\\int dp\\,\\frac{p^2}{2m}a^\\dagger(p)a(p). \\] 这说明动能项只是数出每个动量 \\(p\\) 上有多少粒子，并给它们各自乘上能量 \\(p^2/(2m)\\)，但不会把动量为 \\(p\\) 的粒子变成另一个动量的粒子。\n所以在 \\(V(x)\\) 取常数，例如 \\(V(x)=mc^2\\) 的情况下，整个哈密顿量可以写成 \\[ H=\\int dp\\left(\\frac{p^2}{2m}+mc^2\\right)a^\\dagger(p)a(p). \\] 如果我们把这个 \\(H\\) 作用于一个有确定总动量的态，它只会改变这个态的相位或能量权重，不会改变它的总动量。这就是在这个自由粒子系统中动量守恒的意思。若 \\(V(x)\\) 不是常数，而是真的依赖位置，则空间平移对称性被外势破坏，动量一般就不再守恒。\n当我们考虑多种粒子的局部相互作用时，同样的机制会给出总动量守恒，而不是要求每个粒子的动量分别守恒。\n比如有两种粒子 \\(A\\) 和 \\(B\\)。除了各自的动能项之外，可以在哈密顿量中加入一个局部相互作用项： \\[ H=H_{\\text{kinetic}}+g\\int dx\\,\\Psi_A^\\dagger(x)\\Psi_B^\\dagger(x)\\Psi_B(x)\\Psi_A(x). \\] 这里的 \\(g\\) 是耦合常数，表示这个相互作用的强弱。这个项实际上描述的是 \\(A\\) 和 \\(B\\) 的散射：右边的 \\(\\Psi_A(x)\\)、\\(\\Psi_B(x)\\) 先在同一个位置 \\(x\\) 湮灭一个 \\(A\\) 粒子和一个 \\(B\\) 粒子，左边的 \\(\\Psi_A^\\dagger(x)\\)、\\(\\Psi_B^\\dagger(x)\\) 再在同一个位置产生一个 \\(A\\) 粒子和一个 \\(B\\) 粒子。粒子种类没有改变，但各自的动量可以改变。\n如果把这些场都展开到动量空间，会得到类似 \\[ \\int dp_A\\,dp_B\\,dq_A\\,dq_B\\, a_A^\\dagger(q_A)a_B^\\dagger(q_B)a_B(p_B)a_A(p_A)\\, \\delta(p_A+p_B-q_A-q_B). \\] 这里 \\(p_A,p_B\\) 是被湮灭的入射粒子的动量，\\(q_A,q_B\\) 是被产生的出射粒子的动量。对 \\(x\\) 的积分只给出总动量守恒： \\[ p_A+p_B=q_A+q_B, \\] 但并不要求 \\(p_A=q_A\\) 或 \\(p_B=q_B\\)。所以单个粒子的动量可以改变，只要前后总动量相同。这就是它被称为散射的原因。\n再比如，如果我们想让哈密顿量描述一个 \\(A\\) 粒子变成一个 \\(B\\) 粒子和一个 \\(C\\) 粒子，就可以写下 \\[ \\Psi_B^\\dagger(x)\\Psi_C^\\dagger(x)\\Psi_A(x). \\] 它的作用是湮灭一个 \\(A\\)，并产生一个 \\(B\\) 和一个 \\(C\\)。但是哈密顿量必须是 Hermitian 的，因为它对应可观测的能量，也保证时间演化是幺正的。因此还要加上它的厄米共轭项： \\[ \\Psi_A^\\dagger(x)\\Psi_C(x)\\Psi_B(x). \\] 所以相互作用哈密顿量可以写成 \\[ H_I=g\\int dx\\left[\\Psi_B^\\dagger(x)\\Psi_C^\\dagger(x)\\Psi_A(x)+\\Psi_A^\\dagger(x)\\Psi_C(x)\\Psi_B(x)\\right]. \\] 第一项描述 \\(A\\to B+C\\)，第二项描述反过来的过程 \\(B+C\\to A\\)。\n时间演化来自薛定谔方程。这里仍取 \\(\\hbar=1\\)，如果 \\(H\\) 不显含时间，则 \\[ |\\phi(t+\\epsilon)\\rangle=e^{-iH\\epsilon}|\\phi(t)\\rangle. \\] 把指数函数展开，就得到 \\[ |\\phi(t+\\epsilon)\\rangle =\\left(1-i\\epsilon H-\\frac{\\epsilon^2}{2}H^2+\\cdots\\right)|\\phi(t)\\rangle. \\] 所以一阶项 \\(-i\\epsilon H|\\phi(t)\\rangle\\) 表示哈密顿量作用一次，二阶项 \\(-\\epsilon^2H^2|\\phi(t)\\rangle/2\\) 表示哈密顿量作用两次。对上面的 \\(H_I\\) 来说，作用一次可以给出 \\(A\\to B+C\\) 或 \\(B+C\\to A\\)。作用两次则可以给出 \\(A\\to B+C\\to A\\)，也可以给出 \\(B+C\\to A\\to B+C\\) 这样的过程。\n这里的“一阶”和“二阶”不是说真实世界中先发生一个一阶过程，然后同时又发生一个二阶过程；它们是同一个时间演化振幅中的不同阶贡献。总振幅是这些项的叠加： \\[ \\mathcal A=\\mathcal A^{(1)}+\\mathcal A^{(2)}+\\mathcal A^{(3)}+\\cdots. \\] 如果耦合常数 \\(g\\) 很小，一阶项通常是 \\(g\\) 阶，二阶项是 \\(g^2\\) 阶，所以可以按阶数逐步近似。图像上说 \\(A\\) “暂时”出现或消失，只是一种描述高阶项的方便语言；严格地说，它是时间演化算符展开中的中间态贡献。\n我们现在想看看相对论下的情形。先只考虑一维自由粒子，不加入势能。\n在普通非相对论情形中，单粒子哈密顿量是 \\[ H=\\frac{p^2}{2m}. \\] 在相对论情形中，能量和动量满足 \\[ H^2=p^2+m^2, \\] 这里取 \\(c=1\\)。如果把 \\(c\\) 写回来，则是 \\[ H^2=p^2c^2+m^2c^4. \\] 两者的关系可以从低速极限看出来。当 \\(p\\ll m\\) 时， \\[ H=\\sqrt{p^2+m^2} =m\\sqrt{1+\\frac{p^2}{m^2}} \\approx m+\\frac{p^2}{2m}. \\] 这里的 \\(m\\) 是静止能，在非相对论问题中通常只给出一个整体常数，可以忽略。剩下的就是 \\[ \\frac{p^2}{2m}. \\] 所以非相对论哈密顿量可以看成相对论能量在低速极限下去掉静止能之后的结果。\n现在把它量子化。在位置表象中， \\[ H\\to i\\frac{\\partial}{\\partial t}, \\qquad p\\to -i\\frac{\\partial}{\\partial x}. \\] 对于 \\[ H=\\frac{p^2}{2m}, \\] 我们得到 \\[ i\\frac{\\partial \\phi}{\\partial t} =-\\frac{1}{2m}\\frac{\\partial^2\\phi}{\\partial x^2}, \\] 也就是普通的薛定谔方程。\n对于相对论关系 \\[ H^2=p^2+m^2, \\] 形式上可以写 \\[ H=\\pm\\sqrt{p^2+m^2}. \\] 这当然也是一种做法。但下面我们想讨论一种更特殊、更优雅的形式：能不能把 \\(H\\) 写成关于 \\(p\\) 和 \\(m\\) 的线性表达式。更具体地说，我们先考虑一个在一维中运动的自由粒子。\n最简单的情形是 \\[ m=0. \\] 这时 \\[ H=\\pm p. \\] 其中 \\(H=p\\) 对应向右运动的粒子，\\(H=-p\\) 对应向左运动的粒子。我们把这两个分量记作 \\(\\phi_1\\) 和 \\(\\phi_2\\)。\n对于 \\(\\phi_1\\)，有 \\[ H=p, \\] 所以 \\[ i\\frac{\\partial\\phi_1}{\\partial t} =p\\phi_1 =-i\\frac{\\partial\\phi_1}{\\partial x}. \\] 也就是 \\[ \\frac{\\partial\\phi_1}{\\partial t} +\\frac{\\partial\\phi_1}{\\partial x}=0. \\] 它的解是 \\[ \\phi_1=f(x-t), \\] 表示一个向右移动的波。\n同理，对于 \\(\\phi_2\\)，有 \\[ H=-p, \\] 所以 \\[ i\\frac{\\partial\\phi_2}{\\partial t} =-p\\phi_2 =i\\frac{\\partial\\phi_2}{\\partial x}. \\] 也就是 \\[ \\frac{\\partial\\phi_2}{\\partial t} -\\frac{\\partial\\phi_2}{\\partial x}=0. \\] 它的解是 \\[ \\phi_2=g(x+t), \\] 表示一个向左移动的波。\n现在我们想把这两个方程写成一种统一的形式。把两个分量合在一起： \\[ \\Phi= \\begin{pmatrix} \\phi_1\\\\ \\phi_2 \\end{pmatrix}. \\] 按照上面的关系，哈密顿量应该对第一分量给出 \\(+p\\)，对第二分量给出 \\(-p\\)。因此 \\[ H\\Phi =p \\begin{pmatrix} 1\u00260\\\\ 0\u0026-1 \\end{pmatrix} \\Phi. \\] 我们记 \\[ \\alpha= \\begin{pmatrix} 1\u00260\\\\ 0\u0026-1 \\end{pmatrix}, \\] 于是无质量情形可以统一写成 \\[ H=\\alpha p. \\]现在考虑 \\[ m\\neq 0. \\] 我们猜测哈密顿量可以写成 \\[ H=\\alpha p+\\beta m, \\] 其中 \\(\\beta\\) 也是一个作用在二分量空间上的矩阵。为了满足相对论关系 \\[ H^2=p^2+m^2, \\] 我们来平方这个表达式。由于 \\(\\alpha,\\beta\\) 只作用在 \\((\\phi_1,\\phi_2)\\) 这个二分量空间上，而 \\(p=-i\\partial_x\\) 作用在 \\(x\\) 上；这里的 \\(m\\) 是粒子的静止质量参数，不是新的算符或矩阵，可以看成常数乘以单位算符，所以可以把它们和 \\(p,m\\) 对易： \\[ [\\alpha,p]=0,\\qquad [\\beta,p]=0,\\qquad [p,m]=0. \\] 于是 \\[ H^2 =\\alpha^2p^2+\\beta^2m^2+(\\alpha\\beta+\\beta\\alpha)pm. \\] 要让它等于 \\[ p^2+m^2, \\] 就需要 \\[ \\alpha^2=1,\\qquad \\beta^2=1,\\qquad \\alpha\\beta+\\beta\\alpha=0. \\]我们已经选了 \\[ \\alpha= \\begin{pmatrix} 1\u00260\\\\ 0\u0026-1 \\end{pmatrix}, \\] 它满足 \\[ \\alpha^2=1. \\] 事实上这就是一个 Pauli 矩阵。Pauli 矩阵的平方都是 \\(1\\)，并且不同的 Pauli 矩阵彼此反对易。因此我们可以取另一个 Pauli 矩阵作为 \\(\\beta\\)，比如 \\[ \\beta= \\begin{pmatrix} 0\u00261\\\\ 1\u00260 \\end{pmatrix}. \\] 于是 \\[ H=\\alpha p+\\beta m = \\begin{pmatrix} p\u0026m\\\\ m\u0026-p \\end{pmatrix}. \\]把它作用在 \\[ \\Phi= \\begin{pmatrix} \\phi_1\\\\ \\phi_2 \\end{pmatrix} \\] 上，得到 \\[ i\\frac{\\partial\\phi_1}{\\partial t} =p\\phi_1+m\\phi_2, \\] \\[ i\\frac{\\partial\\phi_2}{\\partial t} =m\\phi_1-p\\phi_2. \\] 因此，一旦 \\(m\\neq0\\)，\\(\\phi_1\\) 和 \\(\\phi_2\\) 的时间演化就彼此相关。第一分量的演化中出现了第二分量，第二分量的演化中也出现了第一分量。换句话说，质量项把右动分量和左动分量耦合在一起。\n回过头看，能把 \\[ H^2=p^2+m^2 \\] 写成 \\[ H=\\alpha p+\\beta m \\] 这样的线性形式，一个很重要的假设就是：波函数不是单个 \\(\\phi\\)，而是可以分成 \\[ \\Phi= \\begin{pmatrix} \\phi_1\\\\ \\phi_2 \\end{pmatrix} \\] 这两个分量。正是因为有了这个二分量结构，\\(\\alpha\\) 和 \\(\\beta\\) 才能是矩阵，才可能满足反对易关系 \\[ \\alpha\\beta+\\beta\\alpha=0. \\] 这一步很像一种因式分解：我们不是直接处理平方形式 \\(H^2=p^2+m^2\\)，而是通过引入矩阵和二分量波函数，把它写成一个线性的哈密顿量。\n","wordCount":"581","inLanguage":"zh","datePublished":"2026-04-30T22:30:00+08:00","dateModified":"2026-04-30T22:30:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://phrygiangates.github.io/zh/posts/quantum_field_hamiltonian/"},"publisher":{"@type":"Organization","name":"Phrygiangates","logo":{"@type":"ImageObject","url":"https://phrygiangates.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://phrygiangates.github.io/zh/ accesskey=h title="Phrygiangates (Alt + H)">Phrygiangates</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><ul class=lang-switch><li>|</li><li><a href=https://phrygiangates.github.io/ title=English aria-label=English>En</a></li></ul></div></div><ul id=menu></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">量子场哈密顿量</h1><div class=post-meta><span title='2026-04-30 22:30:00 +0800 +0800'>2026年4月30日</span>&nbsp;|&nbsp;<span>语言:</span><ul class=i18n_list><li><a href=https://phrygiangates.github.io/posts/quantum_field_hamiltonian/>En</a></li></ul></div></header><div class=post-content><p>我们给一个哈密顿量：</p>\[
+H=\int dx\left[\Psi^\dagger(x)\left(-\frac{\nabla^2}{2m}\right)\Psi(x)+V(x)\Psi^\dagger(x)\Psi(x)\right].
+\]<p>这里取 \(\hbar=1\)。第一项是动能项，因为单粒子量子力学中 \(\hat p^2/(2m)\) 在位置表象里对应 \(-\nabla^2/(2m)\)。第二项是势能项，其中 \(\Psi^\dagger(x)\Psi(x)\) 是位置 \(x\) 处的粒子数密度，所以 \(V(x)\Psi^\dagger(x)\Psi(x)\) 表示在 \(x\) 处的势能密度。如果取 \(V(x)=mc^2\)，它就是给每个粒子加上一份静止能；这里仍然没有粒子之间的相互作用力。</p><p>根据上一篇文章，在一维情况下有</p>\[
+\Psi(x)=\int \frac{dp}{\sqrt{2\pi}}\,a(p)e^{ipx},\qquad
+\Psi^\dagger(x)=\int \frac{dq}{\sqrt{2\pi}}\,a^\dagger(q)e^{-iqx}.
+\]<p>这里 \(a(p)\) 是湮灭一个动量为 \(p\) 的粒子的算符，\(a^\dagger(q)\) 是产生一个动量为 \(q\) 的粒子的算符。先看势能项里出现的粒子数密度积分：</p>\[
+\int dx\,\Psi^\dagger(x)\Psi(x)
+=\int dx\int \frac{dq}{\sqrt{2\pi}}\int \frac{dp}{\sqrt{2\pi}}\,
+a^\dagger(q)a(p)e^{i(p-q)x}.
+\]<p>整理得到</p>\[
+\int dx\,\Psi^\dagger(x)\Psi(x)
+=\int dp\,dq\,a^\dagger(q)a(p)\left[\frac{1}{2\pi}\int dx\,e^{i(p-q)x}\right].
+\]<p>方括号里的积分就是 Dirac delta 函数：</p>\[
+\frac{1}{2\pi}\int dx\,e^{i(p-q)x}=\delta(p-q).
+\]<p>直观地说，当 \(p\neq q\) 时，指数因子随 \(x\) 振荡，正负部分相互抵消；当 \(p=q\) 时，指数因子等于 1，对全空间积分发散。Dirac delta 函数正是把这两种性质合在一起的对象：它只在 \(p=q\) 处有贡献，并且在积分中要求令 \(p=q\)。因此</p>\[
+\int dx\,\Psi^\dagger(x)\Psi(x)
+=\int dp\,dq\,a^\dagger(q)a(p)\delta(p-q)
+=\int dp\,a^\dagger(p)a(p).
+\]<p>算符 \(a^\dagger(p)a(p)\) 的作用是先湮灭一个动量为 \(p\) 的粒子，再产生一个同样动量为 \(p\) 的粒子，所以它实际上是在数动量为 \(p\) 的粒子数。由此可以看出，当这一项作用在某个态上时，它不会改变粒子的动量；如果 \(V(x)\) 是常数，那么这一项只给每个粒子加上同样的能量，也不会改变总动量。</p><p>再看第一项，也就是动能项：</p>\[
+\int dx\,\Psi^\dagger(x)\left(-\frac{\nabla^2}{2m}\right)\Psi(x).
+\]<p>把 \(\Psi(x)\) 展开成动量模式以后，\(-\nabla^2/(2m)\) 只作用在 \(e^{ipx}\) 上，并给出因子 \(p^2/(2m)\)：</p>\[
+-\frac{\nabla^2}{2m}e^{ipx}=\frac{p^2}{2m}e^{ipx}.
+\]<p>因此同样会出现对 \(x\) 的积分：</p>\[
+\frac{1}{2\pi}\int dx\,e^{i(p-q)x}=\delta(p-q),
+\]<p>于是动能项变成</p>\[
+\int dx\,\Psi^\dagger(x)\left(-\frac{\nabla^2}{2m}\right)\Psi(x)
+=\int dp\,\frac{p^2}{2m}a^\dagger(p)a(p).
+\]<p>这说明动能项只是数出每个动量 \(p\) 上有多少粒子，并给它们各自乘上能量 \(p^2/(2m)\)，但不会把动量为 \(p\) 的粒子变成另一个动量的粒子。</p><p>所以在 \(V(x)\) 取常数，例如 \(V(x)=mc^2\) 的情况下，整个哈密顿量可以写成</p>\[
+H=\int dp\left(\frac{p^2}{2m}+mc^2\right)a^\dagger(p)a(p).
+\]<p>如果我们把这个 \(H\) 作用于一个有确定总动量的态，它只会改变这个态的相位或能量权重，不会改变它的总动量。这就是在这个自由粒子系统中动量守恒的意思。若 \(V(x)\) 不是常数，而是真的依赖位置，则空间平移对称性被外势破坏，动量一般就不再守恒。</p><hr><p>当我们考虑多种粒子的局部相互作用时，同样的机制会给出总动量守恒，而不是要求每个粒子的动量分别守恒。</p><p>比如有两种粒子 \(A\) 和 \(B\)。除了各自的动能项之外，可以在哈密顿量中加入一个局部相互作用项：</p>\[
+H=H_{\text{kinetic}}+g\int dx\,\Psi_A^\dagger(x)\Psi_B^\dagger(x)\Psi_B(x)\Psi_A(x).
+\]<p>这里的 \(g\) 是耦合常数，表示这个相互作用的强弱。这个项实际上描述的是 \(A\) 和 \(B\) 的散射：右边的 \(\Psi_A(x)\)、\(\Psi_B(x)\) 先在同一个位置 \(x\) 湮灭一个 \(A\) 粒子和一个 \(B\) 粒子，左边的 \(\Psi_A^\dagger(x)\)、\(\Psi_B^\dagger(x)\) 再在同一个位置产生一个 \(A\) 粒子和一个 \(B\) 粒子。粒子种类没有改变，但各自的动量可以改变。</p><p>如果把这些场都展开到动量空间，会得到类似</p>\[
+\int dp_A\,dp_B\,dq_A\,dq_B\,
+a_A^\dagger(q_A)a_B^\dagger(q_B)a_B(p_B)a_A(p_A)\,
+\delta(p_A+p_B-q_A-q_B).
+\]<p>这里 \(p_A,p_B\) 是被湮灭的入射粒子的动量，\(q_A,q_B\) 是被产生的出射粒子的动量。对 \(x\) 的积分只给出总动量守恒：</p>\[
+p_A+p_B=q_A+q_B,
+\]<p>但并不要求 \(p_A=q_A\) 或 \(p_B=q_B\)。所以单个粒子的动量可以改变，只要前后总动量相同。这就是它被称为散射的原因。</p><p>再比如，如果我们想让哈密顿量描述一个 \(A\) 粒子变成一个 \(B\) 粒子和一个 \(C\) 粒子，就可以写下</p>\[
+\Psi_B^\dagger(x)\Psi_C^\dagger(x)\Psi_A(x).
+\]<p>它的作用是湮灭一个 \(A\)，并产生一个 \(B\) 和一个 \(C\)。但是哈密顿量必须是 Hermitian 的，因为它对应可观测的能量，也保证时间演化是幺正的。因此还要加上它的厄米共轭项：</p>\[
+\Psi_A^\dagger(x)\Psi_C(x)\Psi_B(x).
+\]<p>所以相互作用哈密顿量可以写成</p>\[
+H_I=g\int dx\left[\Psi_B^\dagger(x)\Psi_C^\dagger(x)\Psi_A(x)+\Psi_A^\dagger(x)\Psi_C(x)\Psi_B(x)\right].
+\]<p>第一项描述 \(A\to B+C\)，第二项描述反过来的过程 \(B+C\to A\)。</p><p>时间演化来自薛定谔方程。这里仍取 \(\hbar=1\)，如果 \(H\) 不显含时间，则</p>\[
+|\phi(t+\epsilon)\rangle=e^{-iH\epsilon}|\phi(t)\rangle.
+\]<p>把指数函数展开，就得到</p>\[
+|\phi(t+\epsilon)\rangle
+=\left(1-i\epsilon H-\frac{\epsilon^2}{2}H^2+\cdots\right)|\phi(t)\rangle.
+\]<p>所以一阶项 \(-i\epsilon H|\phi(t)\rangle\) 表示哈密顿量作用一次，二阶项 \(-\epsilon^2H^2|\phi(t)\rangle/2\) 表示哈密顿量作用两次。对上面的 \(H_I\) 来说，作用一次可以给出 \(A\to B+C\) 或 \(B+C\to A\)。作用两次则可以给出 \(A\to B+C\to A\)，也可以给出 \(B+C\to A\to B+C\) 这样的过程。</p><p>这里的“一阶”和“二阶”不是说真实世界中先发生一个一阶过程，然后同时又发生一个二阶过程；它们是同一个时间演化振幅中的不同阶贡献。总振幅是这些项的叠加：</p>\[
+\mathcal A=\mathcal A^{(1)}+\mathcal A^{(2)}+\mathcal A^{(3)}+\cdots.
+\]<p>如果耦合常数 \(g\) 很小，一阶项通常是 \(g\) 阶，二阶项是 \(g^2\) 阶，所以可以按阶数逐步近似。图像上说 \(A\) “暂时”出现或消失，只是一种描述高阶项的方便语言；严格地说，它是时间演化算符展开中的中间态贡献。</p><hr><p>我们现在想看看相对论下的情形。先只考虑一维自由粒子，不加入势能。</p><p>在普通非相对论情形中，单粒子哈密顿量是</p>\[
+H=\frac{p^2}{2m}.
+\]<p>在相对论情形中，能量和动量满足</p>\[
+H^2=p^2+m^2,
+\]<p>这里取 \(c=1\)。如果把 \(c\) 写回来，则是</p>\[
+H^2=p^2c^2+m^2c^4.
+\]<p>两者的关系可以从低速极限看出来。当 \(p\ll m\) 时，</p>\[
+H=\sqrt{p^2+m^2}
+=m\sqrt{1+\frac{p^2}{m^2}}
+\approx m+\frac{p^2}{2m}.
+\]<p>这里的 \(m\) 是静止能，在非相对论问题中通常只给出一个整体常数，可以忽略。剩下的就是</p>\[
+\frac{p^2}{2m}.
+\]<p>所以非相对论哈密顿量可以看成相对论能量在低速极限下去掉静止能之后的结果。</p><p>现在把它量子化。在位置表象中，</p>\[
+H\to i\frac{\partial}{\partial t},
+\qquad
+p\to -i\frac{\partial}{\partial x}.
+\]<p>对于</p>\[
+H=\frac{p^2}{2m},
+\]<p>我们得到</p>\[
+i\frac{\partial \phi}{\partial t}
+=-\frac{1}{2m}\frac{\partial^2\phi}{\partial x^2},
+\]<p>也就是普通的薛定谔方程。</p><p>对于相对论关系</p>\[
+H^2=p^2+m^2,
+\]<p>形式上可以写</p>\[
+H=\pm\sqrt{p^2+m^2}.
+\]<p>这当然也是一种做法。但下面我们想讨论一种更特殊、更优雅的形式：能不能把 \(H\) 写成关于 \(p\) 和 \(m\) 的线性表达式。更具体地说，我们先考虑一个在一维中运动的自由粒子。</p><p>最简单的情形是</p>\[
+m=0.
+\]<p>这时</p>\[
+H=\pm p.
+\]<p>其中 \(H=p\) 对应向右运动的粒子，\(H=-p\) 对应向左运动的粒子。我们把这两个分量记作 \(\phi_1\) 和 \(\phi_2\)。</p><p>对于 \(\phi_1\)，有</p>\[
+H=p,
+\]<p>所以</p>\[
+i\frac{\partial\phi_1}{\partial t}
+=p\phi_1
+=-i\frac{\partial\phi_1}{\partial x}.
+\]<p>也就是</p>\[
+\frac{\partial\phi_1}{\partial t}
++\frac{\partial\phi_1}{\partial x}=0.
+\]<p>它的解是</p>\[
+\phi_1=f(x-t),
+\]<p>表示一个向右移动的波。</p><p>同理，对于 \(\phi_2\)，有</p>\[
+H=-p,
+\]<p>所以</p>\[
+i\frac{\partial\phi_2}{\partial t}
+=-p\phi_2
+=i\frac{\partial\phi_2}{\partial x}.
+\]<p>也就是</p>\[
+\frac{\partial\phi_2}{\partial t}
+-\frac{\partial\phi_2}{\partial x}=0.
+\]<p>它的解是</p>\[
+\phi_2=g(x+t),
+\]<p>表示一个向左移动的波。</p><p>现在我们想把这两个方程写成一种统一的形式。把两个分量合在一起：</p>\[
+\Phi=
+\begin{pmatrix}
+\phi_1\\
+\phi_2
+\end{pmatrix}.
+\]<p>按照上面的关系，哈密顿量应该对第一分量给出 \(+p\)，对第二分量给出 \(-p\)。因此</p>\[
+H\Phi
+=p
+\begin{pmatrix}
+1&0\\
+0&-1
+\end{pmatrix}
+\Phi.
+\]<p>我们记</p>\[
+\alpha=
+\begin{pmatrix}
+1&0\\
+0&-1
+\end{pmatrix},
+\]<p>于是无质量情形可以统一写成</p>\[
+H=\alpha p.
+\]<p>现在考虑</p>\[
+m\neq 0.
+\]<p>我们猜测哈密顿量可以写成</p>\[
+H=\alpha p+\beta m,
+\]<p>其中 \(\beta\) 也是一个作用在二分量空间上的矩阵。为了满足相对论关系</p>\[
+H^2=p^2+m^2,
+\]<p>我们来平方这个表达式。由于 \(\alpha,\beta\) 只作用在 \((\phi_1,\phi_2)\) 这个二分量空间上，而 \(p=-i\partial_x\) 作用在 \(x\) 上；这里的 \(m\) 是粒子的静止质量参数，不是新的算符或矩阵，可以看成常数乘以单位算符，所以可以把它们和 \(p,m\) 对易：</p>\[
+[\alpha,p]=0,\qquad [\beta,p]=0,\qquad [p,m]=0.
+\]<p>于是</p>\[
+H^2
+=\alpha^2p^2+\beta^2m^2+(\alpha\beta+\beta\alpha)pm.
+\]<p>要让它等于</p>\[
+p^2+m^2,
+\]<p>就需要</p>\[
+\alpha^2=1,\qquad
+\beta^2=1,\qquad
+\alpha\beta+\beta\alpha=0.
+\]<p>我们已经选了</p>\[
+\alpha=
+\begin{pmatrix}
+1&0\\
+0&-1
+\end{pmatrix},
+\]<p>它满足</p>\[
+\alpha^2=1.
+\]<p>事实上这就是一个 Pauli 矩阵。Pauli 矩阵的平方都是 \(1\)，并且不同的 Pauli 矩阵彼此反对易。因此我们可以取另一个 Pauli 矩阵作为 \(\beta\)，比如</p>\[
+\beta=
+\begin{pmatrix}
+0&1\\
+1&0
+\end{pmatrix}.
+\]<p>于是</p>\[
+H=\alpha p+\beta m =
+\begin{pmatrix}
+p&m\\
+m&-p
+\end{pmatrix}.
+\]<p>把它作用在</p>\[
+\Phi=
+\begin{pmatrix}
+\phi_1\\
+\phi_2
+\end{pmatrix}
+\]<p>上，得到</p>\[
+i\frac{\partial\phi_1}{\partial t}
+=p\phi_1+m\phi_2,
+\]<p></p>\[
+i\frac{\partial\phi_2}{\partial t}
+=m\phi_1-p\phi_2.
+\]<p>因此，一旦 \(m\neq0\)，\(\phi_1\) 和 \(\phi_2\) 的时间演化就彼此相关。第一分量的演化中出现了第二分量，第二分量的演化中也出现了第一分量。换句话说，质量项把右动分量和左动分量耦合在一起。</p><p>回过头看，能把</p>\[
+H^2=p^2+m^2
+\]<p>写成</p>\[
+H=\alpha p+\beta m
+\]<p>这样的线性形式，一个很重要的假设就是：波函数不是单个 \(\phi\)，而是可以分成</p>\[
+\Phi=
+\begin{pmatrix}
+\phi_1\\
+\phi_2
+\end{pmatrix}
+\]<p>这两个分量。正是因为有了这个二分量结构，\(\alpha\) 和 \(\beta\) 才能是矩阵，才可能满足反对易关系</p>\[
+\alpha\beta+\beta\alpha=0.
+\]<p>这一步很像一种因式分解：我们不是直接处理平方形式 \(H^2=p^2+m^2\)，而是通过引入矩阵和二分量波函数，把它写成一个线性的哈密顿量。</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://phrygiangates.github.io/zh/tags/advanced-quantum-mechanics/>Advanced Quantum Mechanics</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://phrygiangates.github.io/zh/>Phrygiangates</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>

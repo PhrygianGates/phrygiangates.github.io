@@ -1,0 +1,156 @@
+<!doctype html><html lang=zh dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>量子场论 | Phrygiangates</title><meta name=keywords content="Advanced Quantum Mechanics"><meta name=description content="我们来聊一聊量子场论的基本设定。
+先从单个量子谐振子开始。它的能量本征方程写作
+
+\[
+H|\psi\rangle = E|\psi\rangle .
+\]
+它有一组离散的能量本征态。对谐振子而言，更方便的一组本征态是数态 \(|n\rangle\)（\(n=0,1,2,\dots\)），满足 \(H|n\rangle=E_n|n\rangle\)。我们引入湮灭算符 \(a\) 与创生算符 \(a^\dagger\)，令它们满足 \([a,a^\dagger]=1\)，并定义占据数算符 \(N=a^\dagger a\)。数态同时也是 \(N\) 的本征态：
+
+\[
+N|n\rangle = n|n\rangle .
+\]
+它们构成一组正交归一基，满足 \(\langle n|m\rangle=\delta_{nm}\)，并且有完备关系 \(\sum_{n=0}^{\infty}|n\rangle\langle n|=I\)。
+升降算符在数态上的作用是
+
+\[
+a^\dagger|n\rangle=\sqrt{n+1}\,|n+1\rangle,\qquad
+a|n\rangle=\sqrt{n}\,|n-1\rangle .
+\]考虑多谐振子的情况（即有很多个彼此独立的谐振子自由度）。用 \(|n_1,n_2,n_3,\dots\rangle\) 表示：第 1 个谐振子的占据数为 \(n_1\)，第 2 个谐振子的占据数为 \(n_2\)，依此类推。第 \(j\) 个谐振子的创生算符 \(a_j^\dagger\) 会把 \(n_j\) 增加 1：
+
+\[
+a_j^\dagger|n_1,\dots,n_j,\dots\rangle
+=\sqrt{n_j+1}\,|n_1,\dots,n_j+1,\dots\rangle ,
+\]
+相应地，\(a_j\) 会把 \(n_j\) 减少 1：
+
+\[
+a_j|n_1,\dots,n_j,\dots\rangle
+=\sqrt{n_j}\,|n_1,\dots,n_j-1,\dots\rangle .
+\]
+在通常的量子力学里，我们常常固定粒子数来讨论。单粒子波函数是 \(\psi(x)=\langle x|\psi\rangle\)。如果粒子数固定为 \(N\)，多粒子波函数可以写作 \(\psi(x_1,x_2,\dots,x_N)=\langle x_1,x_2,\dots,x_N|\Psi\rangle\)。"><meta name=author content><link rel=canonical href=https://phrygiangates.github.io/zh/posts/quantum_field_theory/><link crossorigin=anonymous href=/assets/css/stylesheet.a5781257de4197b8e3d54346acdf1dd55a9ba4cb91dcace192fc1baf228c08b5.css integrity="sha256-pXgSV95Bl7jj1UNGrN8d1VqbpMuR3KzhkvwbryKMCLU=" rel="preload stylesheet" as=style><link rel=icon href=https://phrygiangates.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://phrygiangates.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://phrygiangates.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://phrygiangates.github.io/apple-touch-icon.png><link rel=mask-icon href=https://phrygiangates.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://phrygiangates.github.io/posts/quantum_field_theory/><link rel=alternate hreflang=zh href=https://phrygiangates.github.io/zh/posts/quantum_field_theory/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],throwOnError:!0})'></script><meta property="og:url" content="https://phrygiangates.github.io/zh/posts/quantum_field_theory/"><meta property="og:site_name" content="Phrygiangates"><meta property="og:title" content="量子场论"><meta property="og:description" content="我们来聊一聊量子场论的基本设定。
+先从单个量子谐振子开始。它的能量本征方程写作 \[ H|\psi\rangle = E|\psi\rangle . \] 它有一组离散的能量本征态。对谐振子而言，更方便的一组本征态是数态 \(|n\rangle\)（\(n=0,1,2,\dots\)），满足 \(H|n\rangle=E_n|n\rangle\)。我们引入湮灭算符 \(a\) 与创生算符 \(a^\dagger\)，令它们满足 \([a,a^\dagger]=1\)，并定义占据数算符 \(N=a^\dagger a\)。数态同时也是 \(N\) 的本征态： \[ N|n\rangle = n|n\rangle . \] 它们构成一组正交归一基，满足 \(\langle n|m\rangle=\delta_{nm}\)，并且有完备关系 \(\sum_{n=0}^{\infty}|n\rangle\langle n|=I\)。
+升降算符在数态上的作用是 \[ a^\dagger|n\rangle=\sqrt{n+1}\,|n+1\rangle,\qquad a|n\rangle=\sqrt{n}\,|n-1\rangle . \]考虑多谐振子的情况（即有很多个彼此独立的谐振子自由度）。用 \(|n_1,n_2,n_3,\dots\rangle\) 表示：第 1 个谐振子的占据数为 \(n_1\)，第 2 个谐振子的占据数为 \(n_2\)，依此类推。第 \(j\) 个谐振子的创生算符 \(a_j^\dagger\) 会把 \(n_j\) 增加 1： \[ a_j^\dagger|n_1,\dots,n_j,\dots\rangle =\sqrt{n_j+1}\,|n_1,\dots,n_j+1,\dots\rangle , \] 相应地，\(a_j\) 会把 \(n_j\) 减少 1： \[ a_j|n_1,\dots,n_j,\dots\rangle =\sqrt{n_j}\,|n_1,\dots,n_j-1,\dots\rangle . \] 在通常的量子力学里，我们常常固定粒子数来讨论。单粒子波函数是 \(\psi(x)=\langle x|\psi\rangle\)。如果粒子数固定为 \(N\)，多粒子波函数可以写作 \(\psi(x_1,x_2,\dots,x_N)=\langle x_1,x_2,\dots,x_N|\Psi\rangle\)。"><meta property="og:locale" content="zh"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-01-03T22:00:00+08:00"><meta property="article:modified_time" content="2026-01-03T22:00:00+08:00"><meta property="article:tag" content="Advanced Quantum Mechanics"><meta name=twitter:card content="summary"><meta name=twitter:title content="量子场论"><meta name=twitter:description content="我们来聊一聊量子场论的基本设定。
+先从单个量子谐振子开始。它的能量本征方程写作
+
+\[
+H|\psi\rangle = E|\psi\rangle .
+\]
+它有一组离散的能量本征态。对谐振子而言，更方便的一组本征态是数态 \(|n\rangle\)（\(n=0,1,2,\dots\)），满足 \(H|n\rangle=E_n|n\rangle\)。我们引入湮灭算符 \(a\) 与创生算符 \(a^\dagger\)，令它们满足 \([a,a^\dagger]=1\)，并定义占据数算符 \(N=a^\dagger a\)。数态同时也是 \(N\) 的本征态：
+
+\[
+N|n\rangle = n|n\rangle .
+\]
+它们构成一组正交归一基，满足 \(\langle n|m\rangle=\delta_{nm}\)，并且有完备关系 \(\sum_{n=0}^{\infty}|n\rangle\langle n|=I\)。
+升降算符在数态上的作用是
+
+\[
+a^\dagger|n\rangle=\sqrt{n+1}\,|n+1\rangle,\qquad
+a|n\rangle=\sqrt{n}\,|n-1\rangle .
+\]考虑多谐振子的情况（即有很多个彼此独立的谐振子自由度）。用 \(|n_1,n_2,n_3,\dots\rangle\) 表示：第 1 个谐振子的占据数为 \(n_1\)，第 2 个谐振子的占据数为 \(n_2\)，依此类推。第 \(j\) 个谐振子的创生算符 \(a_j^\dagger\) 会把 \(n_j\) 增加 1：
+
+\[
+a_j^\dagger|n_1,\dots,n_j,\dots\rangle
+=\sqrt{n_j+1}\,|n_1,\dots,n_j+1,\dots\rangle ,
+\]
+相应地，\(a_j\) 会把 \(n_j\) 减少 1：
+
+\[
+a_j|n_1,\dots,n_j,\dots\rangle
+=\sqrt{n_j}\,|n_1,\dots,n_j-1,\dots\rangle .
+\]
+在通常的量子力学里，我们常常固定粒子数来讨论。单粒子波函数是 \(\psi(x)=\langle x|\psi\rangle\)。如果粒子数固定为 \(N\)，多粒子波函数可以写作 \(\psi(x_1,x_2,\dots,x_N)=\langle x_1,x_2,\dots,x_N|\Psi\rangle\)。"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://phrygiangates.github.io/zh/posts/"},{"@type":"ListItem","position":2,"name":"量子场论","item":"https://phrygiangates.github.io/zh/posts/quantum_field_theory/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"量子场论","name":"量子场论","description":"我们来聊一聊量子场论的基本设定。\n先从单个量子谐振子开始。它的能量本征方程写作 \\[ H|\\psi\\rangle = E|\\psi\\rangle . \\] 它有一组离散的能量本征态。对谐振子而言，更方便的一组本征态是数态 \\(|n\\rangle\\)（\\(n=0,1,2,\\dots\\)），满足 \\(H|n\\rangle=E_n|n\\rangle\\)。我们引入湮灭算符 \\(a\\) 与创生算符 \\(a^\\dagger\\)，令它们满足 \\([a,a^\\dagger]=1\\)，并定义占据数算符 \\(N=a^\\dagger a\\)。数态同时也是 \\(N\\) 的本征态： \\[ N|n\\rangle = n|n\\rangle . \\] 它们构成一组正交归一基，满足 \\(\\langle n|m\\rangle=\\delta_{nm}\\)，并且有完备关系 \\(\\sum_{n=0}^{\\infty}|n\\rangle\\langle n|=I\\)。\n升降算符在数态上的作用是 \\[ a^\\dagger|n\\rangle=\\sqrt{n+1}\\,|n+1\\rangle,\\qquad a|n\\rangle=\\sqrt{n}\\,|n-1\\rangle . \\]考虑多谐振子的情况（即有很多个彼此独立的谐振子自由度）。用 \\(|n_1,n_2,n_3,\\dots\\rangle\\) 表示：第 1 个谐振子的占据数为 \\(n_1\\)，第 2 个谐振子的占据数为 \\(n_2\\)，依此类推。第 \\(j\\) 个谐振子的创生算符 \\(a_j^\\dagger\\) 会把 \\(n_j\\) 增加 1： \\[ a_j^\\dagger|n_1,\\dots,n_j,\\dots\\rangle =\\sqrt{n_j+1}\\,|n_1,\\dots,n_j+1,\\dots\\rangle , \\] 相应地，\\(a_j\\) 会把 \\(n_j\\) 减少 1： \\[ a_j|n_1,\\dots,n_j,\\dots\\rangle =\\sqrt{n_j}\\,|n_1,\\dots,n_j-1,\\dots\\rangle . \\] 在通常的量子力学里，我们常常固定粒子数来讨论。单粒子波函数是 \\(\\psi(x)=\\langle x|\\psi\\rangle\\)。如果粒子数固定为 \\(N\\)，多粒子波函数可以写作 \\(\\psi(x_1,x_2,\\dots,x_N)=\\langle x_1,x_2,\\dots,x_N|\\Psi\\rangle\\)。\n","keywords":["Advanced Quantum Mechanics"],"articleBody":"我们来聊一聊量子场论的基本设定。\n先从单个量子谐振子开始。它的能量本征方程写作 \\[ H|\\psi\\rangle = E|\\psi\\rangle . \\] 它有一组离散的能量本征态。对谐振子而言，更方便的一组本征态是数态 \\(|n\\rangle\\)（\\(n=0,1,2,\\dots\\)），满足 \\(H|n\\rangle=E_n|n\\rangle\\)。我们引入湮灭算符 \\(a\\) 与创生算符 \\(a^\\dagger\\)，令它们满足 \\([a,a^\\dagger]=1\\)，并定义占据数算符 \\(N=a^\\dagger a\\)。数态同时也是 \\(N\\) 的本征态： \\[ N|n\\rangle = n|n\\rangle . \\] 它们构成一组正交归一基，满足 \\(\\langle n|m\\rangle=\\delta_{nm}\\)，并且有完备关系 \\(\\sum_{n=0}^{\\infty}|n\\rangle\\langle n|=I\\)。\n升降算符在数态上的作用是 \\[ a^\\dagger|n\\rangle=\\sqrt{n+1}\\,|n+1\\rangle,\\qquad a|n\\rangle=\\sqrt{n}\\,|n-1\\rangle . \\]考虑多谐振子的情况（即有很多个彼此独立的谐振子自由度）。用 \\(|n_1,n_2,n_3,\\dots\\rangle\\) 表示：第 1 个谐振子的占据数为 \\(n_1\\)，第 2 个谐振子的占据数为 \\(n_2\\)，依此类推。第 \\(j\\) 个谐振子的创生算符 \\(a_j^\\dagger\\) 会把 \\(n_j\\) 增加 1： \\[ a_j^\\dagger|n_1,\\dots,n_j,\\dots\\rangle =\\sqrt{n_j+1}\\,|n_1,\\dots,n_j+1,\\dots\\rangle , \\] 相应地，\\(a_j\\) 会把 \\(n_j\\) 减少 1： \\[ a_j|n_1,\\dots,n_j,\\dots\\rangle =\\sqrt{n_j}\\,|n_1,\\dots,n_j-1,\\dots\\rangle . \\] 在通常的量子力学里，我们常常固定粒子数来讨论。单粒子波函数是 \\(\\psi(x)=\\langle x|\\psi\\rangle\\)。如果粒子数固定为 \\(N\\)，多粒子波函数可以写作 \\(\\psi(x_1,x_2,\\dots,x_N)=\\langle x_1,x_2,\\dots,x_N|\\Psi\\rangle\\)。\n如果粒子数不固定，而允许 0 粒子、1 粒子、2 粒子……这些情况同时被讨论，那么我们需要一个“总的”希尔伯特空间来容纳它们。一个很直观的做法是：选定一组完备、正交归一的单粒子基 \\(\\{|u_j\\rangle\\}\\)，把每个编号 \\(j\\) 看成一个彼此独立的谐振子自由度；用一对升降算符 \\(a_j,a_j^\\dagger\\) 来减少/增加这个自由度的占据数。接下来我们还会引入一个带位置标签的算符 \\(\\hat{\\Psi}(x)\\)。它的厄米共轭 \\(\\hat{\\Psi}^\\dagger(x_0)\\) 作用在全零占据数的态（下面会记作 \\(|0\\rangle\\)）上，会给出单粒子的位置本征态 \\(|x_0\\rangle\\)： \\[ \\hat{\\Psi}^\\dagger(x_0)\\,|0\\rangle = |x_0\\rangle . \\]为了把这个想法写成可计算的形式，我们先选取一组完备、正交归一的单粒子态 \\(\\{|u_j\\rangle\\}\\)（\\(j=1,2,\\dots\\)）。这里的 \\(j\\) 只是单粒子基向量的编号（例如动量本征态的标签），不是“粒子数”；粒子数由 \\(|n\\rangle\\) 或 \\(|n_1,n_2,\\dots\\rangle\\) 里的 \\(n,n_j\\) 来表示。\n这里需要强调一个容易混淆的点：\\(|u_j\\rangle\\) 是“单粒子希尔伯特空间”里的态向量；而后面会出现的 \\(|1_j\\rangle\\) 则是我们用许多谐振子构造出来的“总空间”里的向量。它们严格来说不住在同一个空间里，因此不能直接写成 \\(|u_j\\rangle=|1_j\\rangle\\)。所谓“对应”，指的是：只看总占据数为 1 的那部分状态，它与单粒子空间可以一一对应(更严谨的说是“单谐振子空间”，即使粒子数不为一，依然可以一一对应，但总占据数等于2的那些就不能一一对应，因为可能不只是某个谐振子的占据数为2，还有可能两个谐振子的占据数为一)。为了计算方便，我们约定基底之间的对应关系为 \\[ |u_j\\rangle \\longleftrightarrow |1_j\\rangle \\equiv a_j^\\dagger|0\\rangle. \\] 这样，任意单粒子态若写作 \\(|\\psi\\rangle=\\sum_j c_j|u_j\\rangle\\)，那么它在“总占据数为 1”的那部分里就写作 \\(\\sum_j c_j|1_j\\rangle\\)。两边用的是同一组系数 \\(c_j\\)，描述的是同一个单粒子物理态，只是用两套记号来表达。\n在位置表象中，这组单粒子态对应的波函数记为 \\[ u_j(x)\\equiv \\langle x|u_j\\rangle,\\qquad \\langle u_j|x\\rangle=u_j^*(x). \\] 并满足完备性 \\[ \\sum_j |u_j\\rangle\\langle u_j| = I \\] （这里的 \\(I\\) 是单粒子希尔伯特空间上的单位算符）。\n接着，对每个编号 \\(j\\)（也就是我们选定的那组单粒子基 \\(|u_j\\rangle\\) 的编号）引入一对湮灭/创生算符 \\(a_j, a_j^\\dagger\\)。你可以把它们理解为“第 \\(j\\) 个谐振子”的升降算符：第 \\(j\\) 个谐振子的占据数（激发数）记作 \\(n_j\\)。这些算符满足 \\[ [a_j,a_k^\\dagger]=\\delta_{jk},\\qquad [a_j,a_k]=0,\\qquad [a_j^\\dagger,a_k^\\dagger]=0. \\] 这组对易关系保证：对每个固定的 \\(j\\)，\\(\\{a_j,a_j^\\dagger\\}\\) 的代数结构与单个谐振子的升降算符相同，因此会自然出现数态以及 \\(\\sqrt{n_j}\\) 这样的系数。我们用占据数基底（用每个谐振子的占据数 \\(n_j\\) 来标记的基底） \\[ |n_1,n_2,\\dots\\rangle \\] 上定义它们的作用： \\[ a_j|n_1,\\dots,n_j,\\dots\\rangle=\\sqrt{n_j}\\,|n_1,\\dots,n_j-1,\\dots\\rangle, \\] \\[ a_j^\\dagger|n_1,\\dots,n_j,\\dots\\rangle=\\sqrt{n_j+1}\\,|n_1,\\dots,n_j+1,\\dots\\rangle. \\] 全零占据数的态（也就是所有谐振子的占据数都为 0）定义为 \\[ |0\\rangle \\equiv |0,0,0,\\dots\\rangle. \\] 于是“只有第 \\(j\\) 个谐振子的占据数为 1，其它都为 0”的态是 \\[ a_j^\\dagger|0\\rangle = |0,\\dots,1_j,\\dots\\rangle \\equiv |1_j\\rangle. \\] 这里的 \\(|1_j\\rangle\\) 表示“只有第 \\(j\\) 个谐振子被激发一次”的态。只看总占据数为 1 的那一部分状态，它与单粒子希尔伯特空间自然对应：在这个对应下，\\(|1_j\\rangle\\) 与单粒子态 \\(|u_j\\rangle\\) 一一对应。\n现在定义这组带位置标签的算符为 \\[ \\hat{\\Psi}(x)=\\sum_j a_j\\,u_j(x)=\\sum_j a_j\\langle x|u_j\\rangle, \\qquad \\hat{\\Psi}^\\dagger(x)=\\sum_j a_j^\\dagger\\,u_j^*(x)=\\sum_j a_j^\\dagger\\langle u_j|x\\rangle. \\]用这个展开，我们可以验证上面的性质。对 \\(|0\\rangle\\) 作用： \\[ \\hat{\\Psi}^\\dagger(x_0)|0\\rangle \\;=\\sum_j a_j^\\dagger\\,\\langle u_j|x_0\\rangle\\,|0\\rangle \\;=\\sum_j \\langle u_j|x_0\\rangle\\,(a_j^\\dagger|0\\rangle) \\;=\\sum_j \\langle u_j|x_0\\rangle\\,|1_j\\rangle . \\] 另一方面，由完备关系 \\(\\sum_j|u_j\\rangle\\langle u_j|=I\\)（这是单粒子空间里的等式）立刻得到 \\[ |x_0\\rangle = \\sum_j |u_j\\rangle\\langle u_j|x_0\\rangle = \\sum_j \\langle u_j|x_0\\rangle\\,|u_j\\rangle . \\] 将单粒子态 \\(|u_j\\rangle\\) 与“总占据数为 1”的态 \\(|1_j\\rangle\\) 做上面的一一对应识别后，两式逐项相同，因此 \\(\\hat{\\Psi}^\\dagger(x_0)|0\\rangle=|x_0\\rangle\\) 成立。\n顺着这个思路，我们也可以用 \\(\\hat{\\Psi}^\\dagger(x)\\) 来“在位置 \\(x\\) 处加一份激发”，从而构造两次激发的态。注意到玻色子的创生算符彼此对易： \\[ [a_j^\\dagger,a_k^\\dagger]=0, \\] 于是由 \\(\\hat{\\Psi}^\\dagger(x)=\\sum_j a_j^\\dagger\\,\\langle u_j|x\\rangle\\) 可以把对易子直接展开来算： \\[ [\\hat{\\Psi}^\\dagger(x),\\hat{\\Psi}^\\dagger(y)] =\\hat{\\Psi}^\\dagger(x)\\hat{\\Psi}^\\dagger(y)-\\hat{\\Psi}^\\dagger(y)\\hat{\\Psi}^\\dagger(x). \\] 把 \\(\\hat{\\Psi}^\\dagger\\) 的展开代入： \\[ \\hat{\\Psi}^\\dagger(x)\\hat{\\Psi}^\\dagger(y) =\\sum_{j,k} a_j^\\dagger a_k^\\dagger\\,\\langle u_j|x\\rangle\\,\\langle u_k|y\\rangle, \\] \\[ \\hat{\\Psi}^\\dagger(y)\\hat{\\Psi}^\\dagger(x) =\\sum_{j,k} a_j^\\dagger a_k^\\dagger\\,\\langle u_j|y\\rangle\\,\\langle u_k|x\\rangle. \\] 因此 \\[ [\\hat{\\Psi}^\\dagger(x),\\hat{\\Psi}^\\dagger(y)] =\\sum_{j,k}\\Bigl(a_j^\\dagger a_k^\\dagger-a_k^\\dagger a_j^\\dagger\\Bigr)\\,\\langle u_j|x\\rangle\\,\\langle u_k|y\\rangle =\\sum_{j,k}[a_j^\\dagger,a_k^\\dagger]\\,\\langle u_j|x\\rangle\\,\\langle u_k|y\\rangle =0. \\] 因此定义 \\[ |x,y\\rangle\\equiv \\hat{\\Psi}^\\dagger(x)\\hat{\\Psi}^\\dagger(y)|0\\rangle, \\] 交换两个位置标签不会改变这个态： \\[ |y,x\\rangle=\\hat{\\Psi}^\\dagger(y)\\hat{\\Psi}^\\dagger(x)|0\\rangle =\\hat{\\Psi}^\\dagger(x)\\hat{\\Psi}^\\dagger(y)|0\\rangle =|x,y\\rangle. \\] 这说明两次激发的态在交换下是对称的，这正是玻色子的交换对称性。\n作为一个具体例子，考虑单粒子谐振子的能量本征态 \\(|n\\rangle\\)（\\(n=0,1,2,\\dots\\)）。它们满足正交归一 \\[ \\langle m|n\\rangle=\\delta_{mn}, \\] 并构成一组完备基，因此有单位算符的分解 \\[ \\sum_{n=0}^{\\infty}|n\\rangle\\langle n|=I. \\]在位置表象中定义它们的波函数 \\[ \\psi_n(x)\\equiv \\langle x|n\\rangle,\\qquad \\langle n|x\\rangle=\\psi_n^*(x). \\] 于是连续位置基的正交关系 \\(\\langle y|x\\rangle=\\delta(y-x)\\) 可以写成 \\[ \\delta(y-x)=\\langle y|I|x\\rangle =\\sum_{n=0}^{\\infty}\\langle y|n\\rangle\\langle n|x\\rangle =\\sum_{n=0}^{\\infty}\\psi_n(y)\\psi_n^*(x). \\] 这里给出一个常用的计算：\\(\\int dx\\,\\hat{\\Psi}^\\dagger(x)\\hat{\\Psi}(x)\\) 等于总占据数算符。\n注意 \\(\\langle m|n\\rangle=\\delta_{mn}\\) 在位置表象下等价于 \\[ \\int dx\\,\\psi_m^*(x)\\psi_n(x)=\\delta_{mn}. \\] 若用这组基底来标记各个谐振子自由度，则 \\[ \\hat{\\Psi}(x)=\\sum_n a_n\\psi_n(x),\\qquad \\hat{\\Psi}^\\dagger(x)=\\sum_n a_n^\\dagger\\psi_n^*(x). \\] 于是 \\[ \\int dx\\,\\hat{\\Psi}^\\dagger(x)\\hat{\\Psi}(x) =\\sum_{m,n}a_m^\\dagger a_n\\int dx\\,\\psi_m^*(x)\\psi_n(x) =\\sum_n a_n^\\dagger a_n \\equiv \\sum_n N_n \\equiv N. \\] 其中 \\(N_n\\equiv a_n^\\dagger a_n\\) 是第 \\(n\\) 个自由度的占据数算符，而 \\(N\\) 是总占据数（总激发数）算符（也常被称为总粒子数算符）。\n","wordCount":"388","inLanguage":"zh","datePublished":"2026-01-03T22:00:00+08:00","dateModified":"2026-01-03T22:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://phrygiangates.github.io/zh/posts/quantum_field_theory/"},"publisher":{"@type":"Organization","name":"Phrygiangates","logo":{"@type":"ImageObject","url":"https://phrygiangates.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://phrygiangates.github.io/zh/ accesskey=h title="Phrygiangates (Alt + H)">Phrygiangates</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><ul class=lang-switch><li>|</li><li><a href=https://phrygiangates.github.io/ title=English aria-label=English>En</a></li></ul></div></div><ul id=menu></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">量子场论</h1><div class=post-meta><span title='2026-01-03 22:00:00 +0800 +0800'>2026年1月3日</span>&nbsp;|&nbsp;<span>语言:</span><ul class=i18n_list><li><a href=https://phrygiangates.github.io/posts/quantum_field_theory/>En</a></li></ul></div></header><div class=post-content><p>我们来聊一聊量子场论的基本设定。</p><p>先从单个量子谐振子开始。它的能量本征方程写作</p>\[
+H|\psi\rangle = E|\psi\rangle .
+\]<p>它有一组离散的能量本征态。对谐振子而言，更方便的一组本征态是数态 \(|n\rangle\)（\(n=0,1,2,\dots\)），满足 \(H|n\rangle=E_n|n\rangle\)。我们引入湮灭算符 \(a\) 与创生算符 \(a^\dagger\)，令它们满足 \([a,a^\dagger]=1\)，并定义占据数算符 \(N=a^\dagger a\)。数态同时也是 \(N\) 的本征态：</p>\[
+N|n\rangle = n|n\rangle .
+\]<p>它们构成一组正交归一基，满足 \(\langle n|m\rangle=\delta_{nm}\)，并且有完备关系 \(\sum_{n=0}^{\infty}|n\rangle\langle n|=I\)。</p><p>升降算符在数态上的作用是</p>\[
+a^\dagger|n\rangle=\sqrt{n+1}\,|n+1\rangle,\qquad
+a|n\rangle=\sqrt{n}\,|n-1\rangle .
+\]<p>考虑多谐振子的情况（即有很多个彼此独立的谐振子自由度）。用 \(|n_1,n_2,n_3,\dots\rangle\) 表示：第 1 个谐振子的占据数为 \(n_1\)，第 2 个谐振子的占据数为 \(n_2\)，依此类推。第 \(j\) 个谐振子的创生算符 \(a_j^\dagger\) 会把 \(n_j\) 增加 1：</p>\[
+a_j^\dagger|n_1,\dots,n_j,\dots\rangle
+=\sqrt{n_j+1}\,|n_1,\dots,n_j+1,\dots\rangle ,
+\]<p>相应地，\(a_j\) 会把 \(n_j\) 减少 1：</p>\[
+a_j|n_1,\dots,n_j,\dots\rangle
+=\sqrt{n_j}\,|n_1,\dots,n_j-1,\dots\rangle .
+\]<hr><p>在通常的量子力学里，我们常常固定粒子数来讨论。单粒子波函数是 \(\psi(x)=\langle x|\psi\rangle\)。如果粒子数固定为 \(N\)，多粒子波函数可以写作 \(\psi(x_1,x_2,\dots,x_N)=\langle x_1,x_2,\dots,x_N|\Psi\rangle\)。</p><p>如果粒子数不固定，而允许 0 粒子、1 粒子、2 粒子……这些情况同时被讨论，那么我们需要一个“总的”希尔伯特空间来容纳它们。一个很直观的做法是：选定一组完备、正交归一的单粒子基 \(\{|u_j\rangle\}\)，把每个编号 \(j\) 看成一个彼此独立的谐振子自由度；用一对升降算符 \(a_j,a_j^\dagger\) 来减少/增加这个自由度的占据数。接下来我们还会引入一个带位置标签的算符 \(\hat{\Psi}(x)\)。它的厄米共轭 \(\hat{\Psi}^\dagger(x_0)\) 作用在全零占据数的态（下面会记作 \(|0\rangle\)）上，会给出单粒子的位置本征态 \(|x_0\rangle\)：</p>\[
+\hat{\Psi}^\dagger(x_0)\,|0\rangle = |x_0\rangle .
+\]<p>为了把这个想法写成可计算的形式，我们先选取一组完备、正交归一的单粒子态 \(\{|u_j\rangle\}\)（\(j=1,2,\dots\)）。这里的 \(j\) 只是单粒子基向量的编号（例如动量本征态的标签），不是“粒子数”；粒子数由 \(|n\rangle\) 或 \(|n_1,n_2,\dots\rangle\) 里的 \(n,n_j\) 来表示。</p><p>这里需要强调一个容易混淆的点：\(|u_j\rangle\) 是“单粒子希尔伯特空间”里的态向量；而后面会出现的 \(|1_j\rangle\) 则是我们用许多谐振子构造出来的“总空间”里的向量。它们严格来说不住在同一个空间里，因此不能直接写成 \(|u_j\rangle=|1_j\rangle\)。所谓“对应”，指的是：只看总占据数为 1 的那部分状态，它与单粒子空间可以一一对应(更严谨的说是“单谐振子空间”，即使粒子数不为一，依然可以一一对应，但总占据数等于2的那些就不能一一对应，因为可能不只是某个谐振子的占据数为2，还有可能两个谐振子的占据数为一)。为了计算方便，我们约定基底之间的对应关系为</p>\[
+|u_j\rangle \longleftrightarrow |1_j\rangle \equiv a_j^\dagger|0\rangle.
+\]<p>这样，任意单粒子态若写作 \(|\psi\rangle=\sum_j c_j|u_j\rangle\)，那么它在“总占据数为 1”的那部分里就写作 \(\sum_j c_j|1_j\rangle\)。两边用的是同一组系数 \(c_j\)，描述的是同一个单粒子物理态，只是用两套记号来表达。</p><p>在位置表象中，这组单粒子态对应的波函数记为</p>\[
+u_j(x)\equiv \langle x|u_j\rangle,\qquad \langle u_j|x\rangle=u_j^*(x).
+\]<p>并满足完备性</p>\[
+\sum_j |u_j\rangle\langle u_j| = I
+\]<p>（这里的 \(I\) 是单粒子希尔伯特空间上的单位算符）。</p><p>接着，对每个编号 \(j\)（也就是我们选定的那组单粒子基 \(|u_j\rangle\) 的编号）引入一对湮灭/创生算符 \(a_j, a_j^\dagger\)。你可以把它们理解为“第 \(j\) 个谐振子”的升降算符：第 \(j\) 个谐振子的占据数（激发数）记作 \(n_j\)。这些算符满足</p>\[
+[a_j,a_k^\dagger]=\delta_{jk},\qquad [a_j,a_k]=0,\qquad [a_j^\dagger,a_k^\dagger]=0.
+\]<p>这组对易关系保证：对每个固定的 \(j\)，\(\{a_j,a_j^\dagger\}\) 的代数结构与单个谐振子的升降算符相同，因此会自然出现数态以及 \(\sqrt{n_j}\) 这样的系数。我们用占据数基底（用每个谐振子的占据数 \(n_j\) 来标记的基底）</p>\[
+|n_1,n_2,\dots\rangle
+\]<p>上定义它们的作用：</p>\[
+a_j|n_1,\dots,n_j,\dots\rangle=\sqrt{n_j}\,|n_1,\dots,n_j-1,\dots\rangle,
+\]<p></p>\[
+a_j^\dagger|n_1,\dots,n_j,\dots\rangle=\sqrt{n_j+1}\,|n_1,\dots,n_j+1,\dots\rangle.
+\]<p>全零占据数的态（也就是所有谐振子的占据数都为 0）定义为</p>\[
+|0\rangle \equiv |0,0,0,\dots\rangle.
+\]<p>于是“只有第 \(j\) 个谐振子的占据数为 1，其它都为 0”的态是</p>\[
+a_j^\dagger|0\rangle = |0,\dots,1_j,\dots\rangle \equiv |1_j\rangle.
+\]<p>这里的 \(|1_j\rangle\) 表示“只有第 \(j\) 个谐振子被激发一次”的态。只看总占据数为 1 的那一部分状态，它与单粒子希尔伯特空间自然对应：在这个对应下，\(|1_j\rangle\) 与单粒子态 \(|u_j\rangle\) 一一对应。</p><p>现在定义这组带位置标签的算符为</p>\[
+\hat{\Psi}(x)=\sum_j a_j\,u_j(x)=\sum_j a_j\langle x|u_j\rangle,
+\qquad
+\hat{\Psi}^\dagger(x)=\sum_j a_j^\dagger\,u_j^*(x)=\sum_j a_j^\dagger\langle u_j|x\rangle.
+\]<p>用这个展开，我们可以验证上面的性质。对 \(|0\rangle\) 作用：</p>\[
+\hat{\Psi}^\dagger(x_0)|0\rangle
+\;=\sum_j a_j^\dagger\,\langle u_j|x_0\rangle\,|0\rangle
+\;=\sum_j \langle u_j|x_0\rangle\,(a_j^\dagger|0\rangle)
+\;=\sum_j \langle u_j|x_0\rangle\,|1_j\rangle .
+\]<p>另一方面，由完备关系 \(\sum_j|u_j\rangle\langle u_j|=I\)（这是单粒子空间里的等式）立刻得到</p>\[
+|x_0\rangle = \sum_j |u_j\rangle\langle u_j|x_0\rangle
+= \sum_j \langle u_j|x_0\rangle\,|u_j\rangle .
+\]<p>将单粒子态 \(|u_j\rangle\) 与“总占据数为 1”的态 \(|1_j\rangle\) 做上面的一一对应识别后，两式逐项相同，因此 \(\hat{\Psi}^\dagger(x_0)|0\rangle=|x_0\rangle\) 成立。</p><p>顺着这个思路，我们也可以用 \(\hat{\Psi}^\dagger(x)\) 来“在位置 \(x\) 处加一份激发”，从而构造两次激发的态。注意到玻色子的创生算符彼此对易：</p>\[
+[a_j^\dagger,a_k^\dagger]=0,
+\]<p>于是由
+\(\hat{\Psi}^\dagger(x)=\sum_j a_j^\dagger\,\langle u_j|x\rangle\)
+可以把对易子直接展开来算：</p>\[
+[\hat{\Psi}^\dagger(x),\hat{\Psi}^\dagger(y)]
+=\hat{\Psi}^\dagger(x)\hat{\Psi}^\dagger(y)-\hat{\Psi}^\dagger(y)\hat{\Psi}^\dagger(x).
+\]<p>把 \(\hat{\Psi}^\dagger\) 的展开代入：</p>\[
+\hat{\Psi}^\dagger(x)\hat{\Psi}^\dagger(y)
+=\sum_{j,k} a_j^\dagger a_k^\dagger\,\langle u_j|x\rangle\,\langle u_k|y\rangle,
+\]<p></p>\[
+\hat{\Psi}^\dagger(y)\hat{\Psi}^\dagger(x)
+=\sum_{j,k} a_j^\dagger a_k^\dagger\,\langle u_j|y\rangle\,\langle u_k|x\rangle.
+\]<p>因此</p>\[
+[\hat{\Psi}^\dagger(x),\hat{\Psi}^\dagger(y)]
+=\sum_{j,k}\Bigl(a_j^\dagger a_k^\dagger-a_k^\dagger a_j^\dagger\Bigr)\,\langle u_j|x\rangle\,\langle u_k|y\rangle
+=\sum_{j,k}[a_j^\dagger,a_k^\dagger]\,\langle u_j|x\rangle\,\langle u_k|y\rangle
+=0.
+\]<p>因此定义</p>\[
+|x,y\rangle\equiv \hat{\Psi}^\dagger(x)\hat{\Psi}^\dagger(y)|0\rangle,
+\]<p>交换两个位置标签不会改变这个态：</p>\[
+|y,x\rangle=\hat{\Psi}^\dagger(y)\hat{\Psi}^\dagger(x)|0\rangle
+=\hat{\Psi}^\dagger(x)\hat{\Psi}^\dagger(y)|0\rangle
+=|x,y\rangle.
+\]<p>这说明两次激发的态在交换下是对称的，这正是玻色子的交换对称性。</p><hr><p>作为一个具体例子，考虑单粒子谐振子的能量本征态 \(|n\rangle\)（\(n=0,1,2,\dots\)）。它们满足正交归一</p>\[
+\langle m|n\rangle=\delta_{mn},
+\]<p>并构成一组完备基，因此有单位算符的分解</p>\[
+\sum_{n=0}^{\infty}|n\rangle\langle n|=I.
+\]<p>在位置表象中定义它们的波函数</p>\[
+\psi_n(x)\equiv \langle x|n\rangle,\qquad \langle n|x\rangle=\psi_n^*(x).
+\]<p>于是连续位置基的正交关系 \(\langle y|x\rangle=\delta(y-x)\) 可以写成</p>\[
+\delta(y-x)=\langle y|I|x\rangle
+=\sum_{n=0}^{\infty}\langle y|n\rangle\langle n|x\rangle
+=\sum_{n=0}^{\infty}\psi_n(y)\psi_n^*(x).
+\]<hr><p>这里给出一个常用的计算：\(\int dx\,\hat{\Psi}^\dagger(x)\hat{\Psi}(x)\) 等于总占据数算符。</p><p>注意 \(\langle m|n\rangle=\delta_{mn}\) 在位置表象下等价于</p>\[
+\int dx\,\psi_m^*(x)\psi_n(x)=\delta_{mn}.
+\]<p>若用这组基底来标记各个谐振子自由度，则</p>\[
+\hat{\Psi}(x)=\sum_n a_n\psi_n(x),\qquad \hat{\Psi}^\dagger(x)=\sum_n a_n^\dagger\psi_n^*(x).
+\]<p>于是</p>\[
+\int dx\,\hat{\Psi}^\dagger(x)\hat{\Psi}(x)
+=\sum_{m,n}a_m^\dagger a_n\int dx\,\psi_m^*(x)\psi_n(x)
+=\sum_n a_n^\dagger a_n
+\equiv \sum_n N_n
+\equiv N.
+\]<p>其中 \(N_n\equiv a_n^\dagger a_n\) 是第 \(n\) 个自由度的占据数算符，而 \(N\) 是总占据数（总激发数）算符（也常被称为总粒子数算符）。</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://phrygiangates.github.io/zh/tags/advanced-quantum-mechanics/>Advanced Quantum Mechanics</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://phrygiangates.github.io/zh/>Phrygiangates</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>

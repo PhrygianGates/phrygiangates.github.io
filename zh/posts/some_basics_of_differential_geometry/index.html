@@ -1,0 +1,129 @@
+<!doctype html><html lang=zh dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>微分几何的一些基础 | Phrygiangates</title><meta name=keywords content="The Early Universe"><meta name=description content="在这篇文章中，我希望建立一些微分几何的基础，以便理解爱因斯坦场方程。
+1. 黎曼曲率张量及其性质
+黎曼曲率张量的定义：
+黎曼曲率张量 \( R^i_{jkl} \) 是微分几何中的一个基本对象，表示流形的内禀曲率。其定义为：
+
+\[
+R^i_{jkl} = \partial_k \Gamma^i_{jl} - \partial_l \Gamma^i_{jk} + \Gamma^i_{km} \Gamma^m_{jl} - \Gamma^i_{lm} \Gamma^m_{jk}
+\]
+其中 \( \Gamma^i_{jk} \) 是克里斯托费尔符号。
+黎曼曲率张量的性质：
+
+
+比安基恒等式：
+
+\[
+   \nabla_m R^i_{jkl} + \nabla_k R^i_{jlm} + \nabla_l R^i_{jmk} = 0
+   \]
+
+对称性：
+
+在最后两个指标上反对称：
+\[
+     R^i_{jkl} = -R^i_{jlk}
+     \]
+在交换第一对与第二对指标时反对称：
+\[
+     R^i_{jkl} = -R^j_{ikl}
+     \]
+
+
+
+应用：
+
+黎曼张量刻画当沿闭合回路进行平行输运时，向量被旋转或改变的程度。
+
+
+
+2. 测地线及其推导原理
+测地线方程：
+测地线是在弯曲空间中连接两点的最短路径，其方程可通过极小化作用量得到：
+
+\[
+\int ds = \int \sqrt{g_{\mu \nu} \frac{dx^\mu}{d\tau} \frac{dx^\nu}{d\tau}} \, d\tau
+\]
+其中 \( g_{\mu \nu} \) 是度量张量，\( \tau \) 是仿射参数。"><meta name=author content><link rel=canonical href=https://phrygiangates.github.io/zh/posts/some_basics_of_differential_geometry/><link crossorigin=anonymous href=/assets/css/stylesheet.a5781257de4197b8e3d54346acdf1dd55a9ba4cb91dcace192fc1baf228c08b5.css integrity="sha256-pXgSV95Bl7jj1UNGrN8d1VqbpMuR3KzhkvwbryKMCLU=" rel="preload stylesheet" as=style><link rel=icon href=https://phrygiangates.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://phrygiangates.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://phrygiangates.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://phrygiangates.github.io/apple-touch-icon.png><link rel=mask-icon href=https://phrygiangates.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://phrygiangates.github.io/posts/some_basics_of_differential_geometry/><link rel=alternate hreflang=zh href=https://phrygiangates.github.io/zh/posts/some_basics_of_differential_geometry/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],throwOnError:!0})'></script><meta property="og:url" content="https://phrygiangates.github.io/zh/posts/some_basics_of_differential_geometry/"><meta property="og:site_name" content="Phrygiangates"><meta property="og:title" content="微分几何的一些基础"><meta property="og:description" content="在这篇文章中，我希望建立一些微分几何的基础，以便理解爱因斯坦场方程。
+1. 黎曼曲率张量及其性质 黎曼曲率张量的定义： 黎曼曲率张量 \( R^i_{jkl} \) 是微分几何中的一个基本对象，表示流形的内禀曲率。其定义为： \[ R^i_{jkl} = \partial_k \Gamma^i_{jl} - \partial_l \Gamma^i_{jk} + \Gamma^i_{km} \Gamma^m_{jl} - \Gamma^i_{lm} \Gamma^m_{jk} \] 其中 \( \Gamma^i_{jk} \) 是克里斯托费尔符号。
+黎曼曲率张量的性质： 比安基恒等式： \[ \nabla_m R^i_{jkl} + \nabla_k R^i_{jlm} + \nabla_l R^i_{jmk} = 0 \] 对称性：
+在最后两个指标上反对称： \[ R^i_{jkl} = -R^i_{jlk} \] 在交换第一对与第二对指标时反对称： \[ R^i_{jkl} = -R^j_{ikl} \] 应用：
+黎曼张量刻画当沿闭合回路进行平行输运时，向量被旋转或改变的程度。 2. 测地线及其推导原理 测地线方程： 测地线是在弯曲空间中连接两点的最短路径，其方程可通过极小化作用量得到： \[ \int ds = \int \sqrt{g_{\mu \nu} \frac{dx^\mu}{d\tau} \frac{dx^\nu}{d\tau}} \, d\tau \] 其中 \( g_{\mu \nu} \) 是度量张量，\( \tau \) 是仿射参数。"><meta property="og:locale" content="zh"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-01-21T07:21:09-05:00"><meta property="article:modified_time" content="2025-01-21T07:21:09-05:00"><meta property="article:tag" content="The Early Universe"><meta name=twitter:card content="summary"><meta name=twitter:title content="微分几何的一些基础"><meta name=twitter:description content="在这篇文章中，我希望建立一些微分几何的基础，以便理解爱因斯坦场方程。
+1. 黎曼曲率张量及其性质
+黎曼曲率张量的定义：
+黎曼曲率张量 \( R^i_{jkl} \) 是微分几何中的一个基本对象，表示流形的内禀曲率。其定义为：
+
+\[
+R^i_{jkl} = \partial_k \Gamma^i_{jl} - \partial_l \Gamma^i_{jk} + \Gamma^i_{km} \Gamma^m_{jl} - \Gamma^i_{lm} \Gamma^m_{jk}
+\]
+其中 \( \Gamma^i_{jk} \) 是克里斯托费尔符号。
+黎曼曲率张量的性质：
+
+
+比安基恒等式：
+
+\[
+   \nabla_m R^i_{jkl} + \nabla_k R^i_{jlm} + \nabla_l R^i_{jmk} = 0
+   \]
+
+对称性：
+
+在最后两个指标上反对称：
+\[
+     R^i_{jkl} = -R^i_{jlk}
+     \]
+在交换第一对与第二对指标时反对称：
+\[
+     R^i_{jkl} = -R^j_{ikl}
+     \]
+
+
+
+应用：
+
+黎曼张量刻画当沿闭合回路进行平行输运时，向量被旋转或改变的程度。
+
+
+
+2. 测地线及其推导原理
+测地线方程：
+测地线是在弯曲空间中连接两点的最短路径，其方程可通过极小化作用量得到：
+
+\[
+\int ds = \int \sqrt{g_{\mu \nu} \frac{dx^\mu}{d\tau} \frac{dx^\nu}{d\tau}} \, d\tau
+\]
+其中 \( g_{\mu \nu} \) 是度量张量，\( \tau \) 是仿射参数。"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://phrygiangates.github.io/zh/posts/"},{"@type":"ListItem","position":2,"name":"微分几何的一些基础","item":"https://phrygiangates.github.io/zh/posts/some_basics_of_differential_geometry/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"微分几何的一些基础","name":"微分几何的一些基础","description":"在这篇文章中，我希望建立一些微分几何的基础，以便理解爱因斯坦场方程。\n1. 黎曼曲率张量及其性质 黎曼曲率张量的定义： 黎曼曲率张量 \\( R^i_{jkl} \\) 是微分几何中的一个基本对象，表示流形的内禀曲率。其定义为： \\[ R^i_{jkl} = \\partial_k \\Gamma^i_{jl} - \\partial_l \\Gamma^i_{jk} + \\Gamma^i_{km} \\Gamma^m_{jl} - \\Gamma^i_{lm} \\Gamma^m_{jk} \\] 其中 \\( \\Gamma^i_{jk} \\) 是克里斯托费尔符号。\n黎曼曲率张量的性质： 比安基恒等式： \\[ \\nabla_m R^i_{jkl} + \\nabla_k R^i_{jlm} + \\nabla_l R^i_{jmk} = 0 \\] 对称性：\n在最后两个指标上反对称： \\[ R^i_{jkl} = -R^i_{jlk} \\] 在交换第一对与第二对指标时反对称： \\[ R^i_{jkl} = -R^j_{ikl} \\] 应用：\n黎曼张量刻画当沿闭合回路进行平行输运时，向量被旋转或改变的程度。 2. 测地线及其推导原理 测地线方程： 测地线是在弯曲空间中连接两点的最短路径，其方程可通过极小化作用量得到： \\[ \\int ds = \\int \\sqrt{g_{\\mu \\nu} \\frac{dx^\\mu}{d\\tau} \\frac{dx^\\nu}{d\\tau}} \\, d\\tau \\] 其中 \\( g_{\\mu \\nu} \\) 是度量张量，\\( \\tau \\) 是仿射参数。\n","keywords":["The Early Universe"],"articleBody":"在这篇文章中，我希望建立一些微分几何的基础，以便理解爱因斯坦场方程。\n1. 黎曼曲率张量及其性质 黎曼曲率张量的定义： 黎曼曲率张量 \\( R^i_{jkl} \\) 是微分几何中的一个基本对象，表示流形的内禀曲率。其定义为： \\[ R^i_{jkl} = \\partial_k \\Gamma^i_{jl} - \\partial_l \\Gamma^i_{jk} + \\Gamma^i_{km} \\Gamma^m_{jl} - \\Gamma^i_{lm} \\Gamma^m_{jk} \\] 其中 \\( \\Gamma^i_{jk} \\) 是克里斯托费尔符号。\n黎曼曲率张量的性质： 比安基恒等式： \\[ \\nabla_m R^i_{jkl} + \\nabla_k R^i_{jlm} + \\nabla_l R^i_{jmk} = 0 \\] 对称性：\n在最后两个指标上反对称： \\[ R^i_{jkl} = -R^i_{jlk} \\] 在交换第一对与第二对指标时反对称： \\[ R^i_{jkl} = -R^j_{ikl} \\] 应用：\n黎曼张量刻画当沿闭合回路进行平行输运时，向量被旋转或改变的程度。 2. 测地线及其推导原理 测地线方程： 测地线是在弯曲空间中连接两点的最短路径，其方程可通过极小化作用量得到： \\[ \\int ds = \\int \\sqrt{g_{\\mu \\nu} \\frac{dx^\\mu}{d\\tau} \\frac{dx^\\nu}{d\\tau}} \\, d\\tau \\] 其中 \\( g_{\\mu \\nu} \\) 是度量张量，\\( \\tau \\) 是仿射参数。\n对该作用量取变分得到测地线方程： \\[ \\frac{d^2 x^k}{d\\tau^2} + \\Gamma^k_{ij} \\frac{dx^i}{d\\tau} \\frac{dx^j}{d\\tau} = 0 \\] 其中 \\( \\Gamma^k_{ij} \\) 是克里斯托费尔符号。\n关键要点： 物理意义：测地线将直线的概念推广到弯曲空间。 克里斯托费尔符号 \\( \\Gamma^k_{ij} \\) 编码了空间的弯曲方式，并影响测地线的路径。 3. 协变导数与克里斯托费尔符号的作用 定义： 协变导数将导数的概念推广到弯曲空间，考虑了坐标基的变化。对于向量场 \\( v^i \\)，其协变导数为： \\[ \\nabla_j v^i = \\partial_j v^i + \\Gamma^i_{jk} v^k \\] 其中 \\( \\Gamma^i_{jk} \\) 是克里斯托费尔符号。\n克里斯托费尔符号的直观含义： 克里斯托费尔符号 \\( \\Gamma^k_{ij} \\) 描述了基矢量沿某一坐标方向如何变化。例如： \\[ \\partial_j \\vec{e}_i = \\Gamma^k_{ij} \\vec{e}_k \\] 这意味着基矢量 \\( \\vec{e}_i \\) 对第 \\( j \\) 个坐标的导数是基矢量的线性组合。直观地，它刻画了坐标基在流形中如何“扭转”或“伸缩”。\n4. 球坐标中克里斯托费尔符号的几何推导 1. 克里斯托费尔符号 \\( \\Gamma^\\phi_{\\;r\\phi} = \\frac{1}{r} \\) 几何意义： 克里斯托费尔符号 \\( \\Gamma^\\phi_{\\;r\\phi} \\) 编码了向量 \\( \\frac{\\partial}{\\partial \\phi} \\)（切于常数 \\( r \\) 与 \\( \\theta \\) 的圆）在 \\( r \\) 变化时如何变化。这反映了由于这些圆的扩张或收缩而导致的 \\( \\phi \\) 基矢量的尺度变化。\n推导： 回忆球坐标下 \\( \\frac{\\partial}{\\partial \\phi} \\) 的表达式： \\[ \\frac{\\partial}{\\partial \\phi} = r \\sin\\theta \\, (-\\sin\\phi, \\cos\\phi, 0). \\] 对 \\( r \\) 求导： \\[ \\frac{\\partial}{\\partial r} \\biggl(\\frac{\\partial}{\\partial \\phi}\\biggr) = \\sin\\theta \\, (-\\sin\\phi, \\cos\\phi, 0). \\] 提取出原始向量 \\( \\frac{\\partial}{\\partial \\phi} \\) 作为因子： \\[ \\frac{\\partial}{\\partial r} \\biggl(\\frac{\\partial}{\\partial \\phi}\\biggr) = \\frac{1}{r} \\, \\frac{\\partial}{\\partial \\phi}. \\] 解释：\n这表明 \\( \\frac{\\partial}{\\partial \\phi} \\) 对 \\( r \\) 的变化与其自身成正比。 比例常数是 \\( \\frac{1}{r} \\)，对应于 \\( \\Gamma^\\phi_{\\;r\\phi} \\)。 物理洞见： 随着 \\( r \\) 增大，\\( \\phi \\) 圆的半径随 \\( r \\) 线性增长，导致 \\( \\frac{\\partial}{\\partial \\phi} \\)（切向于该圆）按比例伸长。这种线性缩放解释了为何 \\( \\Gamma^\\phi_{\\;r\\phi} = \\frac{1}{r} \\)。\n2. 克里斯托费尔符号 \\( \\Gamma^\\phi_{\\;\\theta\\phi} = \\cot\\theta \\) 几何意义： 克里斯托费尔符号 \\( \\Gamma^\\phi_{\\;\\theta\\phi} \\) 反映当 \\( \\theta \\) 变化时向量 \\( \\frac{\\partial}{\\partial \\phi} \\) 如何变化。这描述了在不同余纬（\\( \\theta \\)）处圆的半径变化的影响。\n推导： 回忆 \\( \\frac{\\partial}{\\partial \\phi} \\) 的表达式： \\[ \\frac{\\partial}{\\partial \\phi} = r \\sin\\theta \\, (-\\sin\\phi, \\cos\\phi, 0). \\] 对 \\( \\theta \\) 求导： \\[ \\frac{\\partial}{\\partial \\theta} \\biggl(\\frac{\\partial}{\\partial \\phi}\\biggr) = r \\cos\\theta \\, (-\\sin\\phi, \\cos\\phi, 0). \\] 提取 \\( \\frac{\\partial}{\\partial \\phi} \\)： \\[ \\frac{\\partial}{\\partial \\theta} \\biggl(\\frac{\\partial}{\\partial \\phi}\\biggr) = \\cot\\theta \\, \\frac{\\partial}{\\partial \\phi}. \\] 解释：\n\\( \\frac{\\partial}{\\partial \\phi} \\) 对 \\( \\theta \\) 的变化与其自身成正比，比例常数为 \\( \\cot\\theta \\)，对应于 \\( \\Gamma^\\phi_{\\;\\theta\\phi} \\)。 物理洞见： 在不同的 \\( \\theta \\) 处，\\( \\phi \\) 圆的半径为 \\( r \\sin\\theta \\)。当 \\( \\theta \\) 变化时，该半径按 \\( \\cos\\theta \\) 缩放。相对于半径的变化率是 \\( \\cot\\theta \\)，这就解释了为何 \\( \\Gamma^\\phi_{\\;\\theta\\phi} = \\cot\\theta \\)。\n","wordCount":"398","inLanguage":"zh","datePublished":"2025-01-21T07:21:09-05:00","dateModified":"2025-01-21T07:21:09-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://phrygiangates.github.io/zh/posts/some_basics_of_differential_geometry/"},"publisher":{"@type":"Organization","name":"Phrygiangates","logo":{"@type":"ImageObject","url":"https://phrygiangates.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://phrygiangates.github.io/zh/ accesskey=h title="Phrygiangates (Alt + H)">Phrygiangates</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><ul class=lang-switch><li>|</li><li><a href=https://phrygiangates.github.io/ title=English aria-label=English>En</a></li></ul></div></div><ul id=menu></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">微分几何的一些基础</h1><div class=post-meta><span title='2025-01-21 07:21:09 -0500 -0500'>2025年1月21日</span>&nbsp;|&nbsp;<span>语言:</span><ul class=i18n_list><li><a href=https://phrygiangates.github.io/posts/some_basics_of_differential_geometry/>En</a></li></ul></div></header><div class=post-content><p>在这篇文章中，我希望建立一些微分几何的基础，以便理解爱因斯坦场方程。</p><h2 id=1-黎曼曲率张量及其性质>1. 黎曼曲率张量及其性质<a hidden class=anchor aria-hidden=true href=#1-黎曼曲率张量及其性质>#</a></h2><h3 id=黎曼曲率张量的定义>黎曼曲率张量的定义：<a hidden class=anchor aria-hidden=true href=#黎曼曲率张量的定义>#</a></h3><p>黎曼曲率张量 \( R^i_{jkl} \) 是微分几何中的一个基本对象，表示流形的内禀曲率。其定义为：</p>\[
+R^i_{jkl} = \partial_k \Gamma^i_{jl} - \partial_l \Gamma^i_{jk} + \Gamma^i_{km} \Gamma^m_{jl} - \Gamma^i_{lm} \Gamma^m_{jk}
+\]<p>其中 \( \Gamma^i_{jk} \) 是克里斯托费尔符号。</p><h3 id=黎曼曲率张量的性质>黎曼曲率张量的性质：<a hidden class=anchor aria-hidden=true href=#黎曼曲率张量的性质>#</a></h3><ol><li><p>比安基恒等式：</p>\[
+\nabla_m R^i_{jkl} + \nabla_k R^i_{jlm} + \nabla_l R^i_{jmk} = 0
+\]</li><li><p>对称性：</p><ul><li>在最后两个指标上反对称：
+\[
+R^i_{jkl} = -R^i_{jlk}
+\]</li><li>在交换第一对与第二对指标时反对称：
+\[
+R^i_{jkl} = -R^j_{ikl}
+\]</li></ul></li><li><p>应用：</p><ul><li>黎曼张量刻画当沿闭合回路进行平行输运时，向量被旋转或改变的程度。</li></ul></li></ol><h2 id=2-测地线及其推导原理>2. 测地线及其推导原理<a hidden class=anchor aria-hidden=true href=#2-测地线及其推导原理>#</a></h2><h3 id=测地线方程>测地线方程：<a hidden class=anchor aria-hidden=true href=#测地线方程>#</a></h3><p>测地线是在弯曲空间中连接两点的最短路径，其方程可通过极小化作用量得到：</p>\[
+\int ds = \int \sqrt{g_{\mu \nu} \frac{dx^\mu}{d\tau} \frac{dx^\nu}{d\tau}} \, d\tau
+\]<p>其中 \( g_{\mu \nu} \) 是度量张量，\( \tau \) 是仿射参数。</p><p>对该作用量取变分得到测地线方程：</p>\[
+\frac{d^2 x^k}{d\tau^2} + \Gamma^k_{ij} \frac{dx^i}{d\tau} \frac{dx^j}{d\tau} = 0
+\]<p>其中 \( \Gamma^k_{ij} \) 是克里斯托费尔符号。</p><h3 id=关键要点>关键要点：<a hidden class=anchor aria-hidden=true href=#关键要点>#</a></h3><ul><li>物理意义：测地线将直线的概念推广到弯曲空间。</li><li>克里斯托费尔符号 \( \Gamma^k_{ij} \) 编码了空间的弯曲方式，并影响测地线的路径。</li></ul><h2 id=3-协变导数与克里斯托费尔符号的作用>3. 协变导数与克里斯托费尔符号的作用<a hidden class=anchor aria-hidden=true href=#3-协变导数与克里斯托费尔符号的作用>#</a></h2><h3 id=定义>定义：<a hidden class=anchor aria-hidden=true href=#定义>#</a></h3><p>协变导数将导数的概念推广到弯曲空间，考虑了坐标基的变化。对于向量场 \( v^i \)，其协变导数为：</p>\[
+\nabla_j v^i = \partial_j v^i + \Gamma^i_{jk} v^k
+\]<p>其中 \( \Gamma^i_{jk} \) 是克里斯托费尔符号。</p><h3 id=克里斯托费尔符号的直观含义>克里斯托费尔符号的直观含义：<a hidden class=anchor aria-hidden=true href=#克里斯托费尔符号的直观含义>#</a></h3><p>克里斯托费尔符号 \( \Gamma^k_{ij} \) 描述了基矢量沿某一坐标方向如何变化。例如：</p>\[
+\partial_j \vec{e}_i = \Gamma^k_{ij} \vec{e}_k
+\]<p>这意味着基矢量 \( \vec{e}_i \) 对第 \( j \) 个坐标的导数是基矢量的线性组合。直观地，它刻画了坐标基在流形中如何“扭转”或“伸缩”。</p><h2 id=4-球坐标中克里斯托费尔符号的几何推导>4. 球坐标中克里斯托费尔符号的几何推导<a hidden class=anchor aria-hidden=true href=#4-球坐标中克里斯托费尔符号的几何推导>#</a></h2><h3 id=1-克里斯托费尔符号>1. 克里斯托费尔符号 \( \Gamma^\phi_{\;r\phi} = \frac{1}{r} \)<a hidden class=anchor aria-hidden=true href=#1-克里斯托费尔符号>#</a></h3><h4 id=几何意义>几何意义：<a hidden class=anchor aria-hidden=true href=#几何意义>#</a></h4><p>克里斯托费尔符号 \( \Gamma^\phi_{\;r\phi} \) 编码了向量 \( \frac{\partial}{\partial \phi} \)（切于常数 \( r \) 与 \( \theta \) 的圆）在 \( r \) 变化时如何变化。这反映了由于这些圆的扩张或收缩而导致的 \( \phi \) 基矢量的尺度变化。</p><h4 id=推导>推导：<a hidden class=anchor aria-hidden=true href=#推导>#</a></h4><ol><li><p>回忆球坐标下 \( \frac{\partial}{\partial \phi} \) 的表达式：</p>\[
+\frac{\partial}{\partial \phi} = r \sin\theta \, (-\sin\phi, \cos\phi, 0).
+\]</li><li><p>对 \( r \) 求导：</p>\[
+\frac{\partial}{\partial r} \biggl(\frac{\partial}{\partial \phi}\biggr) = \sin\theta \, (-\sin\phi, \cos\phi, 0).
+\]</li><li><p>提取出原始向量 \( \frac{\partial}{\partial \phi} \) 作为因子：</p>\[
+\frac{\partial}{\partial r} \biggl(\frac{\partial}{\partial \phi}\biggr) = \frac{1}{r} \, \frac{\partial}{\partial \phi}.
+\]</li><li><p>解释：</p><ul><li>这表明 \( \frac{\partial}{\partial \phi} \) 对 \( r \) 的变化与其自身成正比。</li><li>比例常数是 \( \frac{1}{r} \)，对应于 \( \Gamma^\phi_{\;r\phi} \)。</li></ul></li></ol><h4 id=物理洞见>物理洞见：<a hidden class=anchor aria-hidden=true href=#物理洞见>#</a></h4><p>随着 \( r \) 增大，\( \phi \) 圆的半径随 \( r \) 线性增长，导致 \( \frac{\partial}{\partial \phi} \)（切向于该圆）按比例伸长。这种线性缩放解释了为何 \( \Gamma^\phi_{\;r\phi} = \frac{1}{r} \)。</p><hr><h3 id=2-克里斯托费尔符号>2. 克里斯托费尔符号 \( \Gamma^\phi_{\;\theta\phi} = \cot\theta \)<a hidden class=anchor aria-hidden=true href=#2-克里斯托费尔符号>#</a></h3><h4 id=几何意义-1>几何意义：<a hidden class=anchor aria-hidden=true href=#几何意义-1>#</a></h4><p>克里斯托费尔符号 \( \Gamma^\phi_{\;\theta\phi} \) 反映当 \( \theta \) 变化时向量 \( \frac{\partial}{\partial \phi} \) 如何变化。这描述了在不同余纬（\( \theta \)）处圆的半径变化的影响。</p><h4 id=推导-1>推导：<a hidden class=anchor aria-hidden=true href=#推导-1>#</a></h4><ol><li><p>回忆 \( \frac{\partial}{\partial \phi} \) 的表达式：</p>\[
+\frac{\partial}{\partial \phi} = r \sin\theta \, (-\sin\phi, \cos\phi, 0).
+\]</li><li><p>对 \( \theta \) 求导：</p>\[
+\frac{\partial}{\partial \theta} \biggl(\frac{\partial}{\partial \phi}\biggr) = r \cos\theta \, (-\sin\phi, \cos\phi, 0).
+\]</li><li><p>提取 \( \frac{\partial}{\partial \phi} \)：</p>\[
+\frac{\partial}{\partial \theta} \biggl(\frac{\partial}{\partial \phi}\biggr) = \cot\theta \, \frac{\partial}{\partial \phi}.
+\]</li><li><p>解释：</p><ul><li>\( \frac{\partial}{\partial \phi} \) 对 \( \theta \) 的变化与其自身成正比，比例常数为 \( \cot\theta \)，对应于 \( \Gamma^\phi_{\;\theta\phi} \)。</li></ul></li></ol><h4 id=物理洞见-1>物理洞见：<a hidden class=anchor aria-hidden=true href=#物理洞见-1>#</a></h4><p>在不同的 \( \theta \) 处，\( \phi \) 圆的半径为 \( r \sin\theta \)。当 \( \theta \) 变化时，该半径按 \( \cos\theta \) 缩放。相对于半径的变化率是 \( \cot\theta \)，这就解释了为何 \( \Gamma^\phi_{\;\theta\phi} = \cot\theta \)。</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://phrygiangates.github.io/zh/tags/the-early-universe/>The Early Universe</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://phrygiangates.github.io/zh/>Phrygiangates</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
